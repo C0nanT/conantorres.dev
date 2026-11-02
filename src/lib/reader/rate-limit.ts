@@ -1,5 +1,9 @@
 import { headers } from 'next/headers'
-import { type AttemptEntry, createAttemptLimiter } from './rate-limit-core'
+import {
+  type AttemptEntry,
+  createAttemptLimiter,
+  pickClientIp,
+} from './rate-limit-core'
 
 export type { AttemptCheck } from './rate-limit-core'
 
@@ -19,11 +23,11 @@ const limiter = createAttemptLimiter({
 
 export const { getLockMinutesLeft, registerAttempt, clearFailures } = limiter
 
-// First hop of x-forwarded-for. Behind a proxy that is the client the proxy
-// saw; without one, Next's server fills the header with the socket address.
-// x-real-ip and a shared 'unknown' bucket are last-resort fallbacks.
+// The core picks the client from the proxy chain; see `pickClientIp`.
 export async function getClientIp(): Promise<string> {
   const headerList = await headers()
-  const forwarded = headerList.get('x-forwarded-for')?.split(',')[0]?.trim()
-  return forwarded || headerList.get('x-real-ip')?.trim() || 'unknown'
+  return pickClientIp(
+    headerList.get('x-forwarded-for'),
+    headerList.get('x-real-ip')
+  )
 }
