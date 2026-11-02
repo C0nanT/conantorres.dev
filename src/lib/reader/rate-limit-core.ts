@@ -9,6 +9,10 @@ const LOCK_DURATION_MS = 20 * 60 * 1000
 // Past this many tracked IPs the least recently active ones are dropped, so a
 // flood of spoofed addresses cannot grow the map without bound.
 const MAX_TRACKED_IPS = 10_000
+// Across every IP: at most this many failures in a sliding window. Reaching it
+// refuses every try, the right password included, until the oldest expires.
+const GLOBAL_MAX_FAILURES = 10
+const GLOBAL_WINDOW_MS = 24 * 60 * 60 * 1000
 
 export interface AttemptEntry {
   failures: number
@@ -30,7 +34,11 @@ export interface AttemptLimiter {
 
 interface LimiterDeps {
   attempts: Map<string, AttemptEntry>
+  /** Failure instants across every IP, oldest first; mutated in place. */
+  globalFailures: number[]
   now: () => number
+  /** Called once, with the IP of the try that just reached the global cap. */
+  onCapReached?: (ip: string) => void
 }
 
 function isExpired(entry: AttemptEntry, now: number): boolean {
@@ -119,8 +127,27 @@ export function pickClientIp(
 
 export function createAttemptLimiter({
   attempts,
+  globalFailures,
   now: readClock,
+  onCapReached,
 }: LimiterDeps): AttemptLimiter {
+  function pruneGlobal(now: number): void {
+    while (
+      globalFailures.length > 0 &&
+      (globalFailures[0] ?? 0) + GLOBAL_WINDOW_MS <= now
+    ) {
+      globalFailures.shift()
+    }
+  }
+
+  /** Milliseconds until the global cap frees a slot, or 0 when not reached. */
+  function globalLockMs(now: number): number {
+    if (globalFailures.length < GLOBAL_MAX_FAILURES) {
+      return 0
+    }
+    return (globalFailures[0] ?? now) + GLOBAL_WINDOW_MS - now
+  }
+
   function pruneExpired(now: number): void {
     for (const [ip, entry] of attempts) {
       if (isExpired(entry, now)) {
@@ -141,18 +168,22 @@ export function createAttemptLimiter({
     }
   }
 
+  // The IP lock and the global cap give the same answer; the longer wins.
   function getLockMinutesLeft(ip: string): number {
     const now = readClock()
     pruneExpired(now)
+    pruneGlobal(now)
     const lockedUntil = attempts.get(ip)?.lockedUntil
-    return lockedUntil === undefined ? 0 : toMinutes(lockedUntil - now)
+    const ipLockMs = lockedUntil === undefined ? 0 : lockedUntil - now
+    return toMinutes(Math.max(ipLockMs, globalLockMs(now)))
   }
 
   /**
    * Counts a password attempt as a failure up front, before the password is
-   * compared, so parallel requests cannot all pass the lock check.
-   * Synchronous on purpose: nothing can interleave between the check and the
-   * count. Call `clearFailures` when the password turns out right.
+   * compared, so parallel requests cannot all pass the lock check. It counts
+   * for the IP and for the global cap. Synchronous on purpose: nothing can
+   * interleave between the check and the count. Call `clearFailures` when the
+   * password turns out right; the global count is kept either way.
    */
   function registerAttempt(ip: string): AttemptCheck {
     const minutesLeft = getLockMinutesLeft(ip)
@@ -168,9 +199,15 @@ export function createAttemptLimiter({
       entry.lockedUntil = now + LOCK_DURATION_MS
     }
     touch(ip, entry)
+    globalFailures.push(now)
+    const capLockMs = globalLockMs(now)
+    if (capLockMs > 0) {
+      onCapReached?.(ip)
+    }
+    const ipLockMs = isLastTry ? LOCK_DURATION_MS : 0
     return {
       isAllowed: true,
-      lockMinutesIfWrong: isLastTry ? toMinutes(LOCK_DURATION_MS) : 0,
+      lockMinutesIfWrong: toMinutes(Math.max(ipLockMs, capLockMs)),
     }
   }
 

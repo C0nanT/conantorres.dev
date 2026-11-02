@@ -1,4 +1,5 @@
 import { headers } from 'next/headers'
+import { logReaderLockout } from './log'
 import {
   type AttemptEntry,
   createAttemptLimiter,
@@ -13,12 +14,17 @@ export type { AttemptCheck } from './rate-limit-core'
 declare global {
   // Kept on globalThis so dev hot reloads do not reset the counters.
   var readerAttempts: Map<string, AttemptEntry> | undefined
+  // Instants of the latest failures across every IP (at most 10).
+  var readerGlobalFailures: number[] | undefined
 }
 globalThis.readerAttempts ??= new Map<string, AttemptEntry>()
+globalThis.readerGlobalFailures ??= []
 
 const limiter = createAttemptLimiter({
   attempts: globalThis.readerAttempts,
+  globalFailures: globalThis.readerGlobalFailures,
   now: Date.now,
+  onCapReached: (ip) => logReaderLockout('teto-global', ip),
 })
 
 export const { getLockMinutesLeft, registerAttempt, clearFailures } = limiter
