@@ -24,6 +24,7 @@
     "check": "biome check .",
     "check:fix": "biome check . --write",
     "typecheck": "tsc --noEmit",
+    "test": "node --test 'src/**/*.test.ts'",
     "prepare": "husky"
   },
   "lint-staged": {
