@@ -21,5 +21,4 @@ next-env.d.ts
 .pnpm-debug.log*
 
 # local notes (issue tracker, todos)
-.scratch/
 TODO.md
