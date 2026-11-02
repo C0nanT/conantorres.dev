@@ -1,10 +1,7 @@
 import { headers } from 'next/headers'
+import { pickClientIp } from './client-ip'
 import { logReaderLockout } from './log'
-import {
-  type AttemptEntry,
-  createAttemptLimiter,
-  pickClientIp,
-} from './rate-limit-core'
+import { type AttemptEntry, createAttemptLimiter } from './rate-limit-core'
 
 export type { AttemptCheck } from './rate-limit-core'
 
@@ -29,7 +26,7 @@ const limiter = createAttemptLimiter({
 
 export const { getLockMinutesLeft, registerAttempt, clearFailures } = limiter
 
-// The core picks the client from the proxy chain; see `pickClientIp`.
+// The client comes from the proxy chain; see `pickClientIp`.
 export async function getClientIp(): Promise<string> {
   const headerList = await headers()
   return pickClientIp(

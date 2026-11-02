@@ -55,7 +55,9 @@ export function logReaderClientError(
   )
 }
 
-export function logReaderLockout(event: string, ip: string) {
+export type ReaderLockoutEvent = 'teto-global'
+
+export function logReaderLockout(event: ReaderLockoutEvent, ip: string) {
   console.warn(
     `${LOCK_PREFIX} ${new Date().toISOString()} evento=${oneLine(event, 40)} ip=${oneLine(ip, 80)}`
   )

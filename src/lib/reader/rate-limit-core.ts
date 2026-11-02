@@ -1,8 +1,6 @@
 // Pure core of the reader's wrong-password lockout: no Next, no globals, the
-// clock and the state are passed in. Imports only node:* so it runs as-is
-// under `node --test`.
-
-import { BlockList, isIP } from 'node:net'
+// clock and the state are passed in. No imports, so it runs as-is under
+// `node --test`. The client IP choice lives in `client-ip.ts`.
 
 const MAX_FAILURES = 3
 const LOCK_DURATION_MS = 20 * 60 * 1000
@@ -47,82 +45,9 @@ function isExpired(entry: AttemptEntry, now: number): boolean {
     : entry.lockedUntil <= now
 }
 
-function toMinutes(ms: number): number {
-  return Math.ceil(ms / 60_000)
-}
-
-// Cloudflare's edge ranges. Same list as `trustedIPs: &ips_cloudflare` in
-// traefik-default's traefik/traefik.yml, checked on 2026-10-27: both lists
-// change together, so update one whenever the other changes.
-const CLOUDFLARE_RANGES = [
-  // IPv4
-  '173.245.48.0/20',
-  '103.21.244.0/22',
-  '103.22.200.0/22',
-  '103.31.4.0/22',
-  '141.101.64.0/18',
-  '108.162.192.0/18',
-  '190.93.240.0/20',
-  '188.114.96.0/20',
-  '197.234.240.0/22',
-  '198.41.128.0/17',
-  '162.158.0.0/15',
-  '104.16.0.0/13',
-  '104.24.0.0/14',
-  '172.64.0.0/13',
-  '131.0.72.0/22',
-  // IPv6
-  '2400:cb00::/32',
-  '2606:4700::/32',
-  '2803:f800::/32',
-  '2405:b500::/32',
-  '2405:8100::/32',
-  '2a06:98c0::/29',
-  '2c0f:f248::/32',
-] as const
-
-function ipFamily(ip: string): 'ipv4' | 'ipv6' | undefined {
-  const version = isIP(ip)
-  if (version === 4) {
-    return 'ipv4'
-  }
-  return version === 6 ? 'ipv6' : undefined
-}
-
-function buildCloudflareList(): BlockList {
-  const list = new BlockList()
-  for (const range of CLOUDFLARE_RANGES) {
-    const [network = '', prefix = ''] = range.split('/')
-    const family = ipFamily(network)
-    if (family) {
-      list.addSubnet(network, Number(prefix), family)
-    }
-  }
-  return list
-}
-
-// Built once per process, on module load.
-const cloudflare = buildCloudflareList()
-
-/**
- * The client is the rightmost x-forwarded-for item outside Cloudflare's
- * ranges: Cloudflare appends the address it saw to whatever the client sent,
- * and Traefik appends Cloudflare's own address, so anything left of the
- * client's real address is client-controlled. Invalid items are skipped.
- * With no usable item, x-real-ip, then a shared 'unknown' bucket.
- */
-export function pickClientIp(
-  forwardedFor: string | null | undefined,
-  realIp: string | null | undefined
-): string {
-  const items = (forwardedFor ?? '').split(',').map((item) => item.trim())
-  for (const item of items.reverse()) {
-    const family = ipFamily(item)
-    if (family && !cloudflare.check(item, family)) {
-      return item
-    }
-  }
-  return realIp?.trim() || 'unknown'
+// The IP lock and the global cap give the same answer; the longer wins.
+function longestLockMinutes(ipLockMs: number, globalLockMs: number): number {
+  return Math.ceil(Math.max(ipLockMs, globalLockMs) / 60_000)
 }
 
 export function createAttemptLimiter({
@@ -148,16 +73,22 @@ export function createAttemptLimiter({
     return (globalFailures[0] ?? now) + GLOBAL_WINDOW_MS - now
   }
 
+  // `markActive` keeps the map ordered by last failure, oldest first, and an
+  // entry expires LOCK_DURATION_MS after its last failure (a lock is only set
+  // on a failure, and a locked IP gets no new failure until the lock ends),
+  // so the first unexpired entry ends the expired run.
   function pruneExpired(now: number): void {
     for (const [ip, entry] of attempts) {
-      if (isExpired(entry, now)) {
-        attempts.delete(ip)
+      if (!isExpired(entry, now)) {
+        break
       }
+      attempts.delete(ip)
     }
   }
 
-  // Re-inserting keeps the map ordered by last activity, oldest first.
-  function touch(ip: string, entry: AttemptEntry): void {
+  // Re-inserts `ip` as the most recently active, then drops the least
+  // recently active ones past MAX_TRACKED_IPS.
+  function markActive(ip: string, entry: AttemptEntry): void {
     attempts.delete(ip)
     attempts.set(ip, entry)
     for (const oldest of attempts.keys()) {
@@ -168,14 +99,13 @@ export function createAttemptLimiter({
     }
   }
 
-  // The IP lock and the global cap give the same answer; the longer wins.
   function getLockMinutesLeft(ip: string): number {
     const now = readClock()
     pruneExpired(now)
     pruneGlobal(now)
     const lockedUntil = attempts.get(ip)?.lockedUntil
     const ipLockMs = lockedUntil === undefined ? 0 : lockedUntil - now
-    return toMinutes(Math.max(ipLockMs, globalLockMs(now)))
+    return longestLockMinutes(ipLockMs, globalLockMs(now))
   }
 
   /**
@@ -198,7 +128,7 @@ export function createAttemptLimiter({
     if (isLastTry) {
       entry.lockedUntil = now + LOCK_DURATION_MS
     }
-    touch(ip, entry)
+    markActive(ip, entry)
     globalFailures.push(now)
     const capLockMs = globalLockMs(now)
     if (capLockMs > 0) {
@@ -207,7 +137,7 @@ export function createAttemptLimiter({
     const ipLockMs = isLastTry ? LOCK_DURATION_MS : 0
     return {
       isAllowed: true,
-      lockMinutesIfWrong: toMinutes(Math.max(ipLockMs, capLockMs)),
+      lockMinutesIfWrong: longestLockMinutes(ipLockMs, capLockMs),
     }
   }
 
