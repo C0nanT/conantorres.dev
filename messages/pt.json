@@ -134,6 +134,7 @@
     "read": "Ler",
     "ratingLabel": "Nota: {rating} de 5",
     "unrated": "Sem nota",
+    "unratedHint": "Ainda sem nota — não é nota 0",
     "progressLabel": "Progresso: {progress}%",
     "readPercent": "{progress}% lido",
     "updatedAt": "Atualizado em {date}",
