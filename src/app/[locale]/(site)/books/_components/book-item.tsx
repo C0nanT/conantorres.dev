@@ -111,7 +111,7 @@ function BookRating({ rating = 0 }: { rating?: number }) {
     <div
       role="img"
       aria-label={rating ? t('ratingLabel', { rating }) : t('unrated')}
-      className="flex"
+      className="group relative flex"
     >
       {[1, 2, 3, 4, 5].map((star) => (
         <Star
@@ -125,6 +125,14 @@ function BookRating({ rating = 0 }: { rating?: number }) {
           )}
         />
       ))}
+      {!rating && (
+        <span
+          aria-hidden={true}
+          className="pointer-events-none absolute -top-9 left-0 z-10 whitespace-nowrap rounded-md bg-foreground px-2.5 py-1 text-xs font-medium text-background opacity-0 shadow-md transition-opacity group-hover:opacity-100 motion-reduce:transition-none"
+        >
+          {t('unratedHint')}
+        </span>
+      )}
     </div>
   )
 }
