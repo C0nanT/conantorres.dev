@@ -42,14 +42,14 @@ services:
       # apex: wildcard certificate (DNS-01 on Cloudflare)
       - "traefik.http.routers.conan-torres.rule=Host(`conantorres.dev`)"
       - "traefik.http.routers.conan-torres.entrypoints=websecure"
-      - "traefik.http.routers.conan-torres.middlewares=seguranca@file,compressao@file"
+      - "traefik.http.routers.conan-torres.middlewares=so-cloudflare@file,limite-taxa@file,seguranca@file,compressao@file"
       - "traefik.http.routers.conan-torres.tls.certresolver=le-dns"
       - "traefik.http.routers.conan-torres.tls.domains[0].main=conantorres.dev"
       - "traefik.http.routers.conan-torres.tls.domains[0].sans=*.conantorres.dev"
       # www: permanent redirect to the apex (covered by the wildcard)
       - "traefik.http.routers.conan-torres-www.rule=Host(`www.conantorres.dev`)"
       - "traefik.http.routers.conan-torres-www.entrypoints=websecure"
-      - "traefik.http.routers.conan-torres-www.middlewares=www-para-raiz@file"
+      - "traefik.http.routers.conan-torres-www.middlewares=so-cloudflare@file,limite-taxa@file,www-para-raiz@file"
       - "traefik.http.routers.conan-torres-www.service=conan-torres"
       - "traefik.http.services.conan-torres.loadbalancer.server.port=8080"
     logging:
