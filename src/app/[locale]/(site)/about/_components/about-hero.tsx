@@ -1,5 +1,4 @@
 import { Badge } from '@/components/ui/badge'
-import { Card, CardContent } from '@/components/ui/card'
 import { getAge } from '@/lib/age'
 import { site } from '@/lib/site-data'
 import { cn } from '@/lib/styling'
@@ -184,51 +183,6 @@ export async function AboutHero() {
                   )
                 })}
               </ol>
-            </div>
-
-            {/* Quick Facts */}
-            <div className="space-y-4">
-              {about.facts.map((fact) => {
-                const Icon = getAboutIcon(fact.icon)
-                return (
-                  <Card key={fact.label} className="tech-card group">
-                    <CardContent className="p-4">
-                      <div className="flex items-center space-x-4">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 flex-shrink-0 transition-[transform,background-color] duration-300 group-hover:bg-primary/20 motion-safe:group-hover:rotate-6 motion-safe:group-hover:scale-110">
-                          <Icon
-                            aria-hidden="true"
-                            className="h-5 w-5 text-primary"
-                          />
-                        </div>
-                        <div className="flex-1">
-                          <div className="text-sm text-muted-foreground">
-                            {fact.label}
-                          </div>
-                          <div className="font-semibold">
-                            {fact.href ? (
-                              <a
-                                href={fact.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="underline decoration-dotted decoration-muted-foreground/60 underline-offset-4 transition-colors hover:text-primary hover:decoration-primary"
-                              >
-                                {withAge(fact.value)}
-                              </a>
-                            ) : (
-                              withAge(fact.value)
-                            )}
-                          </div>
-                        </div>
-                        {fact.detail && (
-                          <div className="text-xs text-muted-foreground">
-                            {fact.detail}
-                          </div>
-                        )}
-                      </div>
-                    </CardContent>
-                  </Card>
-                )
-              })}
             </div>
           </div>
         </div>
