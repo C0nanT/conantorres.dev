@@ -1,4 +1,5 @@
 import { LogoHorizontal } from '@/components/common'
+import { CopyEmailButton } from '@/components/layout/copy-email-button'
 import { Separator } from '@/components/ui/separator'
 import { Link } from '@/lib/navigation'
 import { site } from '@/lib/site-data'
@@ -8,6 +9,7 @@ interface FooterLink {
   name: string
   href: string
   external?: boolean
+  copy?: boolean
 }
 
 interface FooterSection {
@@ -44,6 +46,7 @@ const footerSections: FooterSection[] = [
       {
         name: site.contact.email,
         href: `mailto:${site.contact.email}`,
+        copy: true,
       },
     ],
   },
@@ -129,18 +132,22 @@ export function Footer() {
               <ul className="space-y-3">
                 {section.links.map((link, i) => (
                   <li key={`${link.href}-${i}`}>
-                    <Link
-                      href={link.href}
-                      {...(link.external
-                        ? { target: '_blank', rel: 'noopener noreferrer' }
-                        : {})}
-                      className="text-sm text-muted-foreground hover:text-primary transition-[color,transform] duration-200 flex items-center group motion-safe:hover:translate-x-1"
-                    >
-                      <span>{link.name}</span>
-                      {link.external && (
-                        <ArrowUpRight className="ml-1 h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      )}
-                    </Link>
+                    {link.copy ? (
+                      <CopyEmailButton email={link.name} />
+                    ) : (
+                      <Link
+                        href={link.href}
+                        {...(link.external
+                          ? { target: '_blank', rel: 'noopener noreferrer' }
+                          : {})}
+                        className="text-sm text-muted-foreground hover:text-primary transition-[color,transform] duration-200 flex items-center group motion-safe:hover:translate-x-1"
+                      >
+                        <span>{link.name}</span>
+                        {link.external && (
+                          <ArrowUpRight className="ml-1 h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        )}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
