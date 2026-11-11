@@ -63,7 +63,7 @@ export function AvailableBadge() {
         }
         transition={LOOP}
       >
-        <Card className="border-green-500/20 px-4 py-2.5 shadow-md shadow-green-500/20 transition-all duration-300 ease-out hover:shadow-green-500/40">
+        <Card className="border-green-500/20 px-4 py-2.5 shadow-md shadow-green-500/20 transition-all duration-300 ease-out hover:border-green-500/50 hover:[box-shadow:0_8px_24px_-14px_rgb(34_197_94/0.55)]">
           <CardContent className="p-0">
             <div className="flex items-center space-x-2">
               <div className="h-2 w-2 animate-pulse rounded-full bg-green-500 shadow-sm shadow-green-500/50" />
