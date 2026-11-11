@@ -131,7 +131,10 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
                   </span>
                 </Badge>
               </a>
-              <Badge variant="outline" className="px-3 py-1">
+              <Badge
+                variant="outline"
+                className="px-3 py-1 hover:border-border hover:bg-transparent motion-safe:hover:scale-100"
+              >
                 <Briefcase className="mr-1 h-3 w-3" />
                 {profile.role}
               </Badge>
