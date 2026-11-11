@@ -119,14 +119,16 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
                 href={profile.location.mapUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="group rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
                 <Badge
                   variant="secondary"
-                  className="px-3 py-1 transition-[transform,background-color,border-color,color] duration-300 hover:bg-primary/15 hover:text-primary"
+                  className="px-3 py-1 transition-colors duration-300 group-hover:text-primary hover:bg-secondary motion-safe:hover:scale-100"
                 >
                   <MapPin className="mr-1 h-3 w-3" />
-                  {profile.location.display}
+                  <span className="relative after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-primary after:transition-transform after:duration-300 group-hover:after:scale-x-100 motion-reduce:after:transition-none">
+                    {profile.location.display}
+                  </span>
                 </Badge>
               </a>
               <Badge variant="outline" className="px-3 py-1">
