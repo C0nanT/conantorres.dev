@@ -110,7 +110,10 @@ export async function AboutHero() {
 
               <div className="prose prose-lg max-w-none text-muted-foreground">
                 {about.bio.map((paragraph) => (
-                  <p key={paragraph}>
+                  <p
+                    key={paragraph}
+                    className="first-of-type:first-letter:float-left first-of-type:first-letter:mr-3 first-of-type:first-letter:text-6xl first-of-type:first-letter:font-bold first-of-type:first-letter:leading-[0.8] first-of-type:first-letter:text-primary"
+                  >
                     {renderHighlights(
                       withAge(paragraph),
                       about.highlightSymbols
@@ -157,6 +160,30 @@ export async function AboutHero() {
                   className="object-cover"
                 />
               </div>
+            </div>
+
+            {/* Um dia comum */}
+            <div className="space-y-5">
+              <h2 className="font-semibold text-lg">{t('dayTitle')}</h2>
+              <ol className="relative space-y-6 border-l-2 border-dashed border-border pl-8">
+                {about.day.map((step) => {
+                  const Icon = getAboutIcon(step.icon)
+                  return (
+                    <li key={step.title} className="relative">
+                      <span className="absolute -left-[3.05rem] flex h-9 w-9 items-center justify-center rounded-full border bg-background text-primary">
+                        <Icon aria-hidden="true" className="h-4 w-4" />
+                      </span>
+                      <div className="text-xs font-semibold uppercase tracking-wide text-primary">
+                        {step.time}
+                      </div>
+                      <div className="font-semibold">{step.title}</div>
+                      <p className="text-sm text-muted-foreground">
+                        {step.text}
+                      </p>
+                    </li>
+                  )
+                })}
+              </ol>
             </div>
 
             {/* Quick Facts */}

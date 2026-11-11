@@ -183,6 +183,7 @@ export interface SiteData {
     // Symbol used as the mouse cursor over each highlighted bio keyword.
     highlightSymbols: Record<string, string>
     /** `icon` is a kebab-case lucide name registered in about-icons.ts */
+    day: Array<{ time: string; icon: string; title: string; text: string }>
     hobbies: Array<{ icon: string; label: string }>
     facts: Array<{
       icon: string
