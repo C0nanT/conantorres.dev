@@ -216,14 +216,6 @@ export function RecommendationsSection() {
                         <CompanyLabel companies={companiesOf(item)} />
                       </span>
                     </span>
-                    {item.entries.length > 1 && (
-                      <Badge
-                        variant="secondary"
-                        className="ml-2 hover:bg-secondary motion-safe:hover:scale-100"
-                      >
-                        {item.entries.length}
-                      </Badge>
-                    )}
                   </span>
                   {/* Cada autor tem a própria barra, montada só na vez dele
                       (a montagem reinicia a animação). Sem animação
