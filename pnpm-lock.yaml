@@ -44,8 +44,8 @@ importers:
         specifier: ^1.7.2
         version: 1.7.2(next@15.5.28(@types/node@22.19.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       lucide-react:
-        specifier: ^0.279.0
-        version: 0.279.0(react@18.3.1)
+        specifier: ^1.64.0
+        version: 1.64.0(@types/react@18.3.27)(react@18.3.1)
       next:
         specifier: ^15.5.28
         version: 15.5.28(@types/node@22.19.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -1288,10 +1288,14 @@ packages:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
     hasBin: true
 
-  lucide-react@0.279.0:
-    resolution: {integrity: sha512-LJ8g66+Bxc3t3x9vKTeK3wn3xucrOQGfJ9ou9GsBwCt2offsrT2BB90XrTrIzE1noYYDe2O8jZaRHi6sAHXNxw==}
+  lucide-react@1.64.0:
+    resolution: {integrity: sha512-v626F/bcLNvFom6vzztHILtG9tUgXXbgA5AGkd82YkV401+Ko/NHyrWafbPwGofa+6p/EgDJcvEkIwsMH9098w==}
     peerDependencies:
-      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+      '@types/react': '*'
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
 
   make-cancellable-promise@2.0.0:
     resolution: {integrity: sha512-3SEQqTpV9oqVsIWqAcmDuaNeo7yBO3tqPtqGRcKkEo0lrzD3wqbKG9mkxO65KoOgXqj+zH2phJ2LiAsdzlogSw==}
@@ -2816,9 +2820,11 @@ snapshots:
     dependencies:
       js-tokens: 4.0.0
 
-  lucide-react@0.279.0(react@18.3.1):
+  lucide-react@1.64.0(@types/react@18.3.27)(react@18.3.1):
     dependencies:
       react: 18.3.1
+    optionalDependencies:
+      '@types/react': 18.3.27
 
   make-cancellable-promise@2.0.0: {}
 
