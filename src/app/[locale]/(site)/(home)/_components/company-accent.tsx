@@ -1,6 +1,4 @@
 import { site } from '@/lib/site-data'
-import type { CSSProperties } from 'react'
-
 function getCompanyColor(company: string) {
   return site.recommendationCompanyColors[company]
 }
@@ -29,17 +27,10 @@ export function CompanyLabel({ companies }: { companies: string[] }) {
   )
 }
 
-// Pill with the company color as a tinted border and background.
+// Company name with a dot in the company color, for a text heading.
 export function CompanyPill({ company }: { company: string }) {
-  const color = getCompanyColor(company)
-  const style: CSSProperties | undefined = color
-    ? { borderColor: `${color}80`, backgroundColor: `${color}1A` }
-    : undefined
   return (
-    <span
-      className="inline-flex items-center gap-1.5 rounded-md border px-2.5 py-0.5 text-xs font-semibold"
-      style={style}
-    >
+    <span className="inline-flex items-center gap-1.5 text-xs font-semibold">
       <CompanyDot company={company} />
       {company}
     </span>

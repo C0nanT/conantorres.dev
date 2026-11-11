@@ -219,7 +219,7 @@ export function RecommendationsSection() {
                     {item.entries.length > 1 && (
                       <Badge
                         variant="secondary"
-                        className="ml-2 motion-safe:hover:scale-100"
+                        className="ml-2 hover:bg-secondary motion-safe:hover:scale-100"
                       >
                         {item.entries.length}
                       </Badge>
