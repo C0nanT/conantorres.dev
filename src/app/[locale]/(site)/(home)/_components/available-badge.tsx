@@ -53,7 +53,7 @@ export function AvailableBadge() {
       href={WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
-      className="absolute -bottom-3 -right-3"
+      className="absolute -bottom-3 -right-3 transition-transform duration-300 ease-out motion-safe:hover:scale-110"
     >
       <motion.div
         ref={anchorRef}
