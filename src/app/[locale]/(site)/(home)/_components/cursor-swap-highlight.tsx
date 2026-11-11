@@ -63,6 +63,7 @@ export function CursorSwapHighlight({
   const pointer = useRef<Point>({ x: 0, y: 0 })
   const flight = useRef<Flight | null>(null)
   const frame = useRef<number | undefined>(undefined)
+  const isIconStandingIn = useRef(false)
 
   useEffect(() => () => cancelAnimationFrame(frame.current ?? 0), [])
 
@@ -138,8 +139,11 @@ export function CursorSwapHighlight({
     flight.current = null
     if (isFlying) {
       phase.current = 'docked'
-      paint(0)
       setCursor(dockedCursor)
+      // Browsers only redraw a new cursor when the mouse moves, so the icon
+      // stays on screen, exactly where the cursor will be, until it does.
+      isIconStandingIn.current = true
+      paint(1)
       return
     }
     phase.current = 'idle'
@@ -164,11 +168,17 @@ export function CursorSwapHighlight({
     if (phase.current === 'docked') {
       // Keep the hidden icon under the pointer, ready for the way back.
       position.current = pointer.current
+      if (isIconStandingIn.current) {
+        // The mouse moved: the browser now draws the icon as the cursor.
+        isIconStandingIn.current = false
+        paint(0)
+      }
     }
   }
 
   function handleMouseLeave(event: MouseEvent) {
     const lastPointer = offsetFrom(event)
+    isIconStandingIn.current = false
     setCursor('')
     if (prefersReducedMotion()) {
       cancelAnimationFrame(frame.current ?? 0)
