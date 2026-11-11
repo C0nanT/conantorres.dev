@@ -160,7 +160,14 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
                         alt=""
                         width={16}
                         height={16}
-                        className="shrink-0 transition-transform duration-200 motion-safe:group-hover:scale-125"
+                        className={cn(
+                          'shrink-0 transition-[transform,opacity] duration-200',
+                          // With a cursor, the icon "becomes" the cursor:
+                          // it hides on hover, keeping its space.
+                          highlight.cursor
+                            ? 'group-hover:opacity-0 motion-safe:group-hover:scale-50'
+                            : 'motion-safe:group-hover:scale-125'
+                        )}
                       />
                     )}
                     <span className="text-sm font-medium">
