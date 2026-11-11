@@ -178,8 +178,6 @@ export interface SiteData {
     subheadline: string
     /** `{idade}` is replaced by the age computed on each render */
     bio: string[]
-    // Symbol used as the mouse cursor over each highlighted bio keyword.
-    highlightSymbols: Record<string, string>
     /** `icon` is a kebab-case lucide name registered in about-icons.ts */
     hobbies: Array<{ icon: string; label: string }>
     facts: Array<{
@@ -202,6 +200,8 @@ export interface SiteData {
     }>
   }
   experience: Experience[]
+  // Mouse cursor symbol for each `**keyword**` highlighted in site copy.
+  highlightCursors: Record<string, string>
   recommendations: Recommendation[]
   seo: {
     keywords: string[]

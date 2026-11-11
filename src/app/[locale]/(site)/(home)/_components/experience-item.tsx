@@ -1,6 +1,7 @@
 'use client'
 
 import { CautionTape } from '@/components/common/caution-tape'
+import { HighlightedText } from '@/components/common/highlighted-text'
 import { Switch } from '@/components/ui/switch'
 import type { Experience } from '@/lib/site-data'
 import { cn } from '@/lib/styling'
@@ -59,7 +60,7 @@ export function ExperienceItem({ job }: { job: Experience }) {
                 >
                   ▸
                 </span>
-                {item}
+                <HighlightedText text={item} />
               </li>
             ))}
           </ul>

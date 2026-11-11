@@ -2,6 +2,7 @@
 
 import { CautionTape } from '@/components/common/caution-tape'
 import * as FancyButton from '@/components/common/fancy-button'
+import { HighlightedText } from '@/components/common/highlighted-text'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -126,7 +127,7 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
                 <span className="gradient-text">{profile.lastName}</span>
               </h1>
               <p className="text-body-large text-muted-foreground max-w-2xl">
-                {site.content.hero.description}
+                <HighlightedText text={site.content.hero.description} />
               </p>
             </div>
 

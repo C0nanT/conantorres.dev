@@ -53,7 +53,7 @@
   },
   "content": {
     "hero": {
-      "description": "Tech Lead e Desenvolvedor Full Stack na Defensoria Pública de Santa Catarina, com mais de 6 anos de experiência em desenvolvimento de software.",
+      "description": "**Tech Lead** e **Desenvolvedor Full Stack** na **Defensoria Pública de Santa Catarina**, com mais de 6 anos de experiência em desenvolvimento de software.",
       "highlights": {
         "architecture": "Arquitetura antes do framework",
         "people": "Código e pessoas, na mesma medida",
@@ -168,17 +168,6 @@
       "Meu dia começa com **café e estudo**: um livro, uma linguagem que ainda não domino ou um conceito novo de arquitetura. Depois vêm a **academia**, o almoço e o trabalho. À noite, jogo **xadrez** no Chess.com com algo técnico passando no fundo. No fim de semana não tem roteiro: pode ser inglês, IA, mercado financeiro ou mais código. E sempre que dá, corro uns 2 km na Beira-Mar Norte.",
       "Gosto de **assumir responsabilidade**, no trabalho e fora dele. Cuido das minhas finanças e ajudo a minha família a organizar as delas e a **começar a investir**, por isso acompanho de perto o que acontece no Brasil e no mundo. Também gosto de tomar a frente nas decisões e de **passar adiante o que aprendo**: quando encontro um bom artigo, livro ou vídeo, compartilho e incentivo todo mundo a ir atrás de mais."
     ],
-    "highlightSymbols": {
-      "estudar por conta própria": "✎",
-      "criei um bot": "⚙︎",
-      "Análise e Desenvolvimento de Sistemas": "</>",
-      "café e estudo": "☕︎",
-      "academia": "⚡︎",
-      "xadrez": "♞",
-      "assumir responsabilidade": "⚑",
-      "começar a investir": "↗",
-      "passar adiante o que aprendo": "➜"
-    },
     "hobbies": [
       {
         "icon": "book-open",
@@ -608,6 +597,33 @@
       "text": "Trabalhei com o Conan no SistemaPET e foi muito importante para o meu crescimento, me ensinou muito sobre PHP, backend e banco de dados. O Conan já passou por diversos desafios com diversas tecnologias diferentes, portanto é um programador completo e o melhor de tudo, sabe se comunicar e passar essa experiência pra frente!"
     }
   ],
+  "highlightCursors": {
+    "estudar por conta própria": "✎",
+    "criei um bot": "⚙︎",
+    "Análise e Desenvolvimento de Sistemas": "</>",
+    "café e estudo": "☕︎",
+    "academia": "⚡︎",
+    "xadrez": "♞",
+    "assumir responsabilidade": "⚑",
+    "começar a investir": "↗",
+    "passar adiante o que aprendo": "➜",
+    "Tech Lead": "♛",
+    "Desenvolvedor Full Stack": "</>",
+    "Defensoria Pública de Santa Catarina": "⚖︎",
+    "liderança técnica": "♛",
+    "performance 6x maior": "⚡︎",
+    "50% de redução no custo": "↘",
+    "assistido por IA": "✦",
+    "ganhos acima de 10x": "↗",
+    "todas as Defensorias Públicas de Santa Catarina": "⚖︎",
+    "Design System oficial": "◆",
+    "menos de 200ms": "⚡︎",
+    "50% menos tempo e custo": "↘",
+    "Promovido de estagiário a pleno": "↗",
+    "chatbot com IA": "✦",
+    "mentoria de estagiários": "➜",
+    "Produtos SaaS próprios": "⚙︎"
+  },
   "experience": [
     {
       "company": "Defensoria Pública de Santa Catarina",
@@ -615,11 +631,11 @@
       "role": "Tech Lead | Assessor de Tec.",
       "period": "Mar 2026 - Atual",
       "highlights": [
-        "Entrei como Desenvolvedor Sênior e posteriormente assumi a liderança técnica do time, sendo responsável por arquitetura, padrões de engenharia e desenvolvimento das pessoas.",
-        "Modernização de sistemas legados críticos: performance 6x maior e cerca de 50% de redução no custo de infraestrutura em nuvem.",
-        "Implantei um fluxo de desenvolvimento assistido por IA, com ganhos acima de 10x na maior parte das entregas, que foi apresentado no 1° Encontro das Defensorias do Sul.",
-        "Responsável técnico por sistemas usados para administração de todas as Defensorias Públicas de Santa Catarina",
-        "Estruturei a base de engenharia da instituição: entrega contínua, segurança de aplicações, observabilidade e Design System oficial."
+        "Entrei como Desenvolvedor Sênior e posteriormente assumi a **liderança técnica** do time, sendo responsável por arquitetura, padrões de engenharia e desenvolvimento das pessoas.",
+        "Modernização de sistemas legados críticos: **performance 6x maior** e cerca de **50% de redução no custo** de infraestrutura em nuvem.",
+        "Implantei um fluxo de desenvolvimento **assistido por IA**, com **ganhos acima de 10x** na maior parte das entregas, que foi apresentado no 1° Encontro das Defensorias do Sul.",
+        "Responsável técnico por sistemas usados para administração de **todas as Defensorias Públicas de Santa Catarina**",
+        "Estruturei a base de engenharia da instituição: entrega contínua, segurança de aplicações, observabilidade e **Design System oficial**."
       ]
     },
     {
@@ -629,8 +645,8 @@
       "period": "Mai 2025 - Fev 2026",
       "highlights": [
         "Desenvolvimento de sistemas de gestão empresarial, do planejamento à produção.",
-        "Consultas críticas de cerca de 1,8s para menos de 200ms com estratégias de cache e processamento assíncrono.",
-        "Cultura de testes automatizados: cerca de 50% menos tempo e custo na entrega de novas features.",
+        "Consultas críticas de cerca de 1,8s para **menos de 200ms** com estratégias de cache e processamento assíncrono.",
+        "Cultura de testes automatizados: cerca de **50% menos tempo e custo** na entrega de novas features.",
         "Code review, integrações entre sistemas e apoio técnico ao time."
       ]
     },
@@ -640,10 +656,10 @@
       "role": "Desenvolvedor Full Stack",
       "period": "Set 2023 - Abr 2025",
       "highlights": [
-        "Promovido de estagiário a pleno, com ownership de ponta a ponta: dos requisitos à entrega em produção.",
-        "Entreguei um chatbot com IA sobre a base de conhecimento da empresa e um app mobile multiplataforma.",
+        "**Promovido de estagiário a pleno**, com ownership de ponta a ponta: dos requisitos à entrega em produção.",
+        "Entreguei um **chatbot com IA** sobre a base de conhecimento da empresa e um app mobile multiplataforma.",
         "Automação de processos de negócio e integrações com parceiros.",
-        "Evolução dos ERPs web e mobile e mentoria de estagiários."
+        "Evolução dos ERPs web e mobile e **mentoria de estagiários**."
       ]
     },
     {
@@ -654,7 +670,7 @@
       "highlights": [
         "Soluções web sob medida para pequenos negócios, da concepção ao deploy.",
         "Landing pages focadas em performance e conversão.",
-        "Produtos SaaS próprios, construídos do zero até a produção."
+        "**Produtos SaaS próprios**, construídos do zero até a produção."
       ]
     },
     {
