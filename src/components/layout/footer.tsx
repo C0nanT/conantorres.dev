@@ -155,7 +155,7 @@ export function Footer() {
           ))}
         </div>
 
-        <Separator className="my-12 border-dotted border-border/40" />
+        <Separator className="my-12 [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]" />
 
         {/* Bottom Section */}
         <div className="flex flex-col items-start justify-between space-y-6 lg:flex-row lg:items-center lg:space-y-0">
