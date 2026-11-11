@@ -208,7 +208,7 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
                 size="lg"
                 type="button"
                 onClick={handleScrollToRecommendations}
-                className="group"
+                className="group hover:after:opacity-0"
               >
                 <FancyButton.Icon as={Quote} className="mr-2" />
                 {t('cta.recommendations')}
