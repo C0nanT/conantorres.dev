@@ -168,14 +168,16 @@ export async function AboutHero() {
                 {about.day.map((step) => {
                   const Icon = getAboutIcon(step.icon)
                   return (
-                    <li key={step.title} className="relative">
-                      <span className="absolute -left-[3.05rem] flex h-9 w-9 items-center justify-center rounded-full border bg-background text-primary">
+                    <li key={step.title} className="group relative">
+                      <span className="absolute -left-[3.05rem] flex h-9 w-9 items-center justify-center rounded-full border bg-background text-primary transition-[transform,background-color,border-color,color] duration-300 group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground motion-safe:group-hover:scale-110 motion-reduce:transition-none">
                         <Icon aria-hidden="true" className="h-4 w-4" />
                       </span>
                       <div className="text-xs font-semibold uppercase tracking-wide text-primary">
                         {step.time}
                       </div>
-                      <div className="font-semibold">{step.title}</div>
+                      <div className="font-semibold transition-colors duration-200 group-hover:text-primary">
+                        {step.title}
+                      </div>
                       <p className="text-sm text-muted-foreground">
                         {step.text}
                       </p>
