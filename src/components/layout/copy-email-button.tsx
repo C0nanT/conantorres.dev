@@ -39,10 +39,7 @@ export function CopyEmailButton({ email }: CopyEmailButtonProps) {
     >
       <span>{email}</span>
       {isCopied && (
-        <Check
-          className="ml-1.5 h-3.5 w-3.5 text-green-500"
-          aria-hidden="true"
-        />
+        <Check className="ml-1.5 h-3.5 w-3.5 text-primary" aria-hidden="true" />
       )}
       <span className="sr-only" aria-live="polite">
         {isCopied ? 'E-mail copiado' : 'Copiar e-mail'}
