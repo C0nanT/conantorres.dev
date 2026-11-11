@@ -120,8 +120,8 @@
     "lastUpdated": "Última atualização"
   },
   "about": {
-    "title": "Sobre Mim",
-    "subtitle": "Desenvolvedor apaixonado por tecnologia e educação"
+    "hobbiesTitle": "Fora do trabalho",
+    "photoAlt": "Foto de {name}"
   },
   "courses": {
     "title": "Cursos",

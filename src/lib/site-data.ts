@@ -87,6 +87,8 @@ export interface SiteData {
     lastName: string
     aliases: string[]
     initials: string
+    /** YYYY-MM-DD, used only to compute the age; never rendered */
+    birthDate: string
     role: string
     subtitle: string
     jobTitle: string
@@ -174,13 +176,16 @@ export interface SiteData {
     headline: string
     headlineHighlight: string
     subheadline: string
+    /** `{idade}` is replaced by the age computed on each render */
     bio: string[]
-    quickFacts: Array<{
+    /** `icon` is a kebab-case lucide name registered in about-icons.ts */
+    hobbies: Array<{ icon: string; label: string }>
+    facts: Array<{
+      icon: string
       label: string
       value: string
-      year: string
+      detail?: string
     }>
-    achievements: string[]
   }
   philosophy: {
     coreValues: Array<{

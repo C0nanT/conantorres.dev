@@ -48,7 +48,8 @@
       "Linux",
       "DevOps"
     ],
-    "tagline": "Tech Lead & Dev Full Stack"
+    "tagline": "Tech Lead & Dev Full Stack",
+    "birthDate": "2001-07-30"
   },
   "content": {
     "hero": {
@@ -157,43 +158,66 @@
     ]
   },
   "about": {
-    "badge": "Sobre Conan Torres",
-    "headline": "Do código à liderança técnica",
-    "headlineHighlight": "liderança técnica",
-    "subheadline": "Mais de 6 anos construindo software e liderando times",
+    "badge": "Sobre mim",
+    "headline": "Prazer, eu sou o Conan",
+    "headlineHighlight": "Conan",
+    "subheadline": "Dev de Floripa que nunca parou de estudar",
     "bio": [
-      "Olá! Eu sou o Conan Torres. Minha história é sobre aprendizado contínuo, responsabilidade e a vontade de crescer a cada desafio.",
-      "Sou Assessor de Tecnologia na Defensoria Pública de Santa Catarina, onde atuo como Tech Lead: defino a arquitetura, conduzo o desenvolvimento e ajudo o time a entregar software que melhora o acesso à justiça. Me formei em Análise e Desenvolvimento de Sistemas pela UNIASSELVI em dezembro de 2024.",
-      "Minha missão é construir tecnologia útil para as pessoas, compartilhar o que aprendo pelo caminho e seguir crescendo na liderança técnica, seja no setor público ou em novas empresas."
+      "Nasci em Campo Grande (MS), mas cresci em Florianópolis, onde moro até hoje. Tenho {idade} anos e uma mania que me acompanha desde a escola: estudar por conta própria. Nunca parei.",
+      "A programação entrou na minha vida lá por 2019, por causa de um jogo. Eu jogava Sea of Thieves com uma galera no Discord, e a gente fechava servidores para farmar ouro. Organizar tudo na mão dava trabalho, então criei um bot para ajudar a montar as tripulações dos navios. Foi ali que eu peguei gosto, e de lá para cá não parei mais: veio a faculdade de Análise e Desenvolvimento de Sistemas (UNIASSELVI, 2024) e muito estudo por conta própria.",
+      "Meu dia começa com café e estudo: um livro, uma linguagem que ainda não domino ou um conceito novo de arquitetura. Depois vêm a academia, o almoço e o trabalho. À noite, jogo xadrez no Chess.com com alguma coisa passando no fundo, quase sempre algo técnico. No fim de semana não tem roteiro: pode ser inglês, IA, mercado financeiro ou mais código. E sempre que dá, corro uns 2 km na Beira-Mar Norte.",
+      "Gosto de assumir responsabilidade, no trabalho e fora dele. Cuido das minhas finanças com cuidado e ajudo a minha família a organizar as delas e a começar a investir, por isso estou sempre de olho no que acontece no Brasil e no mundo. Também gosto de tomar a frente nas decisões e de passar adiante o que aprendo: quando encontro um bom artigo, livro ou vídeo, seja de programação, investimentos ou da vida, compartilho com colegas, amigos e família e incentivo todo mundo a ir atrás de mais.",
+      "Nas horas livres com a minha namorada, a gente assiste série e cozinha junto. Escuto de tudo um pouco, mas principalmente pop e sertanejo. E um dia ainda vou ter um salsicha arlequim."
     ],
-    "quickFacts": [
+    "hobbies": [
       {
-        "label": "Formação",
-        "value": "Análise e Desenvolvimento de Sistemas - UNIASSELVI",
-        "year": "2024"
+        "icon": "book-open",
+        "label": "Estudo por conta própria: arquitetura, IA e design"
       },
       {
-        "label": "Experiência",
-        "value": "6+ anos em desenvolvimento",
-        "year": "Atual"
+        "icon": "languages",
+        "label": "Inglês: lendo livros técnicos"
       },
       {
-        "label": "Localização",
-        "value": "Florianópolis, SC",
-        "year": "Atual"
+        "icon": "swords",
+        "label": "Xadrez no Chess.com"
       },
       {
-        "label": "Posição",
-        "value": "Assessor de Tecnologia (Tech Lead) na Defensoria Pública de SC",
-        "year": "Atual"
+        "icon": "dumbbell",
+        "label": "Academia todo dia"
+      },
+      {
+        "icon": "footprints",
+        "label": "Corrida na Beira-Mar Norte"
+      },
+      {
+        "icon": "trending-up",
+        "label": "Mercado financeiro e investimentos"
       }
     ],
-    "achievements": [
-      "Tech Lead na Defensoria Pública de Santa Catarina",
-      "Palestrante no 1° Encontro de Tecnologia das Defensorias Públicas da Região Sul (2026)",
-      "Certificado Anthropic em AI Fluency e Claude Code In Action",
-      "Formado em Análise e Desenvolvimento de Sistemas (UNIASSELVI, 2024)",
-      "25 certificações em desenvolvimento, bancos de dados, Docker e arquitetura"
+    "facts": [
+      {
+        "icon": "cake",
+        "label": "Idade",
+        "value": "{idade} anos"
+      },
+      {
+        "icon": "map-pin",
+        "label": "Mora em",
+        "value": "Florianópolis, SC"
+      },
+      {
+        "icon": "languages",
+        "label": "Estudando agora",
+        "value": "Inglês, B1",
+        "detail": "nov/2025"
+      },
+      {
+        "icon": "graduation-cap",
+        "label": "Formação",
+        "value": "Análise e Desenvolvimento de Sistemas, UNIASSELVI",
+        "detail": "2024"
+      }
     ]
   },
   "philosophy": {
