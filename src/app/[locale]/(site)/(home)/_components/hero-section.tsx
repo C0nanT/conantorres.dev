@@ -133,7 +133,7 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
               >
                 <Badge
                   variant="secondary"
-                  className="px-3 py-1 transition-colors duration-300 group-hover:text-primary hover:bg-secondary motion-safe:hover:scale-100"
+                  className="px-3 py-1 transition-colors duration-300 group-hover:text-primary hover:bg-secondary"
                 >
                   <MapPin className="mr-1 h-3 w-3" />
                   <span className="relative after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-primary after:transition-transform after:duration-300 group-hover:after:scale-x-100 motion-reduce:after:transition-none">
@@ -143,7 +143,7 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
               </a>
               <Badge
                 variant="outline"
-                className="px-3 py-1 hover:border-border hover:bg-transparent motion-safe:hover:scale-100"
+                className="px-3 py-1 hover:border-border hover:bg-transparent"
               >
                 <Briefcase className="mr-1 h-3 w-3" />
                 {profile.role}

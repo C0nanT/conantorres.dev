@@ -31,7 +31,7 @@ export async function YouTubeChannels() {
         <div className="text-center space-y-4 mb-12">
           <Badge
             variant="outline"
-            className="px-3 py-1 motion-safe:hover:scale-100 hover:border-border hover:bg-transparent"
+            className="px-3 py-1 hover:border-border hover:bg-transparent"
           >
             <Youtube className="mr-1 h-3 w-3 text-foreground" />
             YouTube
@@ -108,7 +108,7 @@ export async function YouTubeChannels() {
                       <Badge
                         key={highlight}
                         variant="secondary"
-                        className="text-xs hover:bg-secondary motion-safe:hover:scale-100"
+                        className="text-xs hover:bg-secondary"
                       >
                         {highlight}
                       </Badge>

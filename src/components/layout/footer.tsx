@@ -1,4 +1,5 @@
 import { LogoHorizontal } from '@/components/common'
+import { CopyEmailButton } from '@/components/layout/copy-email-button'
 import { Separator } from '@/components/ui/separator'
 import { Link } from '@/lib/navigation'
 import { site } from '@/lib/site-data'
@@ -8,6 +9,7 @@ interface FooterLink {
   name: string
   href: string
   external?: boolean
+  copy?: boolean
 }
 
 interface FooterSection {
@@ -44,6 +46,7 @@ const footerSections: FooterSection[] = [
       {
         name: site.contact.email,
         href: `mailto:${site.contact.email}`,
+        copy: true,
       },
     ],
   },
@@ -103,7 +106,7 @@ export function Footer() {
                 href={social.github.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-[color,transform] duration-200 p-1 motion-safe:hover:-translate-y-0.5 motion-safe:hover:scale-125"
+                className="text-muted-foreground hover:text-primary transition-[color,transform] duration-200 p-1 motion-safe:hover:-translate-y-0.5 motion-safe:hover:scale-125"
                 aria-label="GitHub"
               >
                 <Github className="h-4 w-4" />
@@ -112,7 +115,7 @@ export function Footer() {
                 href={social.linkedin.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-[color,transform] duration-200 p-1 motion-safe:hover:-translate-y-0.5 motion-safe:hover:scale-125"
+                className="text-muted-foreground hover:text-primary transition-[color,transform] duration-200 p-1 motion-safe:hover:-translate-y-0.5 motion-safe:hover:scale-125"
                 aria-label="Linkedin"
               >
                 <Linkedin className="h-4 w-4" />
@@ -129,18 +132,22 @@ export function Footer() {
               <ul className="space-y-3">
                 {section.links.map((link, i) => (
                   <li key={`${link.href}-${i}`}>
-                    <Link
-                      href={link.href}
-                      {...(link.external
-                        ? { target: '_blank', rel: 'noopener noreferrer' }
-                        : {})}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-[color,transform] duration-200 flex items-center group motion-safe:hover:translate-x-1"
-                    >
-                      <span>{link.name}</span>
-                      {link.external && (
-                        <ArrowUpRight className="ml-1 h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      )}
-                    </Link>
+                    {link.copy ? (
+                      <CopyEmailButton email={link.name} />
+                    ) : (
+                      <Link
+                        href={link.href}
+                        {...(link.external
+                          ? { target: '_blank', rel: 'noopener noreferrer' }
+                          : {})}
+                        className="text-sm text-muted-foreground hover:text-primary transition-[color,transform] duration-200 flex items-center group motion-safe:hover:translate-x-1"
+                      >
+                        <span>{link.name}</span>
+                        {link.external && (
+                          <ArrowUpRight className="ml-1 h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        )}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -148,7 +155,7 @@ export function Footer() {
           ))}
         </div>
 
-        <Separator className="my-12 border-dotted border-border/40" />
+        <Separator className="my-12 [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]" />
 
         {/* Bottom Section */}
         <div className="flex flex-col items-start justify-between space-y-6 lg:flex-row lg:items-center lg:space-y-0">

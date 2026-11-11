@@ -99,7 +99,7 @@
   },
   "hero": {
     "stats": {
-      "projects": "Projetos Relevantes Publicados",
+      "projects": "Projetos Favoritos",
       "certifications": "Certificações",
       "experience": "Anos de Experiência",
       "freelances": "Projetos Freelance",
@@ -121,6 +121,7 @@
   },
   "about": {
     "hobbiesTitle": "Fora do trabalho",
+    "dayTitle": "Um dia comum",
     "photoAlt": "Foto de {name}"
   },
   "courses": {

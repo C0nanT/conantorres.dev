@@ -180,6 +180,38 @@
       "começar a investir": "↗",
       "passar adiante o que aprendo": "➜"
     },
+    "day": [
+      {
+        "time": "Manhã",
+        "icon": "book-open",
+        "title": "Café e estudo",
+        "text": "Um livro, uma linguagem que ainda não domino ou um conceito novo de arquitetura."
+      },
+      {
+        "time": "Meio-dia",
+        "icon": "dumbbell",
+        "title": "Academia, almoço e trabalho",
+        "text": "Treino todo dia, depois entro no modo trabalho."
+      },
+      {
+        "time": "Fim da tarde",
+        "icon": "footprints",
+        "title": "Corrida na Beira-Mar",
+        "text": "Sempre que dá, uns 2 km olhando o mar."
+      },
+      {
+        "time": "Noite",
+        "icon": "swords",
+        "title": "Xadrez",
+        "text": "Partidas no Chess.com com algo técnico passando no fundo."
+      },
+      {
+        "time": "Fim de semana",
+        "icon": "languages",
+        "title": "Sem roteiro",
+        "text": "Inglês, IA, mercado financeiro ou mais código."
+      }
+    ],
     "hobbies": [
       {
         "icon": "book-open",
