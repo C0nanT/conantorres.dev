@@ -1,7 +1,11 @@
 'use client'
 
 import { Badge } from '@/components/ui/badge'
-import { type Recommendation, site } from '@/lib/site-data'
+import {
+  type RecommendationGroup,
+  groupRecommendations,
+} from '@/lib/recommendation-groups'
+import { site } from '@/lib/site-data'
 import { cn } from '@/lib/styling'
 import {
   AnimatePresence,
@@ -23,6 +27,10 @@ const MIN_READING_MS = 6000
 // tempo de leitura total continua o mesmo, a contagem é que começa depois
 const BAR_DELAY_MS = 500
 
+function allText(group: RecommendationGroup) {
+  return group.entries.map((entry) => entry.text).join(' ')
+}
+
 function getReadingTimeMs(text: string) {
   const words = text.trim().split(/\s+/).length
   return Math.max(MIN_READING_MS, words * READING_MS_PER_WORD)
@@ -38,23 +46,26 @@ const panelVariants: Variants = {
   exit: (direction: number) => ({ opacity: 0, y: -direction * PANEL_OFFSET }),
 }
 
-function Meta({ item }: { item: Recommendation }) {
+// Quem recomendou de uma empresa só mostra empresa, data e relação aqui; com
+// mais de uma, cada texto leva o próprio cabeçalho e o rodapé fica só com o autor.
+function Meta({ group }: { group: RecommendationGroup }) {
+  const [only] = group.entries
+  const details =
+    group.entries.length === 1 && only
+      ? [only.company, only.date, only.relationship].filter(Boolean).join(' · ')
+      : ''
   return (
     <>
-      <p className="font-bold">{item.name}</p>
-      <p className="text-sm text-muted-foreground">{item.headline}</p>
-      <p className="text-xs text-muted-foreground">
-        {[item.company, item.date, item.relationship]
-          .filter(Boolean)
-          .join(' · ')}
-      </p>
+      <p className="font-bold">{group.name}</p>
+      <p className="text-sm text-muted-foreground">{group.headline}</p>
+      {details && <p className="text-xs text-muted-foreground">{details}</p>}
     </>
   )
 }
 
 export function RecommendationsSection() {
   const t = useTranslations('recommendations')
-  const items = site.recommendations
+  const items = groupRecommendations(site.recommendations)
   const baseId = useId()
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([])
   const isStill = useReducedMotion() ?? false
@@ -69,6 +80,8 @@ export function RecommendationsSection() {
   if (!selected) {
     return null
   }
+  const selectedText = allText(selected)
+  const isMulti = selected.entries.length > 1
 
   const selectPerson = (index: number, nextDirection: 1 | -1) => {
     const item = items[index]
@@ -139,7 +152,7 @@ export function RecommendationsSection() {
             items={items}
             selectedIndex={selectedIndex}
             countdownDelayMs={BAR_DELAY_MS}
-            countdownDurationMs={getReadingTimeMs(selected.text) - BAR_DELAY_MS}
+            countdownDurationMs={getReadingTimeMs(selectedText) - BAR_DELAY_MS}
             onSelect={selectPerson}
             onCountdownEnd={handleCountdownEnd}
           />
@@ -193,6 +206,14 @@ export function RecommendationsSection() {
                         {item.company}
                       </span>
                     </span>
+                    {item.entries.length > 1 && (
+                      <Badge
+                        variant="secondary"
+                        className="ml-2 motion-safe:hover:scale-100"
+                      >
+                        {item.entries.length}
+                      </Badge>
+                    )}
                   </span>
                   {/* Cada autor tem a própria barra, montada só na vez dele
                       (a montagem reinicia a animação). Sem animação
@@ -201,7 +222,9 @@ export function RecommendationsSection() {
                   {isSelected && items.length > 1 && (
                     <RecommendationCountdown
                       delayMs={BAR_DELAY_MS}
-                      durationMs={getReadingTimeMs(item.text) - BAR_DELAY_MS}
+                      durationMs={
+                        getReadingTimeMs(allText(item)) - BAR_DELAY_MS
+                      }
                       onEnd={handleCountdownEnd}
                     />
                   )}
@@ -235,13 +258,43 @@ export function RecommendationsSection() {
                 exit="exit"
                 transition={{ duration: isStill ? 0 : 0.2, ease: 'easeOut' }}
               >
-                <blockquote className="whitespace-pre-line text-lg leading-relaxed lg:text-xl">
-                  {selected.text}
-                </blockquote>
+                {selected.entries.map((entry, index) => (
+                  <div
+                    key={entry.id}
+                    className={cn(
+                      index > 0 &&
+                        'mt-8 border-t border-dashed border-border pt-8'
+                    )}
+                  >
+                    {isMulti && (
+                      <div className="mb-3 flex flex-wrap items-center gap-2">
+                        <Badge
+                          variant="outline"
+                          className="motion-safe:hover:scale-100"
+                        >
+                          {entry.company}
+                        </Badge>
+                        <span className="text-xs text-muted-foreground">
+                          {[entry.relationship, entry.date]
+                            .filter(Boolean)
+                            .join(' · ')}
+                        </span>
+                      </div>
+                    )}
+                    <blockquote
+                      className={cn(
+                        'whitespace-pre-line leading-relaxed',
+                        isMulti ? 'text-base lg:text-lg' : 'text-lg lg:text-xl'
+                      )}
+                    >
+                      {entry.text}
+                    </blockquote>
+                  </div>
+                ))}
                 <figcaption className="mt-6 flex items-center gap-3 border-t border-border pt-4">
                   <RecommendationAvatar person={selected} />
                   <div>
-                    <Meta item={selected} />
+                    <Meta group={selected} />
                   </div>
                 </figcaption>
               </motion.div>

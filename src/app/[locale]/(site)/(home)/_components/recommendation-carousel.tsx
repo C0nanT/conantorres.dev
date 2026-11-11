@@ -1,4 +1,4 @@
-import type { Recommendation } from '@/lib/site-data'
+import type { RecommendationGroup } from '@/lib/recommendation-groups'
 import { cn } from '@/lib/styling'
 import { type PanInfo, motion } from 'framer-motion'
 import { useLayoutEffect, useRef, useState } from 'react'
@@ -9,7 +9,7 @@ const SWIPE_THRESHOLD = 50
 const SLIDE_GAP_PX = 12
 
 interface RecommendationCarouselProps {
-  items: Recommendation[]
+  items: RecommendationGroup[]
   selectedIndex: number
   countdownDelayMs: number
   countdownDurationMs: number
