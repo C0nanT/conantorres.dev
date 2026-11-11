@@ -2,6 +2,7 @@ import { Badge } from '@/components/ui/badge'
 import { Card, CardContent } from '@/components/ui/card'
 import { getAge } from '@/lib/age'
 import { site } from '@/lib/site-data'
+import { cn } from '@/lib/styling'
 import { Users } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
 import Image from 'next/image'
@@ -9,8 +10,13 @@ import { getAboutIcon } from './about-icons'
 
 const AGE_TOKEN = '{idade}'
 
-// `**texto**` in the bio marks a highlighted keyword.
-const HIGHLIGHT_PATTERN = /\*\*(.+?)\*\*/g
+// In the bio, `**texto**` marks a highlighted keyword with a hover effect and
+// `*texto*` one without it.
+const HIGHLIGHT_PATTERN = /\*\*(.+?)\*\*|\*(.+?)\*/g
+
+const HIGHLIGHT_CLASS = 'font-semibold text-foreground'
+const HOVER_CLASS =
+  'relative transition-colors duration-200 hover:text-primary after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-primary after:transition-transform after:duration-300 hover:after:scale-x-100 motion-reduce:transition-none motion-reduce:after:transition-none'
 
 function renderHighlights(text: string) {
   const nodes: React.ReactNode[] = []
@@ -20,12 +26,13 @@ function renderHighlights(text: string) {
     if (start > cursor) {
       nodes.push(text.slice(cursor, start))
     }
+    const [, withHover, withoutHover] = match
     nodes.push(
       <strong
         key={start}
-        className="relative font-semibold text-foreground transition-colors duration-200 hover:text-primary after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-primary after:transition-transform after:duration-300 hover:after:scale-x-100 motion-reduce:transition-none motion-reduce:after:transition-none"
+        className={cn(HIGHLIGHT_CLASS, withHover !== undefined && HOVER_CLASS)}
       >
-        {match[1]}
+        {withHover ?? withoutHover}
       </strong>
     )
     cursor = start + match[0].length
