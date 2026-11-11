@@ -178,7 +178,18 @@ export async function AboutHero() {
                             {fact.label}
                           </div>
                           <div className="font-semibold">
-                            {withAge(fact.value)}
+                            {fact.href ? (
+                              <a
+                                href={fact.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="underline decoration-dotted decoration-muted-foreground/60 underline-offset-4 transition-colors hover:text-primary hover:decoration-primary"
+                              >
+                                {withAge(fact.value)}
+                              </a>
+                            ) : (
+                              withAge(fact.value)
+                            )}
                           </div>
                         </div>
                         {fact.detail && (

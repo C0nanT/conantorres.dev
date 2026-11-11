@@ -14,7 +14,8 @@
       "city": "Florianópolis",
       "country": "Brasil",
       "countryCode": "BR",
-      "display": "Florianópolis, SC 🇧🇷"
+      "display": "Florianópolis, SC 🇧🇷",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Florian%C3%B3polis%2C%20SC"
     },
     "structuredDataLocation": {
       "city": "Florianópolis",
@@ -214,7 +215,8 @@
       {
         "icon": "map-pin",
         "label": "Mora em",
-        "value": "Florianópolis, SC"
+        "value": "Florianópolis, SC",
+        "href": "https://www.google.com/maps/search/?api=1&query=Florian%C3%B3polis%2C%20SC"
       },
       {
         "icon": "languages",

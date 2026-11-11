@@ -115,10 +115,20 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
           <div className="space-y-8">
             {/* Badge */}
             <div className="flex items-center space-x-2">
-              <Badge variant="secondary" className="px-3 py-1">
-                <MapPin className="mr-1 h-3 w-3" />
-                {profile.location.display}
-              </Badge>
+              <a
+                href={profile.location.mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <Badge
+                  variant="secondary"
+                  className="px-3 py-1 transition-colors hover:bg-primary/15 hover:text-primary"
+                >
+                  <MapPin className="mr-1 h-3 w-3" />
+                  {profile.location.display}
+                </Badge>
+              </a>
               <Badge variant="outline" className="px-3 py-1">
                 <Briefcase className="mr-1 h-3 w-3" />
                 {profile.role}

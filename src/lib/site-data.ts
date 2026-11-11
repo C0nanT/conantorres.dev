@@ -98,6 +98,8 @@ export interface SiteData {
       country: string
       countryCode: string
       display: string
+      /** Google Maps link opened by the location badges */
+      mapUrl: string
     }
     structuredDataLocation: {
       city: string
@@ -186,6 +188,8 @@ export interface SiteData {
       icon: string
       label: string
       value: string
+      /** External link opened from the value (e.g. a map) */
+      href?: string
       detail?: string
     }>
   }
