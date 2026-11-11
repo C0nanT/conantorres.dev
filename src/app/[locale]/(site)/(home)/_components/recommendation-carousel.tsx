@@ -2,6 +2,7 @@ import type { RecommendationGroup } from '@/lib/recommendation-groups'
 import { cn } from '@/lib/styling'
 import { type PanInfo, motion } from 'framer-motion'
 import { useLayoutEffect, useRef, useState } from 'react'
+import { CompanyLabel, CompanyRing } from './company-accent'
 import { RecommendationAvatar } from './recommendation-avatar'
 import { RecommendationCountdown } from './recommendation-countdown'
 
@@ -117,11 +118,17 @@ export function RecommendationCarousel({
                     : 'scale-90 border-transparent opacity-50'
                 )}
               >
-                <RecommendationAvatar person={item} size="sm" />
+                <CompanyRing
+                  companies={item.entries.map((entry) => entry.company)}
+                >
+                  <RecommendationAvatar person={item} size="sm" />
+                </CompanyRing>
                 <span className="flex flex-col whitespace-nowrap">
                   <span className="text-sm font-medium">{item.name}</span>
                   <span className="text-xs text-muted-foreground">
-                    {item.company}
+                    <CompanyLabel
+                      companies={item.entries.map((entry) => entry.company)}
+                    />
                   </span>
                 </span>
                 {isSelected && items.length > 1 && (

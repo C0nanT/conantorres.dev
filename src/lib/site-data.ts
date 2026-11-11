@@ -206,6 +206,8 @@ export interface SiteData {
     }>
   }
   experience: Experience[]
+  /** Brand color (#RRGGBB) per recommendation company, keyed by `company` */
+  recommendationCompanyColors: Record<string, string>
   recommendations: Recommendation[]
   seo: {
     keywords: string[]

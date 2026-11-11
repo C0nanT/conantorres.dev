@@ -16,6 +16,7 @@ import {
 import { ExternalLink, Linkedin } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { type KeyboardEvent, useId, useRef, useState } from 'react'
+import { CompanyLabel, CompanyPill, CompanyRing } from './company-accent'
 import { RecommendationAvatar } from './recommendation-avatar'
 import { RecommendationCarousel } from './recommendation-carousel'
 import { RecommendationCountdown } from './recommendation-countdown'
@@ -26,6 +27,10 @@ const MIN_READING_MS = 6000
 // a barra só aparece depois que o destaque termina de chegar no autor; o
 // tempo de leitura total continua o mesmo, a contagem é que começa depois
 const BAR_DELAY_MS = 500
+
+function companiesOf(group: RecommendationGroup) {
+  return group.entries.map((entry) => entry.company)
+}
 
 function allText(group: RecommendationGroup) {
   return group.entries.map((entry) => entry.text).join(' ')
@@ -50,15 +55,20 @@ const panelVariants: Variants = {
 // mais de uma, cada texto leva o próprio cabeçalho e o rodapé fica só com o autor.
 function Meta({ group }: { group: RecommendationGroup }) {
   const [only] = group.entries
-  const details =
+  const rest =
     group.entries.length === 1 && only
-      ? [only.company, only.date, only.relationship].filter(Boolean).join(' · ')
+      ? [only.date, only.relationship].filter(Boolean).join(' · ')
       : ''
   return (
     <>
       <p className="font-bold">{group.name}</p>
       <p className="text-sm text-muted-foreground">{group.headline}</p>
-      {details && <p className="text-xs text-muted-foreground">{details}</p>}
+      {only && group.entries.length === 1 && (
+        <p className="text-xs text-muted-foreground">
+          <CompanyLabel companies={[only.company]} />
+          {rest && ` · ${rest}`}
+        </p>
+      )}
     </>
   )
 }
@@ -199,11 +209,13 @@ export function RecommendationsSection() {
                     />
                   )}
                   <span className="relative flex items-center gap-3">
-                    <RecommendationAvatar person={item} size="sm" />
+                    <CompanyRing companies={companiesOf(item)}>
+                      <RecommendationAvatar person={item} size="sm" />
+                    </CompanyRing>
                     <span className="flex flex-col">
                       <span className="text-sm font-medium">{item.name}</span>
                       <span className="text-xs text-muted-foreground">
-                        {item.company}
+                        <CompanyLabel companies={companiesOf(item)} />
                       </span>
                     </span>
                     {item.entries.length > 1 && (
@@ -268,12 +280,7 @@ export function RecommendationsSection() {
                   >
                     {isMulti && (
                       <div className="mb-3 flex flex-wrap items-center gap-2">
-                        <Badge
-                          variant="outline"
-                          className="motion-safe:hover:scale-100"
-                        >
-                          {entry.company}
-                        </Badge>
+                        <CompanyPill company={entry.company} />
                         <span className="text-xs text-muted-foreground">
                           {[entry.relationship, entry.date]
                             .filter(Boolean)
@@ -292,7 +299,9 @@ export function RecommendationsSection() {
                   </div>
                 ))}
                 <figcaption className="mt-6 flex items-center gap-3 border-t border-border pt-4">
-                  <RecommendationAvatar person={selected} />
+                  <CompanyRing companies={companiesOf(selected)}>
+                    <RecommendationAvatar person={selected} />
+                  </CompanyRing>
                   <div>
                     <Meta group={selected} />
                   </div>

@@ -488,6 +488,11 @@
       "programador brasileiro"
     ]
   },
+  "recommendationCompanyColors": {
+    "FiveLabs": "#DB1195",
+    "DPESC": "#1A5044",
+    "SistemaPET": "#31CFB0"
+  },
   "recommendations": [
     {
       "id": "kaio-cabral-dpesc",
