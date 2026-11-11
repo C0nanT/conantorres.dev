@@ -1,43 +1,8 @@
 import { site } from '@/lib/site-data'
-import type { CSSProperties, ReactNode } from 'react'
+import type { CSSProperties } from 'react'
 
 function getCompanyColor(company: string) {
   return site.recommendationCompanyColors[company]
-}
-
-// Ring around an avatar in the color of the author's company; with more than
-// one company the ring is split into equal slices, one per company.
-export function CompanyRing({
-  companies,
-  children,
-}: {
-  companies: string[]
-  children: ReactNode
-}) {
-  const colors = companies.flatMap((company) => getCompanyColor(company) ?? [])
-  if (colors.length === 0) {
-    return children
-  }
-  const slice = 100 / colors.length
-  const background =
-    colors.length === 1
-      ? colors[0]
-      : `linear-gradient(135deg, ${colors
-          .map(
-            (color, index) =>
-              `${color} ${index * slice}% ${(index + 1) * slice}%`
-          )
-          .join(', ')})`
-  return (
-    <span
-      className="inline-flex shrink-0 rounded-full p-0.5"
-      style={{ background }}
-    >
-      <span className="inline-flex rounded-full bg-background p-px">
-        {children}
-      </span>
-    </span>
-  )
 }
 
 function CompanyDot({ company }: { company: string }) {

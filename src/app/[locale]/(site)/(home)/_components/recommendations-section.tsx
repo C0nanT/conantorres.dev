@@ -16,7 +16,7 @@ import {
 import { ExternalLink, Linkedin } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { type KeyboardEvent, useId, useRef, useState } from 'react'
-import { CompanyLabel, CompanyPill, CompanyRing } from './company-accent'
+import { CompanyLabel, CompanyPill } from './company-accent'
 import { RecommendationAvatar } from './recommendation-avatar'
 import { RecommendationCarousel } from './recommendation-carousel'
 import { RecommendationCountdown } from './recommendation-countdown'
@@ -209,9 +209,7 @@ export function RecommendationsSection() {
                     />
                   )}
                   <span className="relative flex items-center gap-3">
-                    <CompanyRing companies={companiesOf(item)}>
-                      <RecommendationAvatar person={item} size="sm" />
-                    </CompanyRing>
+                    <RecommendationAvatar person={item} size="sm" />
                     <span className="flex flex-col">
                       <span className="text-sm font-medium">{item.name}</span>
                       <span className="text-xs text-muted-foreground">
@@ -299,9 +297,7 @@ export function RecommendationsSection() {
                   </div>
                 ))}
                 <figcaption className="mt-6 flex items-center gap-3 border-t border-border pt-4">
-                  <CompanyRing companies={companiesOf(selected)}>
-                    <RecommendationAvatar person={selected} />
-                  </CompanyRing>
+                  <RecommendationAvatar person={selected} />
                   <div>
                     <Meta group={selected} />
                   </div>
