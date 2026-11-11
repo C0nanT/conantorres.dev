@@ -178,6 +178,8 @@ export interface SiteData {
     subheadline: string
     /** `{idade}` is replaced by the age computed on each render */
     bio: string[]
+    // Symbol shown above a highlighted bio keyword on hover, by keyword.
+    highlightSymbols: Record<string, string>
     /** `icon` is a kebab-case lucide name registered in about-icons.ts */
     hobbies: Array<{ icon: string; label: string }>
     facts: Array<{

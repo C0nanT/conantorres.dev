@@ -12,20 +12,30 @@ const AGE_TOKEN = '{idade}'
 // `**texto**` in the bio marks a highlighted keyword.
 const HIGHLIGHT_PATTERN = /\*\*(.+?)\*\*/g
 
-function renderHighlights(text: string) {
+function renderHighlights(text: string, symbols: Record<string, string>) {
   const nodes: React.ReactNode[] = []
   let cursor = 0
   for (const match of text.matchAll(HIGHLIGHT_PATTERN)) {
     const start = match.index ?? 0
+    const keyword = match[1] ?? ''
+    const symbol = symbols[keyword]
     if (start > cursor) {
       nodes.push(text.slice(cursor, start))
     }
     nodes.push(
       <strong
         key={start}
-        className="relative font-semibold text-foreground transition-colors duration-200 hover:text-primary after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-primary after:transition-transform after:duration-300 hover:after:scale-x-100 motion-reduce:transition-none motion-reduce:after:transition-none"
+        className="group/highlight relative font-semibold text-foreground transition-colors duration-200 hover:text-primary after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-primary after:transition-transform after:duration-300 hover:after:scale-x-100 motion-reduce:transition-none motion-reduce:after:transition-none"
       >
-        {match[1]}
+        {keyword}
+        {symbol && (
+          <span
+            aria-hidden={true}
+            className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 translate-y-1 text-2xl leading-none text-primary opacity-0 transition-[opacity,transform] duration-300 group-hover/highlight:translate-y-0 group-hover/highlight:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-none"
+          >
+            {symbol}
+          </span>
+        )}
       </strong>
     )
     cursor = start + match[0].length
@@ -67,7 +77,12 @@ export async function AboutHero() {
 
               <div className="prose prose-lg max-w-none text-muted-foreground">
                 {about.bio.map((paragraph) => (
-                  <p key={paragraph}>{renderHighlights(withAge(paragraph))}</p>
+                  <p key={paragraph}>
+                    {renderHighlights(
+                      withAge(paragraph),
+                      about.highlightSymbols
+                    )}
+                  </p>
                 ))}
               </div>
             </div>
