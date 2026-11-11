@@ -12,6 +12,14 @@ const AGE_TOKEN = '{idade}'
 // `**texto**` in the bio marks a highlighted keyword.
 const HIGHLIGHT_PATTERN = /\*\*(.+?)\*\*/g
 
+// A mouse cursor drawn from a text symbol (e.g. ♞). Dark fill with a light
+// outline so it stays visible on both themes; falls back to the default
+// cursor where SVG cursors are not supported.
+function symbolCursor(symbol: string) {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><text x="16" y="27" font-size="28" text-anchor="middle" fill="#111" stroke="#fff" stroke-width="1.5" paint-order="stroke">${symbol}</text></svg>`
+  return `url("data:image/svg+xml,${encodeURIComponent(svg)}") 16 16, auto`
+}
+
 function renderHighlights(text: string, symbols: Record<string, string>) {
   const nodes: React.ReactNode[] = []
   let cursor = 0
@@ -25,17 +33,10 @@ function renderHighlights(text: string, symbols: Record<string, string>) {
     nodes.push(
       <strong
         key={start}
-        className="group/highlight relative font-semibold text-foreground transition-colors duration-200 hover:text-primary after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-primary after:transition-transform after:duration-300 hover:after:scale-x-100 motion-reduce:transition-none motion-reduce:after:transition-none"
+        className="relative font-semibold text-foreground transition-colors duration-200 hover:text-primary after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-primary after:transition-transform after:duration-300 hover:after:scale-x-100 motion-reduce:transition-none motion-reduce:after:transition-none"
+        style={symbol ? { cursor: symbolCursor(symbol) } : undefined}
       >
         {keyword}
-        {symbol && (
-          <span
-            aria-hidden={true}
-            className="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 translate-y-1 text-2xl leading-none text-primary opacity-0 transition-[opacity,transform] duration-300 group-hover/highlight:translate-y-0 group-hover/highlight:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-none"
-          >
-            {symbol}
-          </span>
-        )}
       </strong>
     )
     cursor = start + match[0].length
