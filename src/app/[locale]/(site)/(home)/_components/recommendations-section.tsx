@@ -138,7 +138,7 @@ export function RecommendationsSection() {
         <div className="text-center space-y-4 mb-12">
           <Badge
             variant="outline"
-            className="px-3 py-1 motion-safe:hover:scale-100"
+            className="px-3 py-1 hover:border-border hover:bg-transparent"
           >
             <Linkedin className="mr-1 h-3 w-3" />
             {t('badge')}
@@ -151,7 +151,7 @@ export function RecommendationsSection() {
             href={site.social.linkedin.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground underline-offset-4 transition-colors hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             {t('viewAll')}
             <ExternalLink aria-hidden={true} className="h-3.5 w-3.5" />
