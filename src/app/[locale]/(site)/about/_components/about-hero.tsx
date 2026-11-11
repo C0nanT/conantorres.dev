@@ -9,6 +9,28 @@ import { getAboutIcon } from './about-icons'
 
 const AGE_TOKEN = '{idade}'
 
+// `**texto**` in the bio marks a highlighted keyword.
+const HIGHLIGHT_PATTERN = /\*\*(.+?)\*\*/g
+
+function renderHighlights(text: string) {
+  const nodes: React.ReactNode[] = []
+  let cursor = 0
+  for (const match of text.matchAll(HIGHLIGHT_PATTERN)) {
+    const start = match.index ?? 0
+    if (start > cursor) {
+      nodes.push(text.slice(cursor, start))
+    }
+    nodes.push(
+      <strong key={start} className="font-semibold text-foreground">
+        {match[1]}
+      </strong>
+    )
+    cursor = start + match[0].length
+  }
+  nodes.push(text.slice(cursor))
+  return nodes
+}
+
 export async function AboutHero() {
   const t = await getTranslations('about')
   const { profile, about } = site
@@ -42,7 +64,7 @@ export async function AboutHero() {
 
               <div className="prose prose-lg max-w-none text-muted-foreground">
                 {about.bio.map((paragraph) => (
-                  <p key={paragraph}>{withAge(paragraph)}</p>
+                  <p key={paragraph}>{renderHighlights(withAge(paragraph))}</p>
                 ))}
               </div>
             </div>
