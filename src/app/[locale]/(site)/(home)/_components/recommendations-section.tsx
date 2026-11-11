@@ -190,8 +190,9 @@ export function RecommendationsSection() {
                     selectPerson(index, index > selectedIndex ? 1 : -1)
                   }
                   className={cn(
-                    'relative flex shrink-0 items-center rounded-lg border border-transparent px-3 py-2 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-                    !isSelected && 'hover:bg-background/60'
+                    'relative flex shrink-0 items-center rounded-xl border border-transparent px-3 py-2 text-left transition-[opacity,background-color] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                    !isSelected &&
+                      'opacity-50 hover:bg-background/60 hover:opacity-100'
                   )}
                 >
                   {/* Um único destaque compartilhado: ao trocar de autor ele
@@ -205,13 +206,27 @@ export function RecommendationsSection() {
                           ? { duration: 0 }
                           : { type: 'spring', stiffness: 380, damping: 34 }
                       }
-                      className="absolute inset-0 rounded-lg border border-primary/40 bg-background"
+                      className="absolute inset-0 rounded-xl bg-background shadow-lg ring-1 ring-foreground/5"
                     />
                   )}
                   <span className="relative flex items-center gap-3">
-                    <RecommendationAvatar person={item} size="sm" />
+                    <span
+                      className={cn(
+                        'inline-flex transition-[filter] duration-300',
+                        !isSelected && 'grayscale'
+                      )}
+                    >
+                      <RecommendationAvatar person={item} size="sm" />
+                    </span>
                     <span className="flex flex-col">
-                      <span className="text-sm font-medium">{item.name}</span>
+                      <span
+                        className={cn(
+                          'text-sm font-medium',
+                          isSelected && 'font-semibold'
+                        )}
+                      >
+                        {item.name}
+                      </span>
                       <span className="text-xs text-muted-foreground">
                         <CompanyLabel companies={companiesOf(item)} />
                       </span>

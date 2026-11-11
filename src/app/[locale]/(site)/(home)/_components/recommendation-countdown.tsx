@@ -16,7 +16,7 @@ export function RecommendationCountdown({
     <span
       aria-hidden={true}
       style={{ animationDelay: `${delayMs}ms` }}
-      className="pointer-events-none absolute inset-0 animate-recommendation-bar-in overflow-hidden rounded-lg motion-reduce:hidden"
+      className="pointer-events-none absolute inset-0 animate-recommendation-bar-in overflow-hidden rounded-xl motion-reduce:hidden"
     >
       <span className="absolute inset-x-0 bottom-0 h-[3px] bg-primary/15">
         <span
