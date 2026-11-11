@@ -25,14 +25,15 @@ import Image from 'next/image'
 import type { ComponentType } from 'react'
 import { LiaBookSolid } from 'react-icons/lia'
 import { AvailableBadge } from './available-badge'
+import { CursorSwapHighlight } from './cursor-swap-highlight'
 import { IntroAudio } from './intro-audio'
 
 interface HeroHighlight {
   label: string
   image?: string
   icon?: ComponentType<{ className?: string }>
-  // Mouse cursor image shown while hovering the highlight.
-  cursor?: string
+  // On hover the image flies to the pointer and becomes the cursor.
+  swapsWithCursor?: boolean
 }
 
 interface HeroStat {
@@ -88,7 +89,7 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
     {
       label: site.content.hero.highlights.ai,
       image: '/icons/claude-code.svg',
-      cursor: '/icons/claude-code.svg',
+      swapsWithCursor: true,
     },
     {
       label: site.content.hero.highlights.learning,
@@ -141,15 +142,20 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
               {highlights.map((highlight) => {
                 const Icon = highlight.icon
 
+                if (highlight.image && highlight.swapsWithCursor) {
+                  return (
+                    <CursorSwapHighlight
+                      key={highlight.label}
+                      label={highlight.label}
+                      image={highlight.image}
+                    />
+                  )
+                }
+
                 return (
                   <div
                     key={highlight.label}
                     className="group flex items-center gap-2 transition-transform duration-200 ease-out motion-safe:hover:translate-x-1"
-                    style={
-                      highlight.cursor
-                        ? { cursor: `url("${highlight.cursor}") 12 12, auto` }
-                        : undefined
-                    }
                   >
                     {Icon && (
                       <Icon className="h-4 w-4 shrink-0 transition-transform duration-200 motion-safe:group-hover:scale-125 motion-safe:group-hover:-rotate-6" />
@@ -160,14 +166,7 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
                         alt=""
                         width={16}
                         height={16}
-                        className={cn(
-                          'shrink-0 transition-[transform,opacity] duration-200',
-                          // With a cursor, the icon "becomes" the cursor:
-                          // it hides on hover, keeping its space.
-                          highlight.cursor
-                            ? 'group-hover:opacity-0 motion-safe:group-hover:scale-50'
-                            : 'motion-safe:group-hover:scale-125'
-                        )}
+                        className="shrink-0 transition-transform duration-200 motion-safe:group-hover:scale-125"
                       />
                     )}
                     <span className="text-sm font-medium">
