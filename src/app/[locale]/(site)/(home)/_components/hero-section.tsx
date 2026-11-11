@@ -123,7 +123,7 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
               >
                 <Badge
                   variant="secondary"
-                  className="px-3 py-1 transition-colors hover:bg-primary/15 hover:text-primary"
+                  className="px-3 py-1 transition-[transform,background-color,border-color,color] duration-300 hover:bg-primary/15 hover:text-primary"
                 >
                   <MapPin className="mr-1 h-3 w-3" />
                   {profile.location.display}
