@@ -58,7 +58,7 @@
         "architecture": "Arquitetura antes do framework",
         "people": "Código e pessoas, na mesma medida",
         "ai": "Claude no dia a dia",
-        "learning": "Sempre ensinando e aprendendo"
+        "learning": "Aprendo e passo adiante"
       }
     },
     "metadata": {
@@ -510,7 +510,7 @@
     {
       "id": "vinicius-hames",
       "photo": "/recommendations/hames.png",
-      "name": "Vinicius Antônio Hames",
+      "name": "Vinicius Hames",
       "headline": "Assessor de Tecnologia da Informação | Defensoria Pública do Estado de Santa Catarina",
       "company": "DPESC",
       "relationship": "Trabalhamos na mesma equipe",
@@ -560,7 +560,7 @@
     {
       "id": "victor-prim-buchele",
       "photo": "/recommendations/victor.jpeg",
-      "name": "Victor Prim Buchele",
+      "name": "Victor Buchele",
       "headline": "Full Stack Developer | Node.js - PHP/Laravel - PostgreSQL - Mysql - React - Vuejs",
       "company": "FiveLabs",
       "relationship": "Trabalhamos na mesma equipe",
@@ -590,7 +590,7 @@
     {
       "id": "thiago-bruno-vieira",
       "photo": "/recommendations/thiago.jpeg",
-      "name": "Thiago Bruno Vieira",
+      "name": "Thiago Vieira",
       "headline": "Fullstack Developer",
       "company": "SistemaPET",
       "relationship": "Supervisionou Conan diretamente",
