@@ -151,7 +151,7 @@ export function RecommendationsSection() {
             href={site.social.linkedin.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground underline-offset-4 transition-colors hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground underline decoration-transparent underline-offset-4 transition-colors duration-300 hover:text-primary hover:decoration-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           >
             {t('viewAll')}
             <ExternalLink aria-hidden={true} className="h-3.5 w-3.5" />
