@@ -87,6 +87,8 @@ export interface SiteData {
     lastName: string
     aliases: string[]
     initials: string
+    /** YYYY-MM-DD, used only to compute the age; never rendered */
+    birthDate: string
     role: string
     subtitle: string
     jobTitle: string
@@ -96,6 +98,8 @@ export interface SiteData {
       country: string
       countryCode: string
       display: string
+      /** Google Maps link opened by the location badges */
+      mapUrl: string
     }
     structuredDataLocation: {
       city: string
@@ -174,13 +178,20 @@ export interface SiteData {
     headline: string
     headlineHighlight: string
     subheadline: string
+    /** `{idade}` is replaced by the age computed on each render */
     bio: string[]
-    quickFacts: Array<{
+    // Symbol used as the mouse cursor over each highlighted bio keyword.
+    highlightSymbols: Record<string, string>
+    /** `icon` is a kebab-case lucide name registered in about-icons.ts */
+    hobbies: Array<{ icon: string; label: string }>
+    facts: Array<{
+      icon: string
       label: string
       value: string
-      year: string
+      /** External link opened from the value (e.g. a map) */
+      href?: string
+      detail?: string
     }>
-    achievements: string[]
   }
   philosophy: {
     coreValues: Array<{
@@ -195,6 +206,8 @@ export interface SiteData {
     }>
   }
   experience: Experience[]
+  /** Brand color (#RRGGBB) per recommendation company, keyed by `company` */
+  recommendationCompanyColors: Record<string, string>
   recommendations: Recommendation[]
   seo: {
     keywords: string[]

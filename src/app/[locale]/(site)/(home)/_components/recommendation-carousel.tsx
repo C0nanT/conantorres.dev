@@ -1,7 +1,8 @@
-import type { Recommendation } from '@/lib/site-data'
+import type { RecommendationGroup } from '@/lib/recommendation-groups'
 import { cn } from '@/lib/styling'
 import { type PanInfo, motion } from 'framer-motion'
 import { useLayoutEffect, useRef, useState } from 'react'
+import { CompanyLabel } from './company-accent'
 import { RecommendationAvatar } from './recommendation-avatar'
 import { RecommendationCountdown } from './recommendation-countdown'
 
@@ -9,7 +10,7 @@ const SWIPE_THRESHOLD = 50
 const SLIDE_GAP_PX = 12
 
 interface RecommendationCarouselProps {
-  items: Recommendation[]
+  items: RecommendationGroup[]
   selectedIndex: number
   countdownDelayMs: number
   countdownDurationMs: number
@@ -121,7 +122,9 @@ export function RecommendationCarousel({
                 <span className="flex flex-col whitespace-nowrap">
                   <span className="text-sm font-medium">{item.name}</span>
                   <span className="text-xs text-muted-foreground">
-                    {item.company}
+                    <CompanyLabel
+                      companies={item.entries.map((entry) => entry.company)}
+                    />
                   </span>
                 </span>
                 {isSelected && items.length > 1 && (

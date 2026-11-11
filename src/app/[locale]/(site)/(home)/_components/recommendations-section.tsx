@@ -1,7 +1,11 @@
 'use client'
 
 import { Badge } from '@/components/ui/badge'
-import { type Recommendation, site } from '@/lib/site-data'
+import {
+  type RecommendationGroup,
+  groupRecommendations,
+} from '@/lib/recommendation-groups'
+import { site } from '@/lib/site-data'
 import { cn } from '@/lib/styling'
 import {
   AnimatePresence,
@@ -12,6 +16,7 @@ import {
 import { ExternalLink, Linkedin } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { type KeyboardEvent, useId, useRef, useState } from 'react'
+import { CompanyLabel, CompanyPill } from './company-accent'
 import { RecommendationAvatar } from './recommendation-avatar'
 import { RecommendationCarousel } from './recommendation-carousel'
 import { RecommendationCountdown } from './recommendation-countdown'
@@ -22,6 +27,14 @@ const MIN_READING_MS = 6000
 // a barra só aparece depois que o destaque termina de chegar no autor; o
 // tempo de leitura total continua o mesmo, a contagem é que começa depois
 const BAR_DELAY_MS = 500
+
+function companiesOf(group: RecommendationGroup) {
+  return group.entries.map((entry) => entry.company)
+}
+
+function allText(group: RecommendationGroup) {
+  return group.entries.map((entry) => entry.text).join(' ')
+}
 
 function getReadingTimeMs(text: string) {
   const words = text.trim().split(/\s+/).length
@@ -38,23 +51,31 @@ const panelVariants: Variants = {
   exit: (direction: number) => ({ opacity: 0, y: -direction * PANEL_OFFSET }),
 }
 
-function Meta({ item }: { item: Recommendation }) {
+// Quem recomendou de uma empresa só mostra empresa, data e relação aqui; com
+// mais de uma, cada texto leva o próprio cabeçalho e o rodapé fica só com o autor.
+function Meta({ group }: { group: RecommendationGroup }) {
+  const [only] = group.entries
+  const rest =
+    group.entries.length === 1 && only
+      ? [only.date, only.relationship].filter(Boolean).join(' · ')
+      : ''
   return (
     <>
-      <p className="font-bold">{item.name}</p>
-      <p className="text-sm text-muted-foreground">{item.headline}</p>
-      <p className="text-xs text-muted-foreground">
-        {[item.company, item.date, item.relationship]
-          .filter(Boolean)
-          .join(' · ')}
-      </p>
+      <p className="font-bold">{group.name}</p>
+      <p className="text-sm text-muted-foreground">{group.headline}</p>
+      {only && group.entries.length === 1 && (
+        <p className="text-xs text-muted-foreground">
+          <CompanyLabel companies={[only.company]} />
+          {rest && ` · ${rest}`}
+        </p>
+      )}
     </>
   )
 }
 
 export function RecommendationsSection() {
   const t = useTranslations('recommendations')
-  const items = site.recommendations
+  const items = groupRecommendations(site.recommendations)
   const baseId = useId()
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([])
   const isStill = useReducedMotion() ?? false
@@ -69,6 +90,8 @@ export function RecommendationsSection() {
   if (!selected) {
     return null
   }
+  const selectedText = allText(selected)
+  const isMulti = selected.entries.length > 1
 
   const selectPerson = (index: number, nextDirection: 1 | -1) => {
     const item = items[index]
@@ -107,7 +130,10 @@ export function RecommendationsSection() {
   }
 
   return (
-    <section id="recomendacoes" className="bg-muted/30 py-16 lg:py-20">
+    <section
+      id="recomendacoes"
+      className="scroll-mt-16 bg-muted/30 py-16 lg:py-20"
+    >
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center space-y-4 mb-12">
           <Badge
@@ -136,7 +162,7 @@ export function RecommendationsSection() {
             items={items}
             selectedIndex={selectedIndex}
             countdownDelayMs={BAR_DELAY_MS}
-            countdownDurationMs={getReadingTimeMs(selected.text) - BAR_DELAY_MS}
+            countdownDurationMs={getReadingTimeMs(selectedText) - BAR_DELAY_MS}
             onSelect={selectPerson}
             onCountdownEnd={handleCountdownEnd}
           />
@@ -164,8 +190,9 @@ export function RecommendationsSection() {
                     selectPerson(index, index > selectedIndex ? 1 : -1)
                   }
                   className={cn(
-                    'relative flex shrink-0 items-center rounded-lg border border-transparent px-3 py-2 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-                    !isSelected && 'hover:bg-background/60'
+                    'relative flex shrink-0 items-center rounded-xl border border-transparent px-3 py-2 text-left transition-[opacity,background-color] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                    !isSelected &&
+                      'opacity-50 hover:bg-background/60 hover:opacity-100'
                   )}
                 >
                   {/* Um único destaque compartilhado: ao trocar de autor ele
@@ -179,15 +206,29 @@ export function RecommendationsSection() {
                           ? { duration: 0 }
                           : { type: 'spring', stiffness: 380, damping: 34 }
                       }
-                      className="absolute inset-0 rounded-lg border border-primary/40 bg-background"
+                      className="absolute inset-0 rounded-xl bg-background shadow-lg ring-1 ring-foreground/5"
                     />
                   )}
                   <span className="relative flex items-center gap-3">
-                    <RecommendationAvatar person={item} size="sm" />
+                    <span
+                      className={cn(
+                        'inline-flex transition-[filter] duration-300',
+                        !isSelected && 'grayscale'
+                      )}
+                    >
+                      <RecommendationAvatar person={item} size="sm" />
+                    </span>
                     <span className="flex flex-col">
-                      <span className="text-sm font-medium">{item.name}</span>
+                      <span
+                        className={cn(
+                          'text-sm font-medium',
+                          isSelected && 'font-semibold'
+                        )}
+                      >
+                        {item.name}
+                      </span>
                       <span className="text-xs text-muted-foreground">
-                        {item.company}
+                        <CompanyLabel companies={companiesOf(item)} />
                       </span>
                     </span>
                   </span>
@@ -198,7 +239,9 @@ export function RecommendationsSection() {
                   {isSelected && items.length > 1 && (
                     <RecommendationCountdown
                       delayMs={BAR_DELAY_MS}
-                      durationMs={getReadingTimeMs(item.text) - BAR_DELAY_MS}
+                      durationMs={
+                        getReadingTimeMs(allText(item)) - BAR_DELAY_MS
+                      }
                       onEnd={handleCountdownEnd}
                     />
                   )}
@@ -232,13 +275,38 @@ export function RecommendationsSection() {
                 exit="exit"
                 transition={{ duration: isStill ? 0 : 0.2, ease: 'easeOut' }}
               >
-                <blockquote className="whitespace-pre-line text-lg leading-relaxed lg:text-xl">
-                  {selected.text}
-                </blockquote>
+                {selected.entries.map((entry, index) => (
+                  <div
+                    key={entry.id}
+                    className={cn(
+                      index > 0 &&
+                        'mt-8 border-t border-dashed border-border pt-8'
+                    )}
+                  >
+                    {isMulti && (
+                      <div className="mb-3 flex flex-wrap items-center gap-2">
+                        <CompanyPill company={entry.company} />
+                        <span className="text-xs text-muted-foreground">
+                          {[entry.relationship, entry.date]
+                            .filter(Boolean)
+                            .join(' · ')}
+                        </span>
+                      </div>
+                    )}
+                    <blockquote
+                      className={cn(
+                        'whitespace-pre-line leading-relaxed',
+                        isMulti ? 'text-base lg:text-lg' : 'text-lg lg:text-xl'
+                      )}
+                    >
+                      {entry.text}
+                    </blockquote>
+                  </div>
+                ))}
                 <figcaption className="mt-6 flex items-center gap-3 border-t border-border pt-4">
                   <RecommendationAvatar person={selected} />
                   <div>
-                    <Meta item={selected} />
+                    <Meta group={selected} />
                   </div>
                 </figcaption>
               </motion.div>

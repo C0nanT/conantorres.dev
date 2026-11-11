@@ -9,14 +9,14 @@ import { Link } from '@/lib/navigation'
 import { site } from '@/lib/site-data'
 import { cn } from '@/lib/styling'
 import {
-  ArrowRight,
+  ArrowDown,
   Award,
   Briefcase,
   Code2,
   FolderGit2,
-  GraduationCap,
   type LucideIcon,
   MapPin,
+  Quote,
   Rocket,
   Users,
 } from 'lucide-react'
@@ -25,12 +25,15 @@ import Image from 'next/image'
 import type { ComponentType } from 'react'
 import { LiaBookSolid } from 'react-icons/lia'
 import { AvailableBadge } from './available-badge'
+import { CursorSwapHighlight } from './cursor-swap-highlight'
 import { IntroAudio } from './intro-audio'
 
 interface HeroHighlight {
   label: string
   image?: string
   icon?: ComponentType<{ className?: string }>
+  // On hover the image flies to the pointer and becomes the cursor.
+  swapsWithCursor?: boolean
 }
 
 interface HeroStat {
@@ -46,6 +49,16 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ projectsCount }: HeroSectionProps) {
+  function handleScrollToRecommendations() {
+    const isReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches
+    document.getElementById('recomendacoes')?.scrollIntoView({
+      behavior: isReducedMotion ? 'auto' : 'smooth',
+      block: 'start',
+    })
+  }
+
   const t = useTranslations('hero')
   const { profile } = site
 
@@ -83,7 +96,11 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
       label: site.content.hero.highlights.people,
       icon: Users,
     },
-    { label: site.content.hero.highlights.ai, image: '/icons/claude-code.svg' },
+    {
+      label: site.content.hero.highlights.ai,
+      image: '/icons/claude-code.svg',
+      swapsWithCursor: true,
+    },
     {
       label: site.content.hero.highlights.learning,
       icon: LiaBookSolid,
@@ -108,11 +125,26 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
           <div className="space-y-8">
             {/* Badge */}
             <div className="flex items-center space-x-2">
-              <Badge variant="secondary" className="px-3 py-1">
-                <MapPin className="mr-1 h-3 w-3" />
-                {profile.location.display}
-              </Badge>
-              <Badge variant="outline" className="px-3 py-1">
+              <a
+                href={profile.location.mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <Badge
+                  variant="secondary"
+                  className="px-3 py-1 transition-colors duration-300 group-hover:text-primary hover:bg-secondary motion-safe:hover:scale-100"
+                >
+                  <MapPin className="mr-1 h-3 w-3" />
+                  <span className="relative after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-primary after:transition-transform after:duration-300 group-hover:after:scale-x-100 motion-reduce:after:transition-none">
+                    {profile.location.display}
+                  </span>
+                </Badge>
+              </a>
+              <Badge
+                variant="outline"
+                className="px-3 py-1 hover:border-border hover:bg-transparent motion-safe:hover:scale-100"
+              >
                 <Briefcase className="mr-1 h-3 w-3" />
                 {profile.role}
               </Badge>
@@ -134,6 +166,16 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
               {highlights.map((highlight) => {
                 const Icon = highlight.icon
+
+                if (highlight.image && highlight.swapsWithCursor) {
+                  return (
+                    <CursorSwapHighlight
+                      key={highlight.label}
+                      label={highlight.label}
+                      image={highlight.image}
+                    />
+                  )
+                }
 
                 return (
                   <div
@@ -165,12 +207,12 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
               <FancyButton.Root
                 size="lg"
                 type="button"
-                disabled={true}
-                className="group"
+                onClick={handleScrollToRecommendations}
+                className="group hover:after:opacity-0"
               >
-                <FancyButton.Icon as={GraduationCap} className="mr-2" />
-                {t('cta.courses')}
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <FancyButton.Icon as={Quote} className="mr-2" />
+                {t('cta.recommendations')}
+                <ArrowDown className="ml-2 h-4 w-4" />
               </FancyButton.Root>
               {profile.introAudio && <IntroAudio src={profile.introAudio} />}
             </div>

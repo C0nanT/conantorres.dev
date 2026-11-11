@@ -77,7 +77,12 @@ export function Footer() {
               {profile.tagline}
             </p>
 
-            <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+            <a
+              href={profile.location.mapUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex w-fit items-center space-x-2 text-sm text-muted-foreground transition-colors hover:text-primary"
+            >
               <MapPin className="h-4 w-4 flex-shrink-0" />
               <span className="whitespace-nowrap leading-none">
                 {locationText}
@@ -90,7 +95,7 @@ export function Footer() {
                   {locationFlag}
                 </span>
               )}
-            </div>
+            </a>
 
             {/* Social Icons */}
             <div className="flex items-center space-x-4">
