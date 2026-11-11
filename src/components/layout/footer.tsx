@@ -103,7 +103,7 @@ export function Footer() {
                 href={social.github.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-[color,transform] duration-200 p-1 motion-safe:hover:-translate-y-0.5 motion-safe:hover:scale-125"
+                className="text-muted-foreground hover:text-primary transition-[color,transform] duration-200 p-1 motion-safe:hover:-translate-y-0.5 motion-safe:hover:scale-125"
                 aria-label="GitHub"
               >
                 <Github className="h-4 w-4" />
@@ -112,7 +112,7 @@ export function Footer() {
                 href={social.linkedin.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-[color,transform] duration-200 p-1 motion-safe:hover:-translate-y-0.5 motion-safe:hover:scale-125"
+                className="text-muted-foreground hover:text-primary transition-[color,transform] duration-200 p-1 motion-safe:hover:-translate-y-0.5 motion-safe:hover:scale-125"
                 aria-label="Linkedin"
               >
                 <Linkedin className="h-4 w-4" />
@@ -134,7 +134,7 @@ export function Footer() {
                       {...(link.external
                         ? { target: '_blank', rel: 'noopener noreferrer' }
                         : {})}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-[color,transform] duration-200 flex items-center group motion-safe:hover:translate-x-1"
+                      className="text-sm text-muted-foreground hover:text-primary transition-[color,transform] duration-200 flex items-center group motion-safe:hover:translate-x-1"
                     >
                       <span>{link.name}</span>
                       {link.external && (
