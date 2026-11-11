@@ -31,6 +31,8 @@ interface HeroHighlight {
   label: string
   image?: string
   icon?: ComponentType<{ className?: string }>
+  // Mouse cursor image shown while hovering the highlight.
+  cursor?: string
 }
 
 interface HeroStat {
@@ -83,7 +85,11 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
       label: site.content.hero.highlights.people,
       icon: Users,
     },
-    { label: site.content.hero.highlights.ai, image: '/icons/claude-code.svg' },
+    {
+      label: site.content.hero.highlights.ai,
+      image: '/icons/claude-code.svg',
+      cursor: '/icons/claude-code.svg',
+    },
     {
       label: site.content.hero.highlights.learning,
       icon: LiaBookSolid,
@@ -139,6 +145,11 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
                   <div
                     key={highlight.label}
                     className="group flex items-center gap-2 transition-transform duration-200 ease-out motion-safe:hover:translate-x-1"
+                    style={
+                      highlight.cursor
+                        ? { cursor: `url("${highlight.cursor}") 12 12, auto` }
+                        : undefined
+                    }
                   >
                     {Icon && (
                       <Icon className="h-4 w-4 shrink-0 transition-transform duration-200 motion-safe:group-hover:scale-125 motion-safe:group-hover:-rotate-6" />
