@@ -21,7 +21,10 @@ function renderHighlights(text: string) {
       nodes.push(text.slice(cursor, start))
     }
     nodes.push(
-      <strong key={start} className="font-semibold text-foreground">
+      <strong
+        key={start}
+        className="relative font-semibold text-foreground transition-colors duration-200 hover:text-primary after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:origin-left after:scale-x-0 after:rounded-full after:bg-primary after:transition-transform after:duration-300 hover:after:scale-x-100 motion-reduce:transition-none motion-reduce:after:transition-none"
+      >
         {match[1]}
       </strong>
     )
