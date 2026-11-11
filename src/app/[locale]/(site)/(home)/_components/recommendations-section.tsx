@@ -107,7 +107,10 @@ export function RecommendationsSection() {
   }
 
   return (
-    <section id="recomendacoes" className="bg-muted/30 py-16 lg:py-20">
+    <section
+      id="recomendacoes"
+      className="scroll-mt-16 bg-muted/30 py-16 lg:py-20"
+    >
       <div className="max-w-6xl mx-auto px-4">
         <div className="text-center space-y-4 mb-12">
           <Badge

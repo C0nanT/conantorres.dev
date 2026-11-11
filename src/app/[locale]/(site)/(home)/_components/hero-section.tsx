@@ -9,14 +9,14 @@ import { Link } from '@/lib/navigation'
 import { site } from '@/lib/site-data'
 import { cn } from '@/lib/styling'
 import {
-  ArrowRight,
+  ArrowDown,
   Award,
   Briefcase,
   Code2,
   FolderGit2,
-  GraduationCap,
   type LucideIcon,
   MapPin,
+  Quote,
   Rocket,
   Users,
 } from 'lucide-react'
@@ -49,6 +49,16 @@ interface HeroSectionProps {
 }
 
 export function HeroSection({ projectsCount }: HeroSectionProps) {
+  function handleScrollToRecommendations() {
+    const isReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches
+    document.getElementById('recomendacoes')?.scrollIntoView({
+      behavior: isReducedMotion ? 'auto' : 'smooth',
+      block: 'start',
+    })
+  }
+
   const t = useTranslations('hero')
   const { profile } = site
 
@@ -197,12 +207,12 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
               <FancyButton.Root
                 size="lg"
                 type="button"
-                disabled={true}
+                onClick={handleScrollToRecommendations}
                 className="group"
               >
-                <FancyButton.Icon as={GraduationCap} className="mr-2" />
-                {t('cta.courses')}
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <FancyButton.Icon as={Quote} className="mr-2" />
+                {t('cta.recommendations')}
+                <ArrowDown className="ml-2 h-4 w-4" />
               </FancyButton.Root>
               {profile.introAudio && <IntroAudio src={profile.introAudio} />}
             </div>
