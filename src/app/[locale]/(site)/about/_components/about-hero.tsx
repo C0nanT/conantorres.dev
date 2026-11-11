@@ -169,18 +169,18 @@ export async function AboutHero() {
                   const Icon = getAboutIcon(step.icon)
                   return (
                     <li key={step.title} className="group relative">
-                      <span className="absolute -left-[3.05rem] flex h-9 w-9 items-center justify-center rounded-full border bg-background text-primary transition-[transform,background-color,border-color,color] duration-300 group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground motion-safe:group-hover:scale-110 motion-reduce:transition-none">
+                      <span className="absolute -left-[3.05rem] flex h-9 w-9 items-center justify-center rounded-full border bg-background text-primary transition-[transform,border-color,color,box-shadow] duration-300 motion-reduce:transition-none group-hover:border-primary group-hover:shadow-[0_0_0_5px] group-hover:shadow-primary/20">
                         <Icon aria-hidden="true" className="h-4 w-4" />
                       </span>
-                      <div className="text-xs font-semibold uppercase tracking-wide text-primary">
-                        {step.time}
+                      <div className="transition-transform duration-300 motion-safe:group-hover:translate-x-2 motion-reduce:transition-none">
+                        <div className="text-xs font-semibold uppercase tracking-wide text-primary">
+                          {step.time}
+                        </div>
+                        <div className="font-semibold">{step.title}</div>
+                        <p className="text-sm text-muted-foreground transition-colors duration-300 group-hover:text-foreground">
+                          {step.text}
+                        </p>
                       </div>
-                      <div className="font-semibold transition-colors duration-200 group-hover:text-primary">
-                        {step.title}
-                      </div>
-                      <p className="text-sm text-muted-foreground">
-                        {step.text}
-                      </p>
                     </li>
                   )
                 })}
