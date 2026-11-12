@@ -18,6 +18,7 @@ import {
   MapPin,
   Quote,
   Rocket,
+  User,
   Users,
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
@@ -222,14 +223,11 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
           <div className="space-y-8">
             {/* Profile Image */}
             <div className="relative">
-              <div className="group aspect-square w-full max-w-md mx-auto relative overflow-hidden rounded-2xl bg-white from-muted/50 to-muted border border-border/20 shadow-[inset_0_0_40px_rgba(0,0,0,0.15)]">
-                <Image
-                  src={profile.images.hero}
-                  alt={`${profile.displayName} - ${profile.jobTitle}`}
-                  fill={true}
-                  className="select-none object-cover object-center opacity-20 blur-[1.5px] transition-transform duration-700 ease-out motion-safe:group-hover:scale-105"
-                  priority={true}
-                  sizes="(max-width: 768px) 100vw, 448px"
+              <div className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-2xl border border-border/20 bg-muted/30">
+                <User
+                  aria-hidden="true"
+                  strokeWidth={1}
+                  className="absolute left-1/2 top-1/2 h-1/2 w-1/2 -translate-x-1/2 -translate-y-1/2 text-muted-foreground/30"
                 />
                 <CautionTape
                   label={t('stats.maintenance')}

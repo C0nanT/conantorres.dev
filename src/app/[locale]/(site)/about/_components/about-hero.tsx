@@ -1,10 +1,10 @@
+import { CautionTape } from '@/components/common/caution-tape'
 import { Badge } from '@/components/ui/badge'
 import { getAge } from '@/lib/age'
 import { site } from '@/lib/site-data'
 import { cn } from '@/lib/styling'
-import { Users } from 'lucide-react'
+import { User, Users } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
-import Image from 'next/image'
 import { getAboutIcon } from './about-icons'
 
 const AGE_TOKEN = '{idade}'
@@ -78,6 +78,7 @@ function renderHighlights(text: string, symbols: Record<string, string>) {
 
 export async function AboutHero() {
   const t = await getTranslations('about')
+  const tMaintenance = await getTranslations('maintenance')
   const { profile, about } = site
   const age = String(getAge(profile.birthDate, new Date()))
   const withAge = (text: string) => text.replaceAll(AGE_TOKEN, age)
@@ -149,14 +150,17 @@ export async function AboutHero() {
           <div className="space-y-8">
             {/* Profile Image */}
             <div className="relative">
-              <div className="aspect-square w-full max-w-md mx-auto relative overflow-hidden rounded-2xl bg-gradient-to-br from-muted/50 to-muted">
-                <Image
-                  src={profile.images.avatar}
-                  alt={t('photoAlt', { name: profile.displayName })}
-                  fill={true}
-                  priority={true}
-                  sizes="(min-width: 1024px) 448px, 100vw"
-                  className="object-cover"
+              <div className="aspect-square w-full max-w-md mx-auto relative overflow-hidden rounded-2xl bg-muted/30">
+                <User
+                  aria-hidden="true"
+                  strokeWidth={1}
+                  className="absolute left-1/2 top-1/2 h-1/2 w-1/2 -translate-x-1/2 -translate-y-1/2 text-muted-foreground/30"
+                />
+                <CautionTape
+                  label={tMaintenance('tape')}
+                  size="lg"
+                  repeat={4}
+                  className="absolute inset-x-[-15%] top-1/2 -translate-y-1/2 -rotate-[8deg]"
                 />
               </div>
             </div>
