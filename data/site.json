@@ -655,10 +655,24 @@
       "period": "Mar 2026 - Atual",
       "highlights": [
         "Entrei como Desenvolvedor Sênior e posteriormente assumi a liderança técnica do time, sendo responsável por arquitetura, padrões de engenharia e desenvolvimento das pessoas.",
-        "Modernização de sistemas legados críticos: performance 6x maior e cerca de 50% de redução no custo de infraestrutura em nuvem.",
+        "Modernização de sistemas legados críticos: performance 6x maior e mais de 85% de redução no custo de EC2.",
         "Implantei um fluxo de desenvolvimento assistido por IA, com ganhos acima de 10x na maior parte das entregas, que foi apresentado no 1° Encontro das Defensorias do Sul.",
         "Responsável técnico por sistemas usados para administração de todas as Defensorias Públicas de Santa Catarina",
         "Estruturei a base de engenharia da instituição: entrega contínua, segurança de aplicações, observabilidade e Design System oficial."
+      ],
+      "details": [
+        "Entrei em março de 2026 como Desenvolvedor Sênior e em setembro assumi a liderança técnica: hoje lidero 6 pessoas, já orientei 3 estagiários e acompanho a contratação de mais 5 profissionais (devs, DevOps e PO).",
+        "Desenvolvi e liderei tecnicamente o PROEX, entregue do zero em cerca de 3 meses por um time de 4 pessoas; o sistema é usado por mais de 150 defensores públicos em todo o estado e sustentou a maior expansão da Defensoria.",
+        "Modernizei sistemas legados como ATOS, SIES, AUTOMATO e Diário Oficial Eletrônico: refatoração, otimização de consultas e reorganização da infraestrutura deixaram tudo mais de 6x mais rápido, com máquinas de 16 GB trocadas por máquinas de 2 GB e mais de 85% de redução no custo de EC2.",
+        "Criei um fluxo de desenvolvimento guiado por IA, com Claude Code, Cursor e Skills próprias: um CRUD que levava dias passou a sair em poucas horas, com ganhos acima de 10x e de até 50x em algumas tarefas. Apresentei o fluxo no 1° Encontro de Tecnologia das Defensorias Públicas da Região Sul e treinei a equipe para usá-lo.",
+        "Padronizei a entrega contínua com GitLab CI/CD: o deploy, que levava de 30 minutos a 1 hora, passou a levar menos de 1 minuto.",
+        "Fiz análises de segurança e corrigi vulnerabilidades em mais de 5 sistemas, como XSS, SQL Injection, brute force e falhas de autenticação, autorização e exposição de dados.",
+        "Implantei observabilidade com Grafana, Uptime Kuma, Zabbix e backups automatizados, cobrindo mais de 10 sistemas.",
+        "Participei da criação do Design System oficial da Defensoria, hoje adotado por 6 sistemas.",
+        "Respondo pela infraestrutura em AWS (EC2, ECS, Lambda, S3, RDS, Route53, WAF, CloudWatch, entre outros) e CIASC, com Terraform, DNS e firewall, além de acumular o papel de PO e a gestão dos projetos.",
+        "Implantei e administro GitLab, Snipe-IT e Frappe Helpdesk, ferramentas open source usadas por mais de 900 servidores, que evitam cerca de US$ 15 mil por ano em licenças.",
+        "Desenvolvi a homepage interna usada por mais de 350 servidores, que centraliza sistemas, notícias, avisos e chamados, e o GitLab Helper, que automatiza revisões, milestones, pipelines e o board dos projetos.",
+        "Stack: PHP, Laravel, Node.js, TypeScript, React, Python, Django, Go, Docker, AWS, PostgreSQL e MySQL."
       ]
     },
     {
@@ -671,6 +685,15 @@
         "Consultas críticas de cerca de 1,8s para menos de 200ms com estratégias de cache e processamento assíncrono.",
         "Cultura de testes automatizados: cerca de 50% menos tempo e custo na entrega de novas features.",
         "Code review, integrações entre sistemas e apoio técnico ao time."
+      ],
+      "details": [
+        "Desenvolvi sistemas de gestão empresarial e controle econômico, do planejamento das tasks à entrega em produção para o cliente, atuando no back-end e no front-end.",
+        "Implementei a auditoria no banco de dados, com rastreabilidade completa das operações; foi a feature que garantiu o primeiro cliente do projeto.",
+        "Levei consultas críticas de cerca de 1,8s para menos de 200ms combinando otimizações: SQL puro onde o ORM pesava, unificação de consultas, correção de N+1, cache com Redis e processamento assíncrono com filas do Laravel.",
+        "Implantei testes automatizados com Pest e Cypress, substituindo boa parte dos testes manuais e reduzindo em cerca de 50% o tempo e o custo de entregar novas features.",
+        "Integrei os sistemas com Google Drive API, Google Cloud Storage e n8n para automatizar fluxos de trabalho.",
+        "Desenvolvi e refatorei APIs RESTful com PHP/Laravel, TypeScript/Node.js, PostgreSQL e Redis, e interfaces em React desenhadas no Figma.",
+        "Participei do planejamento das features e da análise de requisitos, fiz code review focado em qualidade, performance e segurança e fui ponto de apoio técnico do time em arquitetura, banco de dados, PHP, TypeScript e Docker."
       ]
     },
     {
@@ -683,6 +706,16 @@
         "Entreguei um chatbot com IA sobre a base de conhecimento da empresa e um app mobile multiplataforma.",
         "Automação de processos de negócio e integrações com parceiros.",
         "Evolução dos ERPs web e mobile e mentoria de estagiários."
+      ],
+      "details": [
+        "Entrei como estagiário e fui promovido a júnior e depois a pleno, com responsabilidade de ponta a ponta: requisitos de negócio, design, implementação e entrega em produção.",
+        "Desenvolvi por completo o app SistemaPET Criadores, para Android e iOS, com Laravel, MySQL e React Native; as vendas cresceram mais de 25% já no primeiro mês após o lançamento.",
+        "Criei um chatbot com IA em Python, usando a API da OpenAI e RAG sobre a base de conhecimento da empresa, integrado ao suporte via WhatsApp; ainda em implantação, já respondia cerca de 10% dos mais de 50 atendimentos diários e fazia a triagem inicial.",
+        "Mantive e evoluí os ERPs web e mobile da empresa (Gestão, com mais de 750 clientes, Criadores, BuscaFilhote e UKCB), com foco em qualidade, escalabilidade e performance.",
+        "Automatizei processos contratuais, gestão de documentos e rotinas financeiras, e integrei o sistema a parceiros: promoções automatizadas entre varejo e indústria, processamento de dados com IA e comunicação via API do WhatsApp.",
+        "Escrevi testes automatizados para dar mais confiabilidade às aplicações e reduzir falhas em produção.",
+        "Supervisionei e orientei 2 estagiários de programação, com revisão de código e boas práticas.",
+        "Stack: PHP (5, 7 e 8), Laravel, JavaScript, TypeScript, Node.js, React, React Native, Next.js, Tailwind, jQuery, Python e MySQL."
       ]
     },
     {
@@ -694,6 +727,12 @@
         "Soluções web sob medida para pequenos negócios, da concepção ao deploy.",
         "Landing pages focadas em performance e conversão.",
         "Produtos SaaS próprios, construídos do zero até a produção."
+      ],
+      "details": [
+        "Entreguei soluções web completas, do front-end ao back-end, para pequenos negócios, com PHP, Laravel, JavaScript e React.",
+        "Criei landing pages responsivas com HTML, CSS e JavaScript, com foco em performance e conversão.",
+        "Construí aplicações SaaS para gestão financeira e controle de horários e agendas, com Laravel, PostgreSQL e Vue.js.",
+        "Implementei e customizei blogs em WordPress, com ajustes de layout, novas funcionalidades e otimização."
       ]
     },
     {
@@ -704,6 +743,12 @@
       "highlights": [
         "Suporte de TI e manutenção dos sites institucionais.",
         "Apoio em aulas introdutórias de informática e programação."
+      ],
+      "details": [
+        "Ajustei os sites institucionais do colégio com HTML, CSS e WordPress, adequando-os às necessidades da escola.",
+        "Fiz suporte técnico e manutenção de computadores, tanto de hardware quanto de software.",
+        "Apoiei aulas introdutórias de informática e de programação em Python, ajudando estudantes nos primeiros passos de lógica.",
+        "Foi onde tive meus primeiros aprendizados práticos em tecnologia, entre desenvolvimento web, suporte e ensino."
       ]
     }
   ]
