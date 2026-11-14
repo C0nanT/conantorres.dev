@@ -18,7 +18,6 @@ import {
   MapPin,
   Quote,
   Rocket,
-  User,
   Users,
 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
@@ -224,16 +223,14 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
             {/* Profile Image */}
             <div className="relative">
               <div className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-2xl border border-border/20 bg-muted/30">
-                <User
-                  aria-hidden="true"
-                  strokeWidth={1}
-                  className="absolute left-1/2 top-1/2 h-1/2 w-1/2 -translate-x-1/2 -translate-y-1/2 text-muted-foreground/30"
-                />
-                <CautionTape
-                  label={t('stats.maintenance')}
-                  size="lg"
-                  repeat={4}
-                  className="absolute inset-x-[-15%] top-1/2 -translate-y-1/2 -rotate-[8deg]"
+                <Image
+                  src={profile.images.hero}
+                  alt={`${profile.displayName} - ${profile.jobTitle}`}
+                  fill={true}
+                  className="select-none object-cover object-[72%_center]"
+                  quality={90}
+                  priority={true}
+                  sizes="(max-width: 768px) 100vw, 448px"
                 />
               </div>
 
