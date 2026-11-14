@@ -24,8 +24,6 @@
     "notFound": "Não encontrado",
     "backToHome": "Voltar ao início",
     "language": "Idioma",
-    "portuguese": "Português",
-    "english": "Inglês",
     "whatsappChat": "Conversar no WhatsApp"
   },
   "reader": {
@@ -52,7 +50,6 @@
       "retry": "Tentar de novo"
     },
     "loadFailed": "Não foi possível abrir o PDF. Tente recarregar a página.",
-    "pageLabel": "Página",
     "pageOf": "de {total}",
     "pageFailed": "Não foi possível desenhar a página {page}.",
     "pageTextFailed": "O texto da página {page} não pôde ser preparado para seleção.",
@@ -105,19 +102,9 @@
       "available": "Online"
     }
   },
-  "blog": {
-    "title": "Blog",
-    "subtitle": "Artigos sobre desenvolvimento, tecnologia e carreira",
-    "searchPlaceholder": "Pesquisar artigos...",
-    "noResults": "Nenhum artigo encontrado",
-    "readTime": "min de leitura",
-    "publishedOn": "Publicado em",
-    "lastUpdated": "Última atualização"
-  },
   "about": {
     "hobbiesTitle": "Fora do trabalho",
-    "dayTitle": "Um dia comum",
-    "photoAlt": "Foto de {name}"
+    "dayTitle": "Um dia comum"
   },
   "courses": {
     "title": "Cursos",
@@ -138,18 +125,6 @@
       "read": "Lido",
       "reading": "Lendo",
       "to-read": "Vou ler"
-    },
-    "recommendations": {
-      "14-habitos-desenvolvedores": "Em breve...",
-      "fundamentos-arquitetura-software": "Em breve...",
-      "aprenda-domain-driven-design": "Em breve...",
-      "arquitetura-software-partes-dificeis": "Em breve...",
-      "criando-microsservicos": "Em breve...",
-      "system-design-interview-vol-1": "Em breve...",
-      "system-design-interview-vol-2": "Em breve...",
-      "chaos-engineering": "Em breve...",
-      "como-fazer-amigos": "Em breve...",
-      "monolito-para-microsservicos": "Em breve..."
     }
   },
   "projects": {
@@ -174,7 +149,6 @@
     "noResults": "Nenhuma certificação com as tecnologias selecionadas.",
     "filterBy": "Filtrar por tecnologia",
     "clearFilters": "Limpar filtros",
-    "sortBy": "Ordenar por",
     "resultCount": "{count, plural, one {# certificação} other {# certificações}}",
     "groups": {
       "development": "Desenvolvimento",
