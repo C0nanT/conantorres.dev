@@ -91,10 +91,7 @@ export function Footer() {
                 {locationText}
               </span>
               {locationFlag && (
-                <span
-                  className="text-base leading-none pl-20"
-                  aria-hidden="true"
-                >
+                <span className="text-base leading-none" aria-hidden="true">
                   {locationFlag}
                 </span>
               )}
