@@ -222,15 +222,17 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
           <div className="space-y-8">
             {/* Profile Image */}
             <div className="relative">
-              <div className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-2xl border border-border/20 bg-muted/30">
+              {/* The photo fades out from its middle to the left edge, border
+                  included, so the empty wall melts into the page. */}
+              <div className="relative aspect-[3/2] w-full overflow-hidden rounded-2xl border border-border/20 bg-muted/30 [mask-image:linear-gradient(to_right,transparent,black_50%)]">
                 <Image
                   src={profile.images.hero}
                   alt={`${profile.displayName} - ${profile.jobTitle}`}
                   fill={true}
-                  className="select-none object-cover object-[72%_center]"
+                  className="select-none object-cover"
                   quality={90}
                   priority={true}
-                  sizes="(max-width: 768px) 100vw, 448px"
+                  sizes="(max-width: 1024px) 100vw, 560px"
                 />
               </div>
 

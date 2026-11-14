@@ -10,6 +10,8 @@ const config = {
   // (e.g. a worktree), so server.js lands at the root of .next/standalone.
   outputFileTracingRoot: import.meta.dirname,
   images: {
+    // 90 is the hero photo (src/app/[locale]/(site)/(home)/_components).
+    qualities: [75, 90],
     remotePatterns: [
       {
         protocol: 'https',
