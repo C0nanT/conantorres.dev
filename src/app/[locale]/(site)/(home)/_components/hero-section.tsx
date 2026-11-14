@@ -224,7 +224,7 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
             <div className="relative">
               {/* The photo fades out from its middle to the left edge, border
                   included, so the empty wall melts into the page. */}
-              <div className="relative aspect-[3/2] w-full overflow-hidden rounded-2xl border border-border/20 bg-muted/30 [mask-image:linear-gradient(to_right,transparent,black_50%)]">
+              <div className="relative aspect-[3/2] w-full overflow-hidden rounded-2xl border border-border/20 bg-muted/30 [mask-image:linear-gradient(to_right,transparent,black_60%)]">
                 <Image
                   src={profile.images.hero}
                   alt={`${profile.displayName} - ${profile.jobTitle}`}
