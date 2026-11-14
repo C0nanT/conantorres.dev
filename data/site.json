@@ -672,7 +672,7 @@
         "Respondo pela infraestrutura em AWS (EC2, ECS, Lambda, S3, RDS, Route53, WAF, CloudWatch, entre outros) e CIASC, com Terraform, DNS e firewall, além de acumular o papel de PO e a gestão dos projetos.",
         "Implantei e administro GitLab, Snipe-IT e Frappe Helpdesk, ferramentas open source usadas por mais de 900 servidores, que evitam cerca de US$ 15 mil por ano em licenças.",
         "Desenvolvi a homepage interna usada por mais de 350 servidores, que centraliza sistemas, notícias, avisos e chamados, e o GitLab Helper, que automatiza revisões, milestones, pipelines e o board dos projetos.",
-        "Stack: PHP, Laravel, Node.js, TypeScript, React, Python, Django, Go, Docker, AWS, PostgreSQL e MySQL."
+        "Stack: PHP, Laravel, Node.js, TypeScript, React, Python, Django, Go, Docker, AWS, PostgreSQL, MySQL, entre outras..."
       ]
     },
     {
