@@ -10,12 +10,7 @@
   "experience": {
     "titlePrefix": "Minhas",
     "titleHighlight": "experiências",
-    "moreDetails": "Mais detalhes",
-    "downloadResume": "Minhas experiências — baixar currículo",
-    "resumeUnavailable": {
-      "title": "Currículo em breve",
-      "description": "O download do currículo estará disponível em breve."
-    }
+    "moreDetails": "Mais detalhes"
   },
   "recommendations": {
     "badge": "Recomendações",
