@@ -9,6 +9,7 @@ import { reportTotalPages } from '../actions'
 import { PdfPageList, type PdfPageListHandle } from './pdf-page-list'
 import { PdfToolbar } from './pdf-toolbar'
 import { describeError, reportReaderError } from './report-reader-error'
+import { useSentenceCopy } from './use-sentence-copy'
 import { MAX_ZOOM, MIN_ZOOM, clamp } from './viewer-limits'
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
@@ -61,6 +62,8 @@ export default function PdfViewer({
   const listRef = useRef<PdfPageListHandle>(null)
   const { ref: scrollRef, width: containerWidth } =
     useElementWidth<HTMLDivElement>()
+  const [isSentenceCopyOn, setSentenceCopyOn] = useState(false)
+  useSentenceCopy(scrollRef, isSentenceCopyOn)
 
   // Stable identity: a new object each render makes react-pdf reload the file.
   const options = useMemo(() => ({ withCredentials: true }), [])
@@ -100,13 +103,16 @@ export default function PdfViewer({
         startPage={startPage}
         total={total}
         zoom={zoom}
+        isSentenceCopyOn={isSentenceCopyOn}
         onPageChange={handlePageChange}
+        onSentenceCopyChange={setSentenceCopyOn}
         onZoomChange={(next) => setZoom(clamp(next, MIN_ZOOM, MAX_ZOOM))}
       />
       <div className="flex min-h-0 flex-1">
         <div
           ref={scrollRef}
-          className="min-w-0 flex-1 overflow-auto bg-muted/40 p-2"
+          data-sentence-copy={isSentenceCopyOn ? '' : undefined}
+          className="min-w-0 flex-1 overflow-auto bg-muted/40 p-2 [&[data-sentence-copy]_.textLayer_span]:cursor-copy"
         >
           <Document
             file={src}

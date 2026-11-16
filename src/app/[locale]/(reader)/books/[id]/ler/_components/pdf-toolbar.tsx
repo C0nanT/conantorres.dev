@@ -6,10 +6,11 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover'
+import { Switch } from '@/components/ui/switch'
 import { Link } from '@/lib/navigation'
 import { ArrowLeft, LogOut, Menu, Minus, Plus } from 'lucide-react'
 import { useTranslations } from 'next-intl'
-import { useEffect, useState } from 'react'
+import { useEffect, useId, useState } from 'react'
 import { logout } from '../actions'
 import { SavePageForm } from './save-page-form'
 import { MAX_ZOOM, MIN_ZOOM, ZOOM_STEP, clamp } from './viewer-limits'
@@ -20,16 +21,20 @@ export function PdfToolbar({
   startPage,
   total,
   zoom,
+  isSentenceCopyOn,
   onPageChange,
   onZoomChange,
+  onSentenceCopyChange,
 }: {
   bookId: string
   page: number
   startPage: number
   total: number
   zoom: number
+  isSentenceCopyOn: boolean
   onPageChange: (page: number) => void
   onZoomChange: (zoom: number) => void
+  onSentenceCopyChange: (isOn: boolean) => void
 }) {
   const t = useTranslations('reader')
   const [draft, setDraft] = useState(String(page))
@@ -103,6 +108,10 @@ export function PdfToolbar({
           total={total}
         />
         <ZoomControls zoom={zoom} onZoomChange={onZoomChange} />
+        <SentenceCopySwitch
+          isOn={isSentenceCopyOn}
+          onChange={onSentenceCopyChange}
+        />
         <SignOutButton />
       </div>
 
@@ -129,10 +138,36 @@ export function PdfToolbar({
             total={total}
           />
           <ZoomControls zoom={zoom} onZoomChange={onZoomChange} />
+          <SentenceCopySwitch
+            isOn={isSentenceCopyOn}
+            onChange={onSentenceCopyChange}
+          />
           <SignOutButton isLabelVisible={true} />
         </PopoverContent>
       </Popover>
     </header>
+  )
+}
+
+// Copy mode: the sentence under the pointer is highlighted, and a click
+// copies it (use-sentence-copy.ts).
+function SentenceCopySwitch({
+  isOn,
+  onChange,
+}: {
+  isOn: boolean
+  onChange: (isOn: boolean) => void
+}) {
+  const t = useTranslations('reader.sentenceCopy')
+  const id = useId()
+
+  return (
+    <div className="flex items-center gap-2" title={t('hint')}>
+      <Switch id={id} checked={isOn} onCheckedChange={onChange} />
+      <label htmlFor={id} className="cursor-pointer whitespace-nowrap text-sm">
+        {t('label')}
+      </label>
+    </div>
   )
 }
 

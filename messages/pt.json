@@ -53,6 +53,12 @@
     "pageOf": "de {total}",
     "pageFailed": "Não foi possível desenhar a página {page}.",
     "pageTextFailed": "O texto da página {page} não pôde ser preparado para seleção.",
+    "sentenceCopy": {
+      "label": "Copiar frase",
+      "hint": "Ligado: passe o mouse para destacar uma frase e clique para copiá-la.",
+      "copied": "Copiado",
+      "failed": "Não consegui copiar a frase. Tente de novo."
+    },
     "goToPage": "Ir para a página",
     "previousPage": "Página anterior",
     "nextPage": "Próxima página",
