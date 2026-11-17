@@ -168,11 +168,14 @@ export async function AboutHero() {
             {/* Um dia comum */}
             <div className="space-y-5">
               <h2 className="font-semibold text-lg">{t('dayTitle')}</h2>
-              <ol className="relative space-y-6 border-l-2 border-dashed border-border pl-8">
+              <ol className="relative space-y-6 pl-8">
                 {about.day.map((step) => {
                   const Icon = getAboutIcon(step.icon)
                   return (
-                    <li key={step.title} className="group relative">
+                    <li
+                      key={step.title}
+                      className="group relative before:absolute before:-left-8 before:top-0 before:h-[calc(100%+1.5rem)] before:border-l-2 before:border-dashed before:border-border before:content-[''] last:before:hidden"
+                    >
                       <span className="absolute -left-[3.05rem] flex h-9 w-9 items-center justify-center rounded-full border bg-background text-primary transition-[transform,border-color,color,box-shadow] duration-300 motion-reduce:transition-none group-hover:border-primary group-hover:shadow-[0_0_0_5px] group-hover:shadow-primary/20">
                         <Icon aria-hidden="true" className="h-4 w-4" />
                       </span>
