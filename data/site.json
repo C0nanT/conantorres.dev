@@ -185,7 +185,7 @@
         "time": "Manhã",
         "icon": "book-open",
         "title": "Café e estudo",
-        "text": "Um livro, uma linguagem que ainda não domino ou um conceito novo de arquitetura."
+        "text": "Um livro em inglês para praticar ou estudo para aperfeiçoar minhas habilidades em programação."
       },
       {
         "time": "Meio-dia",
@@ -197,13 +197,13 @@
         "time": "Noite",
         "icon": "swords",
         "title": "Xadrez",
-        "text": "Partidas no Chess.com com algo técnico passando no fundo."
+        "text": "Partidas no Chess.com com algum vídeo passando no fundo sobre economia, política, programação ou xadrez."
       },
       {
         "time": "Fim de semana",
         "icon": "languages",
         "title": "Sem roteiro",
-        "text": "Inglês, IA, mercado financeiro ou mais código."
+        "text": "Inglês, IA, economia, xadrez, programação."
       }
     ],
     "hobbies": [
