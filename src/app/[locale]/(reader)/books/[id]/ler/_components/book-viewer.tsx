@@ -25,11 +25,13 @@ export function BookViewer({
   title,
   savedPage,
   storedTotal,
+  bookmarks,
 }: {
   bookId: string
   title: string
   savedPage: number | null
   storedTotal: number | null
+  bookmarks: number[]
 }) {
   return (
     <PdfViewer
@@ -38,6 +40,7 @@ export function BookViewer({
       title={title}
       savedPage={savedPage}
       storedTotal={storedTotal}
+      bookmarks={bookmarks}
     />
   )
 }

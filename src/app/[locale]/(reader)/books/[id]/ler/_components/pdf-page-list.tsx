@@ -95,11 +95,22 @@ export const PdfPageList = forwardRef<
     total: number
     width: number
     initialPage: number
+    bookmarks: ReadonlySet<number>
     scrollRef: RefObject<HTMLDivElement>
     onPageChange: (page: number) => void
+    onToggleBookmark: (page: number) => void
   }
 >(function PdfPageList(
-  { bookId, total, width, initialPage, scrollRef, onPageChange },
+  {
+    bookId,
+    total,
+    width,
+    initialPage,
+    bookmarks,
+    scrollRef,
+    onPageChange,
+    onToggleBookmark,
+  },
   ref
 ) {
   const defaultRatio = useDefaultRatio()
@@ -358,8 +369,10 @@ export const PdfPageList = forwardRef<
           width={width}
           height={width * (ratios[page] ?? defaultRatio)}
           isRendered={rendered.has(page)}
+          isBookmarked={bookmarks.has(page)}
           registerPage={registerPage}
           onRatio={handleRatio}
+          onToggleBookmark={onToggleBookmark}
         />
       ))}
     </div>

@@ -12,6 +12,7 @@ import { ArrowLeft, LogOut, Menu, Minus, Plus } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useEffect, useId, useState } from 'react'
 import { logout } from '../actions'
+import { BookmarkMenu } from './bookmark-menu'
 import { SavePageForm } from './save-page-form'
 import { MAX_ZOOM, MIN_ZOOM, ZOOM_STEP, clamp } from './viewer-limits'
 
@@ -20,23 +21,29 @@ export function PdfToolbar({
   page,
   startPage,
   total,
+  bookmarkPages,
+  isPageBookmarked,
   zoom,
   isSentenceCopyOn,
   onPageChange,
   onZoomChange,
   onSentenceCopyChange,
   onPageSaved,
+  onToggleBookmark,
 }: {
   bookId: string
   page: number
   startPage: number
   total: number
+  bookmarkPages: number[]
+  isPageBookmarked: boolean
   zoom: number
   isSentenceCopyOn: boolean
   onPageChange: (page: number) => void
   onZoomChange: (zoom: number) => void
   onSentenceCopyChange: (isOn: boolean) => void
   onPageSaved: (page: number) => void
+  onToggleBookmark: (page: number) => void
 }) {
   const t = useTranslations('reader')
   const [draft, setDraft] = useState(String(page))
@@ -100,6 +107,14 @@ export function PdfToolbar({
         >
           ›
         </Button>
+        <BookmarkMenu
+          page={page}
+          total={total}
+          pages={bookmarkPages}
+          isPageMarked={isPageBookmarked}
+          onToggle={onToggleBookmark}
+          onGoTo={onPageChange}
+        />
       </div>
 
       <div className="hidden items-center gap-3 lg:flex">

@@ -65,6 +65,17 @@
     "zoomIn": "Aumentar zoom",
     "zoomOut": "Diminuir zoom",
     "zoomLevel": "Zoom: {percent}%",
+    "bookmarks": {
+      "menu": "Marcadores ({count})",
+      "title": "Páginas marcadas",
+      "empty": "Nenhuma página marcada ainda. Clique na fitinha no topo da página para marcar.",
+      "page": "Página {page}",
+      "add": "Marcar a página {page}",
+      "remove": "Remover o marcador da página {page}",
+      "invalid": "Não consegui marcar essa página.",
+      "unauthorized": "Seu acesso expirou. Entre de novo para marcar páginas.",
+      "error": "Não consegui salvar o marcador. Tente de novo."
+    },
     "savePage": {
       "label": "Parei na página",
       "submit": "Salvar",

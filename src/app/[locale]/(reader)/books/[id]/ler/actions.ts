@@ -2,6 +2,7 @@
 
 import { getReader, signIn, signOut } from '@/lib/reader/access'
 import { revalidateBookProgress } from '@/lib/reader/book-progress'
+import { addBookmark, removeBookmark } from '@/lib/reader/bookmarks'
 import { logReaderDbFailure } from '@/lib/reader/db'
 import { debugReader } from '@/lib/reader/log'
 import { isPageCount, parsePageNumber } from '@/lib/reader/page-number'
@@ -114,5 +115,40 @@ export async function reportTotalPages(
     setTotalPages(reader, book.id, totalPages)
   } catch (error) {
     logReaderDbFailure('gravar-total', error)
+  }
+}
+
+export type BookmarkResult =
+  | { status: 'added' | 'removed'; page: number }
+  | { status: 'invalid' | 'unauthorized' | 'error' }
+
+// Adds or removes the ribbon on one page. Untrusted arguments like savePage:
+// `pdfTotal` is the page count the viewer read from the PDF.
+export async function setBookmark(
+  bookId: unknown,
+  rawPage: unknown,
+  pdfTotal: unknown,
+  isMarked: unknown
+): Promise<BookmarkResult> {
+  const reader = await getReader()
+  const book = getReadableBook(bookId)
+  if (!(reader && book)) {
+    return { status: 'unauthorized' }
+  }
+  const page = isPageCount(pdfTotal) ? parsePageNumber(rawPage, pdfTotal) : null
+  if (page === null || typeof isMarked !== 'boolean') {
+    return { status: 'invalid' }
+  }
+
+  try {
+    if (isMarked) {
+      addBookmark(reader, book.id, page)
+      return { status: 'added', page }
+    }
+    removeBookmark(reader, book.id, page)
+    return { status: 'removed', page }
+  } catch (error) {
+    logReaderDbFailure(isMarked ? 'marcar-pagina' : 'desmarcar-pagina', error)
+    return { status: 'error' }
   }
 }

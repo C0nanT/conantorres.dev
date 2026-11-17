@@ -9,6 +9,7 @@ import { reportTotalPages } from '../actions'
 import { PdfPageList, type PdfPageListHandle } from './pdf-page-list'
 import { PdfToolbar } from './pdf-toolbar'
 import { describeError, reportReaderError } from './report-reader-error'
+import { useBookmarks } from './use-bookmarks'
 import { useSentenceCopy } from './use-sentence-copy'
 import { MAX_ZOOM, MIN_ZOOM, clamp } from './viewer-limits'
 
@@ -44,12 +45,14 @@ export default function PdfViewer({
   title,
   savedPage,
   storedTotal,
+  bookmarks: initialBookmarks,
 }: {
   bookId: string
   src: string
   title: string
   savedPage: number | null
   storedTotal: number | null
+  bookmarks: number[]
 }) {
   const t = useTranslations('reader')
   const [total, setTotal] = useState(0)
@@ -65,6 +68,7 @@ export default function PdfViewer({
     useElementWidth<HTMLDivElement>()
   const [isSentenceCopyOn, setSentenceCopyOn] = useState(false)
   useSentenceCopy(scrollRef, isSentenceCopyOn)
+  const bookmarks = useBookmarks(bookId, initialBookmarks, total)
 
   // Stable identity: a new object each render makes react-pdf reload the file.
   const options = useMemo(() => ({ withCredentials: true }), [])
@@ -104,6 +108,9 @@ export default function PdfViewer({
         startPage={startPage}
         onPageSaved={setStartPage}
         total={total}
+        bookmarkPages={bookmarks.pages}
+        isPageBookmarked={bookmarks.marked.has(page)}
+        onToggleBookmark={bookmarks.toggle}
         zoom={zoom}
         isSentenceCopyOn={isSentenceCopyOn}
         onPageChange={handlePageChange}
@@ -147,8 +154,10 @@ export default function PdfViewer({
                 total={total}
                 width={pageWidth * zoom}
                 initialPage={clamp(savedPage ?? 1, 1, total)}
+                bookmarks={bookmarks.marked}
                 scrollRef={scrollRef}
                 onPageChange={setPage}
+                onToggleBookmark={bookmarks.toggle}
               />
             )}
           </Document>

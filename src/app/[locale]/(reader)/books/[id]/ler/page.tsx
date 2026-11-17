@@ -6,6 +6,7 @@ import {
   isReaderAccessConfigured,
 } from '@/lib/reader/access'
 import { ensureBookFile } from '@/lib/reader/book-file'
+import { listBookmarks } from '@/lib/reader/bookmarks'
 import { logReaderDbFailure } from '@/lib/reader/db'
 import { debugReader } from '@/lib/reader/log'
 import { getClientIp, getLockMinutesLeft } from '@/lib/reader/rate-limit'
@@ -38,6 +39,16 @@ function loadPosition(owner: Reader, bookId: string): ReadingPosition | null {
   }
 }
 
+// Same rule for the ribbons: an unreadable database opens with none.
+function loadBookmarks(owner: Reader, bookId: string): number[] {
+  try {
+    return listBookmarks(owner, bookId)
+  } catch (error) {
+    logReaderDbFailure('ler-marcadores', error)
+    return []
+  }
+}
+
 export default async function ReaderPage({
   params,
 }: {
@@ -67,6 +78,7 @@ export default async function ReaderPage({
           title={book.title}
           savedPage={position?.currentPage ?? null}
           storedTotal={position?.totalPages ?? null}
+          bookmarks={loadBookmarks(reader, book.id)}
         />
       )
     }

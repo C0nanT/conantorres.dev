@@ -37,6 +37,15 @@ const MIGRATIONS: readonly string[] = [
   CREATE INDEX IF NOT EXISTS highlights_owner_book_page
     ON highlights (owner, book_id, page);
   `,
+  `
+  CREATE TABLE IF NOT EXISTS bookmarks (
+    owner TEXT NOT NULL,
+    book_id TEXT NOT NULL,
+    page INTEGER NOT NULL,
+    created_at TEXT NOT NULL,
+    PRIMARY KEY (owner, book_id, page)
+  );
+  `,
 ]
 
 let connection: Database.Database | undefined

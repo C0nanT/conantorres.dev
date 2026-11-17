@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl'
 import type { PDFPageProxy } from 'pdfjs-dist'
 import { memo, useCallback, useEffect, useRef, useState } from 'react'
 import { Page } from 'react-pdf'
+import { BookmarkRibbon } from './bookmark-ribbon'
 import { reportReaderError } from './report-reader-error'
 
 function PageContent({
@@ -78,16 +79,20 @@ export const PdfPageItem = memo(function PdfPageItem({
   width,
   height,
   isRendered,
+  isBookmarked,
   registerPage,
   onRatio,
+  onToggleBookmark,
 }: {
   bookId: string
   pageNumber: number
   width: number
   height: number
   isRendered: boolean
+  isBookmarked: boolean
   registerPage: (pageNumber: number, element: HTMLDivElement | null) => void
   onRatio: (pageNumber: number, ratio: number) => void
+  onToggleBookmark: (pageNumber: number) => void
 }) {
   const ref = useCallback(
     (element: HTMLDivElement | null) => registerPage(pageNumber, element),
@@ -98,7 +103,7 @@ export const PdfPageItem = memo(function PdfPageItem({
     <div
       ref={ref}
       data-reader-page={pageNumber}
-      className="relative overflow-hidden bg-white shadow-md"
+      className="group/page relative overflow-hidden bg-white shadow-md"
       style={{ width, height }}
     >
       {isRendered && (
@@ -109,6 +114,11 @@ export const PdfPageItem = memo(function PdfPageItem({
           onRatio={onRatio}
         />
       )}
+      <BookmarkRibbon
+        pageNumber={pageNumber}
+        isMarked={isBookmarked}
+        onToggle={onToggleBookmark}
+      />
     </div>
   )
 })
