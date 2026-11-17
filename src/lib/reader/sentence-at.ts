@@ -5,7 +5,12 @@
 // Sentence segmentation treats '\n' as a paragraph break, which would cut
 // every PDF line into its own "sentence". Lines are joined with spaces for
 // the search (same length, so offsets still match) and cleaned afterwards.
-const LINE_BREAKS = /\n/g
+// A lone '\n' is a soft line end. '\n\n' marks a paragraph or heading
+// boundary found by the caller; it stays, and the segmenter cuts there.
+const LINE_BREAKS = /(?<!\n)\n(?!\n)/g
+// "...day.9 Domain" : a footnote number glued to the full stop. The
+// segmenter sees no break in ".9", so the sentence is cut after the digits.
+const FOOTNOTE_MARK = /[.!?…]["'”’)\]]*(\d{1,3})(?=\s)/g
 // "inter-\nnet" -> "internet": a hyphen at a line end before a lowercase
 // letter is the PDF's word wrap, not part of the word.
 const WRAP_HYPHEN = /(\p{L})-\n(?=\p{Ll})/gu
@@ -51,6 +56,14 @@ export function sentenceBounds(
   }
   let start = segment.index
   let end = start + segment.segment.length
+  for (const mark of flat.slice(start, end).matchAll(FOOTNOTE_MARK)) {
+    const cut = start + mark.index + mark[0].length
+    if (offset < cut) {
+      end = cut
+      break
+    }
+    start = cut
+  }
   while (start < end && BLANK.test(text.charAt(start))) {
     start++
   }

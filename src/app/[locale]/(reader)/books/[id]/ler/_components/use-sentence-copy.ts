@@ -47,21 +47,56 @@ function caretAt(x: number, y: number) {
     : null
 }
 
+// A gap taller than this share of a line's height is a paragraph break.
+const PARAGRAPH_GAP = 0.6
+// Font sizes this far apart (relative) mean a heading or a footnote line.
+const FONT_SIZE_JUMP = 0.08
+
+// Whether a line end between two spans is more than a wrapped line: a new
+// paragraph or a heading, seen as a taller gap or another font size.
+function isParagraphBreak(before: Element, after: Element) {
+  const a = before.getBoundingClientRect()
+  const b = after.getBoundingClientRect()
+  const sizeA = Number.parseFloat(getComputedStyle(before).fontSize)
+  const sizeB = Number.parseFloat(getComputedStyle(after).fontSize)
+  if (sizeA > 0 && Math.abs(sizeA - sizeB) / sizeA > FONT_SIZE_JUMP) {
+    return true
+  }
+  const gap = b.top - a.bottom
+  return a.height > 0 && gap > a.height * PARAGRAPH_GAP
+}
+
 // One page's text layer as a string, in reading order, with '\n' where
-// pdf.js marks a line end (<br>), plus where each text node sits in it.
+// pdf.js marks a line end (<br>) and '\n\n' where that line end is a
+// paragraph or heading break, plus where each text node sits in it.
 function readTextLayer(layer: Element) {
   let text = ''
   const pieces: TextPiece[] = []
+  let previous: Element | null = null
+  let isLineEnd = false
   const walker = document.createTreeWalker(
     layer,
     NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT
   )
   for (let node = walker.nextNode(); node; node = walker.nextNode()) {
     if (node instanceof Text) {
+      const element = node.parentElement
+      if (
+        isLineEnd &&
+        previous &&
+        element &&
+        element !== previous &&
+        isParagraphBreak(previous, element)
+      ) {
+        text += '\n'
+      }
+      isLineEnd = false
       pieces.push({ node, start: text.length })
       text += node.data
+      previous = element
     } else if (node.nodeName === 'BR') {
       text += '\n'
+      isLineEnd = true
     }
   }
   return { text, pieces }

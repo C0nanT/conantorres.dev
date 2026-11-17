@@ -57,3 +57,20 @@ describe('sentenceBounds', () => {
     assert.equal(sentenceBounds(TEXT, TEXT.length), null)
   })
 })
+
+describe('footnotes and headings', () => {
+  const text =
+    'We use it day to day.9 Domain coupling\n\nFundamentally, there is more.'
+
+  it('cuts after a footnote number glued to the full stop', () => {
+    assert.equal(sentenceAt(text, 2), 'We use it day to day.9')
+  })
+
+  it('cuts a heading off at a paragraph break', () => {
+    assert.equal(sentenceAt(text, text.indexOf('Domain')), 'Domain coupling')
+    assert.equal(
+      sentenceAt(text, text.indexOf('Fundamentally')),
+      'Fundamentally, there is more.'
+    )
+  })
+})
