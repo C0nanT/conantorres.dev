@@ -15,11 +15,13 @@ export function SavePageForm({
   page,
   startPage,
   total,
+  onSaved,
 }: {
   bookId: string
   page: number
   startPage: number
   total: number
+  onSaved: (page: number) => void
 }) {
   const t = useTranslations('reader.savePage')
   const inputId = useId()
@@ -50,6 +52,7 @@ export function SavePageForm({
       const result = await savePage(bookId, target, total)
       if (result.status === 'saved') {
         setIsInvalid(false)
+        onSaved(result.page)
         toast.success(t('saved', { page: result.page }))
         return
       }

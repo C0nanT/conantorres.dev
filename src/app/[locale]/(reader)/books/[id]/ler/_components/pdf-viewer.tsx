@@ -55,8 +55,9 @@ export default function PdfViewer({
   const [total, setTotal] = useState(0)
   // Always the server's saved page (or 1): the browser keeps no position.
   const [page, setPage] = useState(savedPage ?? 1)
-  // Where this reading started: fixed at open, so "read so far" is page - start.
-  const [startPage] = useState(savedPage ?? 1)
+  // Where this reading started (the open, then each save), so "read so far"
+  // is page - start and goes back to 0 once the current page is saved.
+  const [startPage, setStartPage] = useState(savedPage ?? 1)
   const hasReportedTotal = useRef(false)
   const [zoom, setZoom] = useState(1)
   const listRef = useRef<PdfPageListHandle>(null)
@@ -101,6 +102,7 @@ export default function PdfViewer({
         bookId={bookId}
         page={page}
         startPage={startPage}
+        onPageSaved={setStartPage}
         total={total}
         zoom={zoom}
         isSentenceCopyOn={isSentenceCopyOn}

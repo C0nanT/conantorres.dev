@@ -25,6 +25,7 @@ export function PdfToolbar({
   onPageChange,
   onZoomChange,
   onSentenceCopyChange,
+  onPageSaved,
 }: {
   bookId: string
   page: number
@@ -35,6 +36,7 @@ export function PdfToolbar({
   onPageChange: (page: number) => void
   onZoomChange: (zoom: number) => void
   onSentenceCopyChange: (isOn: boolean) => void
+  onPageSaved: (page: number) => void
 }) {
   const t = useTranslations('reader')
   const [draft, setDraft] = useState(String(page))
@@ -106,6 +108,7 @@ export function PdfToolbar({
           page={page}
           startPage={startPage}
           total={total}
+          onSaved={onPageSaved}
         />
         <ZoomControls zoom={zoom} onZoomChange={onZoomChange} />
         <SentenceCopySwitch
@@ -136,6 +139,7 @@ export function PdfToolbar({
             page={page}
             startPage={startPage}
             total={total}
+            onSaved={onPageSaved}
           />
           <ZoomControls zoom={zoom} onZoomChange={onZoomChange} />
           <SentenceCopySwitch
