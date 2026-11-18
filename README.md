@@ -1,6 +1,6 @@
 # conantorres.dev
 
-Site pessoal de **Conan Torres**, Tech Lead e Desenvolvedor Full Stack na Defensoria Pública de Santa Catarina. Reúne trajetória, experiência, projetos, certificações, livros e canais recomendados.
+Site pessoal de **Conan Torres**, Desenvolvedor Full Stack Sênior e Tech Lead na Defensoria Pública de Santa Catarina. Reúne trajetória, experiência, projetos, certificações, livros e canais recomendados.
 
 🌐 **[conantorres.dev](https://conantorres.dev)**
 

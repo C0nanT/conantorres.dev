@@ -7,7 +7,7 @@
     "aliases": ["Conan"],
     "initials": "CT",
     "role": "Tech Lead",
-    "subtitle": "Tech Lead & Desenvolvedor Full Stack",
+    "subtitle": "Desenvolvedor Full Stack Sênior & Tech Lead",
     "jobTitle": "Assessor de Tecnologia (Tech Lead)",
     "nationality": "Brasileiro",
     "location": {
@@ -49,12 +49,12 @@
       "Linux",
       "DevOps"
     ],
-    "tagline": "Tech Lead & Dev Full Stack",
+    "tagline": "Dev Full Stack Sênior & Tech Lead",
     "birthDate": "2001-07-30"
   },
   "content": {
     "hero": {
-      "description": "Tech Lead e Desenvolvedor Full Stack na Defensoria Pública de Santa Catarina, com mais de 6 anos de experiência em desenvolvimento de software.",
+      "description": "Desenvolvedor Full Stack Sênior na Defensoria Pública de Santa Catarina, atuando como Tech Lead, com mais de 6 anos de experiência em desenvolvimento de software.",
       "highlights": {
         "architecture": "Arquitetura antes do framework",
         "people": "Código e pessoas, na mesma medida",
@@ -64,11 +64,11 @@
     },
     "metadata": {
       "home": {
-        "title": "Conan Torres - Tech Lead e Desenvolvedor Full Stack",
-        "description": "Tech Lead e Desenvolvedor Full Stack na Defensoria Pública de Santa Catarina. Desenvolvimento web moderno, liderança técnica e carreira em tech."
+        "title": "Conan Torres - Desenvolvedor Full Stack Sênior e Tech Lead",
+        "description": "Desenvolvedor Full Stack Sênior e Tech Lead na Defensoria Pública de Santa Catarina. Desenvolvimento web moderno, liderança técnica e carreira em tech."
       },
       "about": {
-        "description": "Conheça a trajetória de Conan Torres: Tech Lead e Desenvolvedor Full Stack na Defensoria Pública de Santa Catarina, com mais de 6 anos de experiência."
+        "description": "Conheça a trajetória de Conan Torres: Desenvolvedor Full Stack Sênior e Tech Lead na Defensoria Pública de Santa Catarina, com mais de 6 anos de experiência."
       }
     }
   },
@@ -496,8 +496,9 @@
   },
   "seo": {
     "keywords": [
-      "tech lead",
+      "desenvolvedor full stack sênior",
       "desenvolvedor full stack",
+      "tech lead",
       "desenvolvimento de software",
       "programação",
       "laravel",
