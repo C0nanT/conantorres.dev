@@ -21,7 +21,7 @@ function CoverArt({
       <div
         aria-hidden={true}
         className={cn(
-          'flex h-48 w-36 flex-col justify-end rounded-md border border-border/40 bg-muted p-3 shadow-inner',
+          'flex h-32 w-24 flex-col sm:h-48 sm:w-36 justify-end rounded-md border border-border/40 bg-muted p-3 shadow-inner',
           book.status === 'to-read' && 'opacity-50'
         )}
       >
@@ -35,7 +35,7 @@ function CoverArt({
   return (
     <div
       className={cn(
-        'relative aspect-[3/4] w-36 overflow-hidden rounded-md border border-border/40 shadow-md transition-[transform,box-shadow] duration-300 ease-out motion-safe:group-hover:-translate-y-1 motion-safe:group-hover:-rotate-1 group-hover:shadow-xl',
+        'relative aspect-[3/4] w-24 overflow-hidden sm:w-36 rounded-md border border-border/40 shadow-md transition-[transform,box-shadow] duration-300 ease-out motion-safe:group-hover:-translate-y-1 motion-safe:group-hover:-rotate-1 group-hover:shadow-xl',
         book.status === 'to-read' && 'opacity-50'
       )}
     >
@@ -85,7 +85,7 @@ function BookCover({
     : undefined
 
   return (
-    <div className="group relative h-fit w-36">
+    <div className="group relative h-fit w-24 sm:w-36">
       <CoverArt book={book} progress={progress ?? 0} />
       {progress !== undefined && (
         <span
@@ -138,61 +138,84 @@ function BookRating({ rating = 0 }: { rating?: number }) {
 }
 
 export function BookItem({ book }: { book: RecommendedBook }) {
-  const t = useTranslations('books')
   const progress = getBookProgress(book)
 
+  // From sm up: the cover spans both rows on the left, heading and body share
+  // the right column. Below sm: a small cover beside the heading, and the body
+  // full width underneath, so each book takes far less scrolling.
   return (
-    <article className="grid gap-5 py-10 first:pt-0last:pb-0 sm:grid-cols-[144px_1fr]">
-      <BookCover book={book} progress={progress} />
-
-      <div className="space-y-3">
-        <div className="flex flex-wrap items-center gap-2">
-          <h3 className="text-xl font-bold">{book.title}</h3>
-          {book.status === 'reading' ? (
-            <ReadingBadge label={t('status.reading')} />
-          ) : (
-            <Badge variant="outline">{t(`status.${book.status}`)}</Badge>
-          )}
-        </div>
-        <p className="text-sm text-muted-foreground">
-          {book.authors.join(', ')} · {book.category}
-        </p>
-        <p className="text-muted-foreground">{book.description}</p>
-        {book.note && (
-          <p className="border-l-2 border-dotted border-primary pl-3 text-sm italic">
-            {book.note}
-          </p>
-        )}
-        <div className="flex flex-wrap gap-2">
-          {book.topics.map((topic) => (
-            <Badge key={topic} variant="secondary" className="text-xs">
-              {topic}
-            </Badge>
-          ))}
-        </div>
-        <div className="flex flex-wrap items-center gap-4">
-          <BookRating rating={book.rating} />
-          {book.status === 'reading' && book.progress !== undefined && (
-            <span className="sr-only">
-              {t('progressLabel', { progress: book.progress })}
-            </span>
-          )}
-          <Button asChild={true} size="sm" className="w-fit">
-            <a href={book.url} target="_blank" rel="noopener noreferrer">
-              {t('viewOnAmazon')}
-              <ExternalLink className="ml-2 h-3.5 w-3.5" />
-            </a>
-          </Button>
-          {book.readable && (
-            <Button asChild={true} size="sm" variant="ghost" className="w-fit">
-              <Link href={`/books/${book.id}/ler`}>
-                <BookOpen className="mr-2 h-3.5 w-3.5" />
-                {t('read')}
-              </Link>
-            </Button>
-          )}
-        </div>
+    <article className="grid gap-5 py-10 first:pt-0last:pb-0 max-sm:grid-cols-[6rem_1fr] max-sm:gap-4 max-sm:py-8 sm:grid-cols-[144px_1fr] sm:grid-rows-[auto_1fr] sm:gap-y-3">
+      <div className="sm:row-span-2">
+        <BookCover book={book} progress={progress} />
       </div>
+      <BookHeading book={book} />
+      <BookBody book={book} />
     </article>
+  )
+}
+
+function BookHeading({ book }: { book: RecommendedBook }) {
+  const t = useTranslations('books')
+
+  return (
+    <div className="space-y-3 max-sm:space-y-2">
+      <div className="flex flex-wrap items-center gap-2">
+        <h3 className="text-xl font-bold max-sm:text-lg max-sm:leading-snug">
+          {book.title}
+        </h3>
+        {book.status === 'reading' ? (
+          <ReadingBadge label={t('status.reading')} />
+        ) : (
+          <Badge variant="outline">{t(`status.${book.status}`)}</Badge>
+        )}
+      </div>
+      <p className="text-sm text-muted-foreground">
+        {book.authors.join(', ')} · {book.category}
+      </p>
+    </div>
+  )
+}
+
+function BookBody({ book }: { book: RecommendedBook }) {
+  const t = useTranslations('books')
+
+  return (
+    <div className="space-y-3 max-sm:col-span-2">
+      <p className="text-muted-foreground">{book.description}</p>
+      {book.note && (
+        <p className="border-l-2 border-dotted border-primary pl-3 text-sm italic">
+          {book.note}
+        </p>
+      )}
+      <div className="flex flex-wrap gap-2">
+        {book.topics.map((topic) => (
+          <Badge key={topic} variant="secondary" className="text-xs">
+            {topic}
+          </Badge>
+        ))}
+      </div>
+      <div className="flex flex-wrap items-center gap-4">
+        <BookRating rating={book.rating} />
+        {book.status === 'reading' && book.progress !== undefined && (
+          <span className="sr-only">
+            {t('progressLabel', { progress: book.progress })}
+          </span>
+        )}
+        <Button asChild={true} size="sm" className="w-fit">
+          <a href={book.url} target="_blank" rel="noopener noreferrer">
+            {t('viewOnAmazon')}
+            <ExternalLink className="ml-2 h-3.5 w-3.5" />
+          </a>
+        </Button>
+        {book.readable && (
+          <Button asChild={true} size="sm" variant="ghost" className="w-fit">
+            <Link href={`/books/${book.id}/ler`}>
+              <BookOpen className="mr-2 h-3.5 w-3.5" />
+              {t('read')}
+            </Link>
+          </Button>
+        )}
+      </div>
+    </div>
   )
 }

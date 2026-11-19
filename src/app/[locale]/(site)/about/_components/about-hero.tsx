@@ -168,7 +168,9 @@ export async function AboutHero() {
             {/* Um dia comum */}
             <div className="space-y-5">
               <h2 className="font-semibold text-lg">{t('dayTitle')}</h2>
-              <ol className="relative space-y-6 pl-8">
+              {/* the icons hang 3rem left of each step; below lg nothing sits
+                  to the left, so the extra padding keeps them on screen */}
+              <ol className="relative space-y-6 pl-8 max-lg:pl-12">
                 {about.day.map((step) => {
                   const Icon = getAboutIcon(step.icon)
                   return (

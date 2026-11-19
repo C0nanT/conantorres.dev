@@ -111,7 +111,8 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
     <section className="hero-section">
       <div
         className={cn(
-          'relative max-w-6xl mx-auto px-8 py-16 lg:py-20 border-x-2 border-transparent',
+          // px-4 below sm lines the hero up with the sections under it
+          'relative max-w-6xl mx-auto px-8 py-16 max-sm:px-4 max-sm:py-10 lg:py-20 border-x-2 border-transparent',
           'before:absolute before:inset-y-0 before:-left-0.5 before:border-l-2',
           'after:absolute after:inset-y-0 after:-right-0.5 after:border-r-2',
           'before:border-dotted before:border-border/40 after:border-dotted after:border-border/40',
@@ -124,7 +125,9 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
           {/* Left Column - Content */}
           <div className="space-y-8">
             {/* Badge */}
-            <div className="flex items-center space-x-2">
+            {/* on narrow phones the second badge wraps to its own line
+                instead of squeezing both badges' text */}
+            <div className="flex items-center space-x-2 max-sm:flex-wrap max-sm:gap-2 max-sm:space-x-0 max-sm:whitespace-nowrap">
               <a
                 href={profile.location.mapUrl}
                 target="_blank"

@@ -9,10 +9,11 @@ import {
 } from '@/lib/certifications/certifications'
 import { groupTechnologies } from '@/lib/certifications/technology-groups'
 import type { Certification } from '@/lib/site-data'
+import { cn } from '@/lib/styling'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
-import { Trash2 } from 'lucide-react'
+import { ChevronDown, Trash2 } from 'lucide-react'
 import { useTranslations } from 'next-intl'
-import { Fragment, useState } from 'react'
+import { Fragment, useId, useState } from 'react'
 import { CertificationItem } from './certification-item'
 import { TechnologyBadge } from './technology-badge'
 
@@ -23,6 +24,10 @@ export function CertificationExplorer({
 }) {
   const t = useTranslations('certificates')
   const [selected, setSelected] = useState<string[]>([])
+  // below sm the filter list is longer than the screen, so it starts closed
+  // behind a toggle; from sm up it is always open and the toggle is hidden
+  const [isFiltersOpen, setIsFiltersOpen] = useState(false)
+  const filtersId = useId()
   const prefersReducedMotion = useReducedMotion()
 
   const technologyGroups = groupTechnologies(getAllTechnologies(certifications))
@@ -47,8 +52,29 @@ export function CertificationExplorer({
       <div>
         {technologyGroups.length > 0 && (
           <fieldset className="min-w-0 space-y-3">
-            <legend className="mb-3 flex min-h-8 items-center gap-3 text-sm font-medium">
-              {t('filterBy')}
+            <legend className="mb-3 flex min-h-8 items-center gap-3 text-sm font-medium max-sm:flex-wrap max-sm:gap-y-2">
+              <button
+                type="button"
+                aria-expanded={isFiltersOpen}
+                aria-controls={filtersId}
+                onClick={() => setIsFiltersOpen((isOpen) => !isOpen)}
+                className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-md border border-border px-3 py-1.5 transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:hidden"
+              >
+                {t('filterBy')}
+                {hasSelection && (
+                  <span className="text-primary tabular-nums">
+                    ({selected.length})
+                  </span>
+                )}
+                <ChevronDown
+                  aria-hidden="true"
+                  className={cn(
+                    'size-4 transition-transform duration-200 motion-reduce:transition-none',
+                    isFiltersOpen && 'rotate-180'
+                  )}
+                />
+              </button>
+              <span className="max-sm:hidden">{t('filterBy')}</span>
               <AnimatePresence initial={false}>
                 {hasSelection && (
                   <motion.span
@@ -80,7 +106,13 @@ export function CertificationExplorer({
                 )}
               </AnimatePresence>
             </legend>
-            <dl className="grid gap-x-6 gap-y-2 sm:grid-cols-[9rem_1fr]">
+            <dl
+              id={filtersId}
+              className={cn(
+                'grid gap-x-6 gap-y-2 sm:grid-cols-[9rem_1fr]',
+                !isFiltersOpen && 'max-sm:hidden'
+              )}
+            >
               {technologyGroups.map((group) => (
                 <Fragment key={group.id}>
                   <dt className="pt-1 text-xs text-muted-foreground sm:text-right">

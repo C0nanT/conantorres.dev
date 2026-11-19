@@ -43,7 +43,10 @@ export function ExperienceItem({ job }: { job: Experience }) {
       {/* the rail is its own 2px line: it starts at the first dot's centre (no
           stub above it) and the last one fades out; the dot is centred on it
           and on the company row (min-h-7, centre at 14px) */}
-      <div className="relative ml-2 pb-12 pl-6 group-last:pb-0 md:ml-0 md:pl-10">
+      {/* below sm the column is too narrow for the switch to float beside the
+          role, so the block becomes a flex column and the switch drops under
+          the period (order), leaving the role the full width */}
+      <div className="relative ml-2 pb-12 pl-6 group-last:pb-0 max-sm:flex max-sm:flex-col md:ml-0 md:pl-10">
         <span
           aria-hidden="true"
           className="absolute top-0 bottom-0 left-0 w-0.5 bg-border group-first:top-3.5 group-last:bg-transparent group-last:bg-gradient-to-b group-last:from-border group-last:from-60% group-last:to-transparent"
@@ -77,7 +80,7 @@ export function ExperienceItem({ job }: { job: Experience }) {
             {job.company}
           </h3>
         </div>
-        <div className="relative z-10 float-right mb-2 ml-4 flex items-center gap-2">
+        <div className="relative z-10 float-right mb-2 ml-4 flex items-center gap-2 max-sm:order-1 max-sm:mb-4 max-sm:ml-0 max-sm:self-start">
           <Switch
             id={switchId}
             checked={isDetailed}
@@ -102,7 +105,7 @@ export function ExperienceItem({ job }: { job: Experience }) {
           </p>
           <p className="text-sm text-muted-foreground">{job.period}</p>
         </div>
-        <div className="relative clear-right">
+        <div className="relative clear-right max-sm:order-2">
           {/* overflow-clip, not hidden: hidden would start a new block
               formatting context and stop the list wrapping around the switch */}
           <motion.div

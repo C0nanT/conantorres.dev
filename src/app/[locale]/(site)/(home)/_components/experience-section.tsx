@@ -18,7 +18,7 @@ export function ExperienceSection() {
               from behind the title */}
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute top-1/2 left-full -translate-y-1/2 overflow-hidden pl-3"
+            className="pointer-events-none absolute top-1/2 left-full -translate-y-1/2 overflow-hidden pl-3 max-md:hidden"
           >
             <RiTerminalBoxLine className="size-7 -translate-x-[calc(100%+0.75rem)] text-primary opacity-0 transition-[transform,opacity] duration-300 ease-out group-hover:translate-x-0 group-hover:opacity-100 motion-reduce:translate-x-0 motion-reduce:transition-opacity lg:size-8" />
           </span>

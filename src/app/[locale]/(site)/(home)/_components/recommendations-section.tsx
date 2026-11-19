@@ -296,7 +296,9 @@ export function RecommendationsSection() {
                     <blockquote
                       className={cn(
                         'whitespace-pre-line leading-relaxed',
-                        isMulti ? 'text-base lg:text-lg' : 'text-lg lg:text-xl'
+                        isMulti
+                          ? 'text-base max-sm:text-[15px] lg:text-lg'
+                          : 'text-lg max-sm:text-base lg:text-xl'
                       )}
                     >
                       {entry.text}

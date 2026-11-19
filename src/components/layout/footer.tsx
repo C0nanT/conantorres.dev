@@ -67,7 +67,7 @@ export function Footer() {
 
   return (
     <footer className="border-t-2 border-dotted border-border/40 bg-background">
-      <div className="max-w-6xl mx-auto px-6 py-16 lg:px-8">
+      <div className="max-w-6xl mx-auto px-6 py-16 max-sm:px-4 max-sm:py-12 lg:px-8">
         {/* Main Footer Content */}
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
           {/* Brand Section - Takes more space on larger screens */}

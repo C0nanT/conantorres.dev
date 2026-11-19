@@ -18,7 +18,9 @@ export default async function AboutPage() {
   return (
     <>
       <AboutHero />
-      <div className="relative overflow-hidden">
+      {/* below md the blurred placeholder stacks into a very long column, so
+          it is cut short and faded out */}
+      <div className="relative overflow-hidden max-md:max-h-[36rem] max-md:[mask-image:linear-gradient(to_bottom,black_70%,transparent)]">
         <div
           aria-hidden="true"
           inert={true}

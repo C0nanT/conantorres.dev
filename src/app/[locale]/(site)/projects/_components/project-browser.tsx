@@ -101,9 +101,11 @@ export function ProjectBrowser({ projects }: { projects: Project[] }) {
 
   return (
     <div className="grid gap-6 md:grid-cols-[16rem_1fr]">
-      <ul className="flex gap-2 overflow-x-auto pb-2 md:flex-col md:overflow-visible md:pb-0">
+      {/* mobile: one scrollable row bleeding to the screen edges; each tab
+          keeps its width (shrink-0), or the labels pile on top of each other */}
+      <ul className="flex gap-2 overflow-x-auto pb-2 max-md:-mx-4 max-md:px-4 md:flex-col md:overflow-visible md:pb-0">
         {projects.map((project) => (
-          <li key={project.name}>
+          <li key={project.name} className="shrink-0">
             <button
               type="button"
               aria-pressed={project.name === selectedName}
