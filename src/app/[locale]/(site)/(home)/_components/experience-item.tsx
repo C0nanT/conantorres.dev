@@ -7,12 +7,13 @@ import { cn } from '@/lib/styling'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { useEffect, useId, useRef, useState } from 'react'
+import { CompanyLogo } from './company-logo'
 
 export function ExperienceItem({ job }: { job: Experience }) {
   const t = useTranslations('experience')
   const tMaintenance = useTranslations('maintenance')
   const switchId = useId()
-  const [isDetailed, setIsDetailed] = useState(false)
+  const [isDetailed, setIsDetailed] = useState(Boolean(job.detailedByDefault))
   const shouldReduceMotion = useReducedMotion()
   const contentRef = useRef<HTMLDivElement>(null)
   // the list's natural height; the wrapper animates to it, so the items
@@ -38,18 +39,44 @@ export function ExperienceItem({ job }: { job: Experience }) {
   }, [])
 
   return (
-    <div className="group grid gap-4 px-3 transition-colors duration-200 py-8 md:grid-cols-[280px_1fr] md:gap-12 hover:bg-muted/40">
-      <div className="space-y-1">
-        <h3 className="text-xl font-bold">
-          {job.company}{' '}
-          <span className="text-sm font-medium text-primary">
-            [{job.level}]
-          </span>
-        </h3>
-        <p className="text-sm text-muted-foreground">{job.role}</p>
-        <p className="text-sm text-muted-foreground">{job.period}</p>
-      </div>
-      <div>
+    <li className="group">
+      {/* the rail is its own 2px line: it starts at the first dot's centre (no
+          stub above it) and the last one fades out; the dot is centred on it
+          and on the company row (min-h-7, centre at 14px) */}
+      <div className="relative ml-2 pb-12 pl-6 group-last:pb-0 md:ml-0 md:pl-10">
+        <span
+          aria-hidden="true"
+          className="absolute top-0 bottom-0 left-0 w-0.5 bg-border group-first:top-3.5 group-last:bg-transparent group-last:bg-gradient-to-b group-last:from-border group-last:from-60% group-last:to-transparent"
+        />
+        <span
+          aria-hidden="true"
+          className="absolute top-[7px] -left-[6px] size-3.5 rounded-full border-2 border-primary bg-background transition-colors duration-200 group-first:bg-primary group-hover:bg-primary"
+        />
+        {/* company: logo (when there is one) + name, above the role */}
+        <div className="mb-2 flex min-h-7 items-center gap-2.5">
+          {job.logo && (
+            <span className="relative flex-shrink-0">
+              {/* optional glow behind the logo: the color at the centre,
+                  fading to fully transparent at the circle's edge */}
+              {job.logoGlow && (
+                <span
+                  aria-hidden="true"
+                  className="absolute -inset-2.5"
+                  style={{
+                    background: `radial-gradient(circle closest-side, ${job.logoGlow}, transparent)`,
+                  }}
+                />
+              )}
+              <CompanyLogo logo={job.logo} />
+            </span>
+          )}
+          <h3
+            className="text-xl font-bold leading-tight"
+            style={job.companyColor ? { color: job.companyColor } : undefined}
+          >
+            {job.company}
+          </h3>
+        </div>
         <div className="relative z-10 float-right mb-2 ml-4 flex items-center gap-2">
           <Switch
             id={switchId}
@@ -63,7 +90,19 @@ export function ExperienceItem({ job }: { job: Experience }) {
             {t('moreDetails')}
           </label>
         </div>
-        <div className="relative">
+        {/* role, level and period sit right of the dot, above the list */}
+        <div className="mb-3 space-y-0.5">
+          <p className="font-semibold">
+            {job.role}
+            {job.level && (
+              <span className="ml-2 whitespace-nowrap text-sm font-medium text-primary">
+                [{job.level}]
+              </span>
+            )}
+          </p>
+          <p className="text-sm text-muted-foreground">{job.period}</p>
+        </div>
+        <div className="relative clear-right">
           {/* overflow-clip, not hidden: hidden would start a new block
               formatting context and stop the list wrapping around the switch */}
           <motion.div
@@ -136,6 +175,6 @@ export function ExperienceItem({ job }: { job: Experience }) {
           )}
         </div>
       </div>
-    </div>
+    </li>
   )
 }

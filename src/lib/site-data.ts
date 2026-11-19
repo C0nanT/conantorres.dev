@@ -71,12 +71,23 @@ export interface ProjectEntry {
 
 export interface Experience {
   company: string
-  level: string
+  // caminho em public/ (ex.: /companies/defensoria.png) ou o nome de um logo
+  // em componente (ex.: logo-icon, ver company-logo.tsx); sem ele, só o nome
+  logo?: string
+  // cor (ex.: #fff) de um brilho em círculo atrás do logo: forte no centro,
+  // some por completo nas bordas; sem ela, o logo fica sem fundo
+  logoGlow?: string
+  // cor sólida (ex.: #e30613) do texto do nome da empresa; sem ela, usa a
+  // cor padrão do título
+  companyColor?: string
+  level?: string
   role: string
   period: string
   highlights: string[]
   // versão longa, exibida pelo switch "mais detalhes"; sem ela o switch some
   details?: string[]
+  // abre já com "mais detalhes" ligado
+  detailedByDefault?: boolean
 }
 
 export interface SiteData {

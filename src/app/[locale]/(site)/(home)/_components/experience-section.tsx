@@ -2,15 +2,8 @@ import { site } from '@/lib/site-data'
 import { useTranslations } from 'next-intl'
 import { RiTerminalBoxLine } from 'react-icons/ri'
 import { ExperienceItem } from './experience-item'
-import { PrototypeSwitcher } from './experience-prototype/prototype-switcher'
-import {
-  VariantCards,
-  VariantFold,
-  VariantRail,
-} from './experience-prototype/timeline-variants'
-import { VariantTimeline } from './experience-prototype/variant-timeline'
 
-export function ExperienceSection({ variant = 'A' }: { variant?: string }) {
+export function ExperienceSection() {
   const t = useTranslations('experience')
 
   return (
@@ -31,18 +24,11 @@ export function ExperienceSection({ variant = 'A' }: { variant?: string }) {
           </span>
         </h2>
 
-        {variant === 'B' && <VariantTimeline jobs={site.experience} />}
-        {variant === 'C' && <VariantRail jobs={site.experience} />}
-        {variant === 'D' && <VariantCards jobs={site.experience} />}
-        {variant === 'E' && <VariantFold jobs={site.experience} />}
-        {!['B', 'C', 'D', 'E'].includes(variant) && (
-          <div className="divide-y divide-border">
-            {site.experience.map((job) => (
-              <ExperienceItem key={`${job.company}-${job.period}`} job={job} />
-            ))}
-          </div>
-        )}
-        <PrototypeSwitcher current={variant} />
+        <ol>
+          {site.experience.map((job) => (
+            <ExperienceItem key={`${job.company}-${job.period}`} job={job} />
+          ))}
+        </ol>
       </div>
     </section>
   )

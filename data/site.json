@@ -645,9 +645,13 @@
   "experience": [
     {
       "company": "Defensoria Pública de Santa Catarina",
+      "logo": "/companies/defensoria.png",
+      "logoGlow": "#FFF",
+      "companyColor": "#01443A",
       "level": "SR → TL",
-      "role": "Tech Lead | Assessor de Tec.",
+      "role": "Tech Lead | Desenvolvedor Full Stack Sênior",
       "period": "Mar 2026 - Atual",
+      "detailedByDefault": true,
       "highlights": [
         "Entrei como Desenvolvedor Sênior e posteriormente assumi a liderança técnica do time, sendo responsável por arquitetura, padrões de engenharia e desenvolvimento das pessoas.",
         "Modernização de sistemas legados críticos: performance 6x maior e mais de 85% de redução no custo de EC2.",
@@ -667,13 +671,15 @@
         "Respondo pela infraestrutura em AWS (EC2, ECS, Lambda, S3, RDS, Route53, WAF, CloudWatch, entre outros) e CIASC, com Terraform, DNS e firewall, além de acumular o papel de PO e a gestão dos projetos.",
         "Implantei e administro GitLab, Snipe-IT e Frappe Helpdesk, ferramentas open source usadas por mais de 900 servidores, que evitam cerca de US$ 15 mil por ano em licenças.",
         "Desenvolvi a homepage interna usada por mais de 350 servidores, que centraliza sistemas, notícias, avisos e chamados, e o GitLab Helper, que automatiza revisões, milestones, pipelines e o board dos projetos.",
-        "Stack: PHP, Laravel, Node.js, TypeScript, React, Python, Django, Go, Docker, AWS, PostgreSQL, MySQL, entre outras..."
+        "Stack: PHP, Laravel, Node.js, TypeScript, React, Python, Django, Go, Docker, AWS, PostgreSQL, MySQL, Terraform, entre outras..."
       ]
     },
     {
       "company": "FiveLabs",
-      "level": "JR",
       "role": "Desenvolvedor Full Stack",
+      "logo": "/companies/fivelabs.png",
+      "logoGlow": "#FFF",
+      "companyColor": "#E40C8B",
       "period": "Mai 2025 - Fev 2026",
       "highlights": [
         "Desenvolvimento de sistemas de gestão empresarial, do planejamento à produção.",
@@ -693,8 +699,10 @@
     },
     {
       "company": "SistemaPET",
-      "level": "EST → JR → PL",
       "role": "Desenvolvedor Full Stack",
+      "logoGlow": "#FFF",
+      "logo": "/companies/sistemapet.png",
+      "companyColor": "#1ABC9C",
       "period": "Set 2023 - Abr 2025",
       "highlights": [
         "Promovido de estagiário a pleno, com ownership de ponta a ponta: dos requisitos à entrega em produção.",
@@ -715,7 +723,7 @@
     },
     {
       "company": "Freelance",
-      "level": "-",
+      "logo": "logo-icon",
       "role": "Desenvolvedor de software",
       "period": "Jan 2020 - Dez 2023",
       "highlights": [
@@ -732,8 +740,9 @@
     },
     {
       "company": "Colégio Santa Terezinha",
-      "level": "EST",
       "role": "Estagiário de TI",
+      "logo": "/companies/colegio-santa-terezinha.png",
+      "companyColor": "#1C215A",
       "period": "Jul 2022 - Set 2023",
       "highlights": [
         "Suporte de TI e manutenção dos sites institucionais.",
