@@ -72,9 +72,13 @@ export function Footer() {
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
           {/* Brand Section - Takes more space on larger screens */}
           <div className="col-span-2 lg:col-span-1 space-y-6">
-            <div className="flex items-center">
-              <LogoHorizontal />
-            </div>
+            <button
+              type="button"
+              tabIndex={-1}
+              className="flex w-fit cursor-pointer items-center select-none [-webkit-tap-highlight-color:transparent]"
+            >
+              <LogoHorizontal isPressable={true} />
+            </button>
 
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
               {profile.tagline}

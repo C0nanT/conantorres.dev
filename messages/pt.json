@@ -10,7 +10,8 @@
   "experience": {
     "titlePrefix": "Minhas",
     "titleHighlight": "experiências",
-    "moreDetails": "Mais detalhes"
+    "moreDetails": "Mais detalhes",
+    "aboutCompany": "Sobre {company}"
   },
   "recommendations": {
     "badge": "Recomendações",

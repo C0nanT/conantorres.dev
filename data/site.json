@@ -6,7 +6,7 @@
     "lastName": "Torres",
     "aliases": ["Conan"],
     "initials": "CT",
-    "role": "Tech Lead",
+    "role": "Full Stack Sênior",
     "subtitle": "Desenvolvedor Full Stack Sênior & Tech Lead",
     "jobTitle": "Assessor de Tecnologia (Tech Lead)",
     "nationality": "Brasileiro",
@@ -25,7 +25,7 @@
       "degree": "Análise e Desenvolvimento de Sistemas - UNIASSELVI",
       "institution": "Centro Universitário Leonardo da Vinci",
       "institutionShort": "UNIASSELVI",
-      "year": 2025
+      "year": 2024
     },
     "stats": {
       "certifications": "25",
@@ -164,10 +164,10 @@
     "headlineHighlight": "Conan",
     "subheadline": "Dev de Floripa que nunca parou de estudar",
     "bio": [
-      "Nasci em Campo Grande (MS), mas cresci em Florianópolis, onde moro até hoje. Tenho {idade} anos e uma mania que me acompanha desde a escola: **estudar por conta própria**. Nunca parei.",
-      "A programação entrou na minha vida lá por 2019, por causa de um jogo: eu jogava Sea of Thieves com uma galera no Discord e **criei um bot** para ajudar a montar as tripulações dos navios. Peguei gosto e não parei mais: veio a faculdade de **Análise e Desenvolvimento de Sistemas** (UNIASSELVI, 2024) e muito estudo por conta própria.",
-      "Meu dia começa com **café e estudo**: um livro, uma linguagem que ainda não domino ou um conceito novo de arquitetura. Depois vêm a **academia**, o almoço e o trabalho. À noite, jogo **xadrez** no Chess.com com algo técnico passando no fundo. No fim de semana não tem roteiro: pode ser inglês, IA, mercado financeiro ou mais código. E sempre que dá, corro uns 2 km na Beira-Mar Norte.",
-      "Gosto de **assumir responsabilidade**, no trabalho e fora dele. Cuido das minhas finanças e ajudo a minha família a organizar as delas e a **começar a investir**, por isso acompanho de perto o que acontece no Brasil e no mundo. Também gosto de tomar a frente nas decisões e de **passar adiante o que aprendo**: quando encontro um bom artigo, livro ou vídeo, compartilho e incentivo todo mundo a ir atrás de mais."
+      "Nasci em Campo Grande (MS), mas cresci em Florianópolis, onde moro até hoje. Tenho {idade} anos e um costume que me acompanha desde sempre: **estudar por conta própria**.",
+      "A programação entrou na minha vida lá por 2019, por causa de um jogo, eu jogava Sea of Thieves com um pessoal no Discord e **criei um bot** para ajudar a montar as tripulações dos navios. Peguei gosto e não parei mais: veio a faculdade de **Análise e Desenvolvimento de Sistemas** (UNIASSELVI, 2022–2024) e muito estudo por conta própria.",
+      "Meu dia começa com **café e estudo**: um livro, uma linguagem que ainda não domino ou um conceito novo de arquitetura. Depois vêm a **academia**, o almoço e o trabalho. À noite, jogo **xadrez** no Chess.com com algo técnico passando no fundo. No fim de semana não tem roteiro: pode ser inglês, IA, mercado financeiro ou mais código.",
+      "Gosto de **assumir responsabilidades**, tanto no trabalho quanto fora dele. Cuido das minhas finanças e ajudo minha família a organizar as próprias finanças e a **começar a investir**, por isso acompanho de perto o que acontece no Brasil e no mundo. Também gosto de tomar a frente nas decisões e de **compartilhar o que aprendo**: quando encontro um bom artigo, livro ou vídeo, compartilho e incentivo as pessoas ao meu redor a buscarem mais conhecimento."
     ],
     "highlightSymbols": {
       "estudar por conta própria": "✎",
@@ -176,40 +176,46 @@
       "café e estudo": "☕︎",
       "academia": "⚡︎",
       "xadrez": "♞",
-      "assumir responsabilidade": "⚑",
-      "começar a investir": "↗",
-      "passar adiante o que aprendo": "➜"
+      "assumir responsabilidades": "⚑",
+      "começar a investir": "path:M7 22.3 L12.5 15.3 L16.7 18.8 L24.4 9.7 M19.5 9.7 H24.4 V14.6",
+      "compartilhar o que aprendo": "path:M12.5 14.8 L19.9 10.9 M12.5 17.2 L19.9 21.1 M7.95 16 a2.45 2.45 0 1 0 4.9 0 a2.45 2.45 0 1 0 -4.9 0 M19.5 9.7 a2.45 2.45 0 1 0 4.9 0 a2.45 2.45 0 1 0 -4.9 0 M19.5 22.3 a2.45 2.45 0 1 0 4.9 0 a2.45 2.45 0 1 0 -4.9 0"
     },
     "day": [
       {
         "time": "Manhã",
         "icon": "book-open",
         "title": "Café e estudo",
-        "text": "Um livro em inglês para praticar ou estudo para aperfeiçoar minhas habilidades em programação."
+        "text": "Começo com café e algo novo para aprender: um livro técnico, inglês, arquitetura ou finanças. O tema muda conforme a vontade do dia."
       },
       {
         "time": "Meio-dia",
         "icon": "dumbbell",
-        "title": "Academia, almoço e trabalho",
-        "text": "Treino durante a semana e depois começo a trabalhar"
+        "title": "Academia e almoço",
+        "text": "Academia todo dia antes do almoço. Depois de comer, começo a trabalhar."
+      },
+      {
+        "time": "Tarde",
+        "icon": "laptop",
+        "title": "Trabalho",
+        "text": "Na Defensoria Pública de SC: desenvolvo e mantenho sistemas usados em todo o estado, cuido da infraestrutura na AWS e ajudo o time a crescer."
       },
       {
         "time": "Noite",
         "icon": "swords",
         "title": "Xadrez",
-        "text": "Partidas no Chess.com com algum vídeo passando no fundo sobre economia, política, programação ou xadrez."
+        "text": "Partidas no Chess.com para relaxar com um vídeo no fundo sobre programação, economia, política ou xadrez."
       },
       {
         "time": "Fim de semana",
         "icon": "languages",
         "title": "Sem roteiro",
-        "text": "Inglês, IA, economia, xadrez, programação."
+        "text": "Inglês, IA, mercado financeiro, xadrez ou mais código. E, quando dá, um passeio com a minha namorada."
       }
     ],
     "hobbies": [
       {
         "icon": "book-open",
-        "label": "Estudo por conta própria: arquitetura, IA e design"
+        "label": "Estudo por conta própria: arquitetura, IA, design..."
       },
       {
         "icon": "languages",
@@ -221,11 +227,11 @@
       },
       {
         "icon": "dumbbell",
-        "label": "Academia todo dia"
+        "label": "Academia durante a semana"
       },
       {
         "icon": "footprints",
-        "label": "Corrida na Beira-Mar Norte"
+        "label": "Corrida na Beira-Mar"
       },
       {
         "icon": "trending-up",
@@ -254,7 +260,7 @@
         "icon": "graduation-cap",
         "label": "Formação",
         "value": "Análise e Desenvolvimento de Sistemas, UNIASSELVI",
-        "detail": "2024"
+        "detail": "2022–2024"
       }
     ]
   },
@@ -301,22 +307,41 @@
   },
   "projects": {
     "featured": [
-      { "repo": "ping-check", "description": "", "stack": [] },
-      { "repo": "db-verify", "description": "", "stack": [] },
-      { "repo": "claude-hooks", "description": "", "stack": [] },
-      { "repo": "start-claude-cron", "description": "", "stack": [] },
-      { "repo": "youtube-download", "description": "", "stack": [] },
-      { "repo": "cursor-update", "description": "", "stack": [] },
-      { "repo": "limithit", "description": "", "stack": [] },
-      { "repo": "claude-notification", "description": "", "stack": [] },
-      { "repo": "corslab", "description": "", "stack": [] },
-      { "repo": "dirsearch", "description": "", "stack": [] },
-      { "repo": "minify-context", "description": "", "stack": [] },
-      { "repo": "context-reductor", "description": "", "stack": [] },
-      { "repo": "lsd-plugin", "description": "", "stack": [] },
-      { "repo": "whats-message-editor", "description": "", "stack": [] },
-      { "repo": "fill-inputs", "description": "", "stack": [] },
-      { "repo": "dowload-music", "description": "", "stack": [] }
+      {
+        "repo": "payments",
+        "description": "",
+        "stack": []
+      },
+      {
+        "repo": "translate-selected",
+        "description": "Selecione texto em qualquer app e veja a tradução para pt-BR num popup (Linux/X11, GTK). Também existe versão Android.",
+        "stack": ["Python", "GTK"]
+      },
+      {
+        "repo": "c-skills",
+        "description": "Coleção de skills para agentes de IA (Claude Code): revisão, implementação, TDD e specs.",
+        "stack": ["Shell", "Claude Code"]
+      },
+      {
+        "repo": "db-verify",
+        "description": "Recebe um backup, detecta o banco, sobe a versão certa em Docker, restaura e mostra o resultado numa interface no terminal.",
+        "stack": ["Go", "Docker"]
+      },
+      {
+        "repo": "c-mods",
+        "description": "Plugin do Claude Code: proteções para git, .env, secrets e rm, modo caveman, sons e status line.",
+        "stack": ["TypeScript", "Claude Code"]
+      },
+      {
+        "repo": "limithit",
+        "description": "CLI em Go para simular ataques HTTP e testar resiliência: DDoS, esgotamento de conexão, bypass de rate limit e enumeração de endpoints no seu próprio ambiente.",
+        "stack": ["Go"]
+      },
+      {
+        "repo": "corslab",
+        "description": "",
+        "stack": []
+      }
     ]
   },
   "books": {
@@ -645,6 +670,8 @@
   "experience": [
     {
       "company": "Defensoria Pública de Santa Catarina",
+      "sector": "Setor público",
+      "about": "Garante assistência jurídica gratuita a quem não pode pagar advogado em SC.",
       "logo": "/companies/defensoria.png",
       "logoGlow": "#FFF",
       "companyColor": "#01443A",
@@ -676,6 +703,8 @@
     },
     {
       "company": "FiveLabs",
+      "sector": "Software house",
+      "about": "Desenvolve produtos SaaS, a maioria ERPs de gestão empresarial.",
       "role": "Desenvolvedor Full Stack",
       "logo": "/companies/fivelabs.png",
       "logoGlow": "#FFF",
@@ -699,6 +728,8 @@
     },
     {
       "company": "SistemaPET",
+      "sector": "Software house · Pet",
+      "about": "ERP para pet shops, hotéis, veterinários, banho e tosa e criadores.",
       "role": "Desenvolvedor Full Stack",
       "logoGlow": "#FFF",
       "logo": "/companies/sistemapet.png",
@@ -723,6 +754,8 @@
     },
     {
       "company": "Freelance",
+      "sector": "Autônomo",
+      "about": "Projetos sob demanda para pequenos negócios.",
       "logo": "logo-icon",
       "role": "Desenvolvedor de software",
       "period": "Jan 2020 - Dez 2023",
@@ -740,6 +773,8 @@
     },
     {
       "company": "Colégio Santa Terezinha",
+      "sector": "Educação",
+      "about": "Escola; o TI era um setor de apoio, não a atividade principal.",
       "role": "Estagiário de TI",
       "logo": "/companies/colegio-santa-terezinha.png",
       "companyColor": "#1C215A",

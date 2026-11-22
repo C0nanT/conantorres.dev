@@ -7,6 +7,7 @@ const LOGO_COMPONENTS: Record<
   string,
   React.ComponentType<{
     className?: string
+    isPressable?: boolean
   }>
 > = {
   'logo-icon': LogoIcon,
@@ -17,8 +18,14 @@ export function CompanyLogo({ logo }: { logo: string }) {
   if (Component) {
     // decorative: the company name sits right next to it
     return (
-      <span aria-hidden="true" className="relative block">
-        <Component className="size-6 object-contain" />
+      <span
+        aria-hidden="true"
+        className="group/press relative block cursor-pointer select-none"
+      >
+        <Component
+          className="size-6 object-contain [--press-depth:2px]"
+          isPressable={true}
+        />
       </span>
     )
   }

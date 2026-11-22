@@ -7,6 +7,7 @@ import { cn } from '@/lib/styling'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { useEffect, useId, useRef, useState } from 'react'
+import { CompanyAbout } from './company-about'
 import { CompanyLogo } from './company-logo'
 
 export function ExperienceItem({ job }: { job: Experience }) {
@@ -79,6 +80,7 @@ export function ExperienceItem({ job }: { job: Experience }) {
           >
             {job.company}
           </h3>
+          <CompanyAbout job={job} />
         </div>
         <div className="relative z-10 float-right mb-2 ml-4 flex items-center gap-2 max-sm:order-1 max-sm:mb-4 max-sm:ml-0 max-sm:self-start">
           <Switch

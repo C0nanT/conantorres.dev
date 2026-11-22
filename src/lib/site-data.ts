@@ -71,6 +71,11 @@ export interface ProjectEntry {
 
 export interface Experience {
   company: string
+  // atividade-fim, no tooltip do ícone de info ao lado do nome: rótulo curto
+  // do ramo (ex.: Software house) e uma frase sobre o que a empresa faz; o
+  // ícone só aparece com os dois
+  sector?: string
+  about?: string
   // caminho em public/ (ex.: /companies/defensoria.png) ou o nome de um logo
   // em componente (ex.: logo-icon, ver company-logo.tsx); sem ele, só o nome
   logo?: string

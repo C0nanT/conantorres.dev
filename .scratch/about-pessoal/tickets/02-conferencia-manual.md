@@ -17,5 +17,9 @@ Status: ready-for-agent
 - [ ] Bio com os textos desejados, idade 25
 - [ ] Placeholder de foto (ícone de pessoa) com a fita "EM MANUTENÇÃO", sem iniciais
 - [ ] Lista "Fora do trabalho" com 6 itens e ícones adequados
-- [ ] Seção "Um dia comum" com os 4 períodos (manhã, meio-dia, noite, fim de semana)
+- [ ] Seção "Um dia comum" com os 5 períodos (manhã, meio-dia, tarde, noite, fim de semana)
 - [ ] Layout ok no celular, sem rolagem lateral
+
+## Protótipo: layout de "Um dia comum"
+
+Pergunta: qual layout para a rotina? Testadas 4 variantes (A linha vertical atual, B faixa com abas, C agenda de planner, D bento). Veredito: **A** fica. Código das variantes no branch `prototype/about-day` (commit f3f0de0), fora do main.

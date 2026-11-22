@@ -5,6 +5,7 @@ import {
   Footprints,
   GraduationCap,
   Languages,
+  Laptop,
   type LucideIcon,
   MapPin,
   Swords,
@@ -12,7 +13,7 @@ import {
   User,
 } from 'lucide-react'
 
-// Icon names used by `site.json` → `about` (hobbies and facts).
+// Icon names used by `site.json` → `about` (day, hobbies and facts).
 const ICONS: Record<string, LucideIcon> = {
   'book-open': BookOpen,
   cake: Cake,
@@ -20,6 +21,7 @@ const ICONS: Record<string, LucideIcon> = {
   footprints: Footprints,
   'graduation-cap': GraduationCap,
   languages: Languages,
+  laptop: Laptop,
   'map-pin': MapPin,
   swords: Swords,
   'trending-up': TrendingUp,

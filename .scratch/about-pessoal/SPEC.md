@@ -71,7 +71,7 @@ O ícone de cada item vem de um campo nos dados (nome do ícone), não do texto 
 1. **Idade**: a idade calculada.
 2. **Mora em**: Florianópolis, SC.
 3. **Estudando agora**: Inglês, B1 (nov/2025).
-4. **Formação**: Análise e Desenvolvimento de Sistemas, UNIASSELVI, 2024.
+4. **Formação**: Análise e Desenvolvimento de Sistemas, UNIASSELVI, 2022–2024.
 
 O ícone de cada cartão também vem de um campo nos dados, substituindo a função atual que escolhe o ícone comparando o rótulo em português. O nível de inglês e a data da medição ficam nos dados do site, para serem atualizados sem mexer em componente.
 

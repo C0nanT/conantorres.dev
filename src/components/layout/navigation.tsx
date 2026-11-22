@@ -72,8 +72,11 @@ export function Navigation() {
     <header className="sticky top-0 z-50 w-full bg-card border-b-2 py-1 border-dotted border-border/40">
       <div className="max-w-6xl mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center space-x-2 group">
-          <LogoHorizontal />
+        <Link
+          href="/"
+          className="flex items-center space-x-2 group [-webkit-tap-highlight-color:transparent]"
+        >
+          <LogoHorizontal isPressable={true} />
         </Link>
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center">

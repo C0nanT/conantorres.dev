@@ -19,12 +19,16 @@ const CURSOR_COLORS = {
   dark: { fill: 'hsl(30 100% 69%)', outline: '#000' },
 }
 
-// A mouse cursor drawn from a text symbol (e.g. ♞) in the hover color; falls
-// back to the default cursor where SVG cursors are not supported.
-function symbolCursor(
-  symbol: string,
-  colors: { fill: string; outline: string }
-) {
+// A symbol starting with `path:` is an SVG path on a 32×32 grid, drawn as a
+// line (for shapes no text character has, e.g. a chart zigzag).
+const PATH_PREFIX = 'path:'
+
+function symbolSvg(symbol: string, colors: { fill: string; outline: string }) {
+  if (symbol.startsWith(PATH_PREFIX)) {
+    const d = symbol.slice(PATH_PREFIX.length)
+    const line = 'fill="none" stroke-linecap="round" stroke-linejoin="round"'
+    return `<path d="${d}" ${line} stroke="${colors.outline}" stroke-width="5.5"/><path d="${d}" ${line} stroke="${colors.fill}" stroke-width="3"/>`
+  }
   // Ignore the text-presentation selector (U+FE0E) when counting characters.
   const length = [...symbol.replace('︎', '')].length
   const fontSize = length > 1 ? 14 : 28
@@ -33,7 +37,17 @@ function symbolCursor(
     .replaceAll('&', '&amp;')
     .replaceAll('<', '&lt;')
     .replaceAll('>', '&gt;')
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><text x="16" y="${y}" font-size="${fontSize}" font-weight="700" text-anchor="middle" fill="${colors.fill}" stroke="${colors.outline}" stroke-width="1.5" paint-order="stroke">${text}</text></svg>`
+  return `<text x="16" y="${y}" font-size="${fontSize}" font-weight="700" text-anchor="middle" fill="${colors.fill}" stroke="${colors.outline}" stroke-width="1.5" paint-order="stroke">${text}</text>`
+}
+
+// A mouse cursor drawn from a symbol (a text character like ♞, or a
+// `path:`) in the hover color; falls back to the default cursor where SVG
+// cursors are not supported.
+function symbolCursor(
+  symbol: string,
+  colors: { fill: string; outline: string }
+) {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32">${symbolSvg(symbol, colors)}</svg>`
   return `url("data:image/svg+xml,${encodeURIComponent(svg)}") 16 16, auto`
 }
 
