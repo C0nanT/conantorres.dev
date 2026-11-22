@@ -7,7 +7,7 @@
     "aliases": ["Conan"],
     "initials": "CT",
     "role": "Full Stack Sênior",
-    "subtitle": "Desenvolvedor Full Stack Sênior & Tech Lead",
+    "subtitle": "Desenvolvedor Sênior Full Stack & Tech Lead",
     "jobTitle": "Assessor de Tecnologia (Tech Lead)",
     "nationality": "Brasileiro",
     "location": {
@@ -49,12 +49,12 @@
       "Linux",
       "DevOps"
     ],
-    "tagline": "Dev Full Stack Sênior & Tech Lead",
+    "tagline": "Dev Sênior Full Stack & Tech Lead",
     "birthDate": "2001-07-30"
   },
   "content": {
     "hero": {
-      "description": "Desenvolvedor Full Stack Sênior na Defensoria Pública de Santa Catarina, atuando como Tech Lead, com mais de 6 anos de experiência em desenvolvimento de software.",
+      "description": "Desenvolvedor Sênior Full Stack na Defensoria Pública de Santa Catarina, atuando como Tech Lead, com mais de 6 anos de experiência em desenvolvimento de software.",
       "highlights": {
         "architecture": "Arquitetura antes do framework",
         "people": "Código e pessoas, na mesma medida",
@@ -64,11 +64,11 @@
     },
     "metadata": {
       "home": {
-        "title": "Conan Torres - Desenvolvedor Full Stack Sênior e Tech Lead",
+        "title": "Conan Torres - Desenvolvedor Sênior Full Stack e Tech Lead",
         "description": "Desenvolvedor Full Stack Sênior e Tech Lead na Defensoria Pública de Santa Catarina. Desenvolvimento web moderno, liderança técnica e carreira em tech."
       },
       "about": {
-        "description": "Conheça a trajetória de Conan Torres: Desenvolvedor Full Stack Sênior e Tech Lead na Defensoria Pública de Santa Catarina, com mais de 6 anos de experiência."
+        "description": "Conheça a trajetória de Conan Torres: Desenvolvedor Sênior Full Stack e Tech Lead na Defensoria Pública de Santa Catarina, com mais de 6 anos de experiência."
       }
     }
   },
@@ -263,6 +263,27 @@
         "detail": "2022–2024"
       }
     ]
+  },
+  "studying": {
+    "topics": [
+      "Golang",
+      "Microsserviços",
+      "Arquitetura distribuída",
+      "Escalabilidade",
+      "Observabilidade"
+    ],
+    "book": {
+      "id": "monolito-para-microsservicos",
+      "note": "Estudando como um sistema grande vira vários serviços pequenos, aos poucos e sem precisar reescrever tudo."
+    },
+    "project": {
+      "name": "payments",
+      "status": "em desenvolvimento",
+      "description": "Sistema de pagamentos em Go com seis microsserviços, livro-razão de dupla entrada, eventos e observabilidade.",
+      "noAi": "Não uso IA para escrever o código deste projeto: como é um projeto pessoal, é a minha prática para não perder o hábito de programar no dia a dia.",
+      "url": "https://github.com/C0nanT/payments"
+    },
+    "news": "Acompanho as novidades do mundo da programação no YouTube e em conversas com amigos."
   },
   "philosophy": {
     "coreValues": [
@@ -521,7 +542,7 @@
   },
   "seo": {
     "keywords": [
-      "desenvolvedor full stack sênior",
+      "desenvolvedor sênior full stack",
       "desenvolvedor full stack",
       "tech lead",
       "desenvolvimento de software",
@@ -676,7 +697,7 @@
       "logoGlow": "#FFF",
       "companyColor": "#01443A",
       "level": "SR → TL",
-      "role": "Tech Lead | Desenvolvedor Full Stack Sênior",
+      "role": "Tech Lead | Desenvolvedor Sênior Full Stack",
       "period": "Mar 2026 - Atual",
       "detailedByDefault": true,
       "highlights": [

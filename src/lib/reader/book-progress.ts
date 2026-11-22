@@ -80,4 +80,5 @@ export function getBooks(): RecommendedBook[] {
 // client router cache; add every other page that shows book progress here.
 export function revalidateBookProgress() {
   revalidatePath('/books')
+  revalidatePath('/about')
 }

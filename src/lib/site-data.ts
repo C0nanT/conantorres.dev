@@ -210,6 +210,22 @@ export interface SiteData {
       detail?: string
     }>
   }
+  studying: {
+    topics: string[]
+    book: {
+      /** id of a book in `books.recommended`; progress comes from getBooks() */
+      id: string
+      note: string
+    }
+    project: {
+      name: string
+      status: string
+      description: string
+      noAi: string
+      url: string
+    }
+    news: string
+  }
   philosophy: {
     coreValues: Array<{
       title: string

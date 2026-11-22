@@ -124,6 +124,23 @@
     "hobbiesTitle": "Fora do trabalho",
     "dayTitle": "Um dia comum"
   },
+  "studyingTeaser": {
+    "eyebrow": "Agora",
+    "title": "Como estou estudando",
+    "text": "Golang, microsserviços e arquitetura distribuída: o que leio, o que construo e como me mantenho atualizado.",
+    "button": "Ver como estudo"
+  },
+  "studying": {
+    "titleLead": "Como estou",
+    "titleHighlight": "estudando",
+    "subtitle": "O que estou aprendendo agora e como",
+    "reading": "Lendo",
+    "building": "Construindo",
+    "following": "Acompanhando",
+    "progress": "do livro",
+    "viewBooks": "Ver na página de livros",
+    "viewGithub": "Ver no GitHub"
+  },
   "courses": {
     "title": "Cursos",
     "subtitle": "Aprenda desenvolvimento web com conteúdo prático"
@@ -188,7 +205,7 @@
   "metadata": {
     "home": {
       "keywords": [
-        "desenvolvedor full stack sênior",
+        "desenvolvedor sênior full stack",
         "desenvolvedor full stack",
         "tech lead",
         "desenvolvimento de software",
@@ -212,7 +229,7 @@
       "keywords": [
         "trajetória",
         "carreira tech",
-        "desenvolvedor full stack sênior",
+        "desenvolvedor sênior full stack",
         "desenvolvedor full stack",
         "tech lead",
         "defensoria pública",
