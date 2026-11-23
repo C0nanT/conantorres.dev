@@ -48,7 +48,7 @@ export async function YouTubeChannels() {
           </p>
         </div>
 
-        <div className="divide-y divide-border">
+        <div>
           {recommendedChannels.map((channel) => {
             const video = recommendedVideos.find(
               (v) => v.channelId === channel.id
@@ -60,7 +60,7 @@ export async function YouTubeChannels() {
             return (
               <div
                 key={channel.id}
-                className="grid gap-6 py-8 first:pt-0 last:pb-0 md:grid-cols-[360px_1fr] md:items-center"
+                className="relative grid gap-6 py-8 first:pt-0 last:pb-0 md:grid-cols-[360px_1fr] md:items-center before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-border before:to-transparent first:before:hidden"
               >
                 {video && (
                   <a
