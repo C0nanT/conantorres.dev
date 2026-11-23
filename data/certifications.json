@@ -3,6 +3,21 @@
   "fetchedAt": "2026-10-01",
   "certifications": [
     {
+      "id": "tce-sc-seguranca-da-informacao-na-administracao-publica",
+      "title": "Orientações sobre Segurança da Informação na Administração Pública",
+      "issuer": "Tribunal de Contas de Santa Catarina",
+      "issuedAt": "2026-11",
+      "credentialId": null,
+      "url": "https://www.linkedin.com/in/conan-torres/overlay/Certifications/137411473/treasury/?profileId=ACoAAEKqkiIBewYDwezC4Lv0chbhhsN8upAmDa4",
+      "skills": [
+        "Fundamentos da Segurança da Informação",
+        "Riscos Cibernéticos e Proteção da Informação",
+        "Boas Práticas de Segurança da Informação",
+        "Gestão, Resposta a Incidentes e Resiliência Organizacional"
+      ],
+      "technologies": ["Segurança", "Setor público"]
+    },
+    {
       "id": "palestrante-encontro-tecnologia-defensorias-publicas-regiao-sul",
       "title": "Palestrante: 1° Encontro de Tecnologia das Defensorias Públicas da Região Sul",
       "issuer": "Defensoria Pública do Estado do Rio Grande do Sul",

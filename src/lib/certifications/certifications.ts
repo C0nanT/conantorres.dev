@@ -117,6 +117,10 @@ const ISSUER_LOGOS = new Map<string, IssuerLogo>([
   ['EF SET', { src: '/issuers/ef-set.png' }],
   ['Full Cycle', { src: '/issuers/full-cycle.svg', padded: true }],
   ['Origamid', { src: '/issuers/origamid.png' }],
+  [
+    'Tribunal de Contas de Santa Catarina',
+    { src: '/issuers/tce-sc.png', padded: true },
+  ],
   ['UNIASSELVI', { src: '/issuers/uniasselvi.png' }],
 ])
 
