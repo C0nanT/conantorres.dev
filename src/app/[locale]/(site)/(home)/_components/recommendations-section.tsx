@@ -30,7 +30,7 @@ const MIN_READING_MS = 6000
 const BAR_DELAY_MS = 500
 
 // Agrupa por empresa (a da primeira recomendação), na ordem em que aparecem
-// no site.json; mural, carrossel e troca automática seguem essa mesma ordem.
+// no data/site; mural, carrossel e troca automática seguem essa mesma ordem.
 function sortByCompany(groups: RecommendationGroup[]) {
   const rank = new Map<string, number>()
   for (const group of groups) {

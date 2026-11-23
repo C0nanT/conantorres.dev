@@ -1,0 +1,170 @@
+{
+  "about": {
+    "badge": "Sobre mim",
+    "headline": "Prazer, eu sou o Conan",
+    "headlineHighlight": "Conan",
+    "subheadline": "Dev de Floripa que nunca parou de estudar",
+    "bio": [
+      "Nasci em Campo Grande (MS), mas cresci em Florianópolis, onde moro até hoje. Tenho {idade} anos e um costume que me acompanha desde sempre: **estudar por conta própria**.",
+      "A programação entrou na minha vida lá por 2019, por causa de um jogo, eu jogava Sea of Thieves com um pessoal no Discord e **criei um bot** para ajudar a montar as tripulações dos navios. Peguei gosto e não parei mais: veio a faculdade de **Análise e Desenvolvimento de Sistemas** (UNIASSELVI, 2022–2024) e muito estudo por conta própria.",
+      "Meu dia começa com **café e estudo**: um livro, uma linguagem que ainda não domino ou um conceito novo de arquitetura. Depois vêm a **academia**, o almoço e o trabalho. À noite, jogo **xadrez** no Chess.com com algo técnico passando no fundo. No fim de semana não tem roteiro: pode ser inglês, IA, mercado financeiro ou mais código.",
+      "Gosto de **assumir responsabilidades**, tanto no trabalho quanto fora dele. Cuido das minhas finanças e ajudo minha família a organizar as próprias finanças e a **começar a investir**, por isso acompanho de perto o que acontece no Brasil e no mundo. Também gosto de tomar a frente nas decisões e de **compartilhar o que aprendo**: quando encontro um bom artigo, livro ou vídeo, compartilho e incentivo as pessoas ao meu redor a buscarem mais conhecimento."
+    ],
+    "highlightSymbols": {
+      "estudar por conta própria": "✎",
+      "criei um bot": "⚙︎",
+      "Análise e Desenvolvimento de Sistemas": "</>",
+      "café e estudo": "☕︎",
+      "academia": "⚡︎",
+      "xadrez": "♞",
+      "assumir responsabilidades": "⚑",
+      "começar a investir": "path:M7 22.3 L12.5 15.3 L16.7 18.8 L24.4 9.7 M19.5 9.7 H24.4 V14.6",
+      "compartilhar o que aprendo": "path:M12.5 14.8 L19.9 10.9 M12.5 17.2 L19.9 21.1 M7.95 16 a2.45 2.45 0 1 0 4.9 0 a2.45 2.45 0 1 0 -4.9 0 M19.5 9.7 a2.45 2.45 0 1 0 4.9 0 a2.45 2.45 0 1 0 -4.9 0 M19.5 22.3 a2.45 2.45 0 1 0 4.9 0 a2.45 2.45 0 1 0 -4.9 0"
+    },
+    "day": [
+      {
+        "time": "Manhã",
+        "icon": "book-open",
+        "title": "Café e estudo",
+        "text": "Começo com café e algo novo para aprender: um livro técnico, inglês, arquitetura ou finanças. O tema muda conforme a vontade do dia."
+      },
+      {
+        "time": "Meio-dia",
+        "icon": "dumbbell",
+        "title": "Academia e almoço",
+        "text": "Academia todo dia antes do almoço. Depois de comer, começo a trabalhar."
+      },
+      {
+        "time": "Tarde",
+        "icon": "laptop",
+        "title": "Trabalho",
+        "text": "Na Defensoria Pública de SC: desenvolvo e mantenho sistemas usados em todo o estado, cuido da infraestrutura na AWS e ajudo o time a crescer."
+      },
+      {
+        "time": "Noite",
+        "icon": "swords",
+        "title": "Xadrez",
+        "text": "Partidas no Chess.com para relaxar com um vídeo no fundo sobre programação, economia, política ou xadrez."
+      },
+      {
+        "time": "Fim de semana",
+        "icon": "languages",
+        "title": "Sem roteiro",
+        "text": "Inglês, IA, mercado financeiro, xadrez ou mais código. E, quando dá, um passeio com a minha namorada."
+      }
+    ],
+    "hobbies": [
+      {
+        "icon": "book-open",
+        "label": "Estudo por conta própria: arquitetura, IA, design..."
+      },
+      {
+        "icon": "languages",
+        "label": "Inglês: lendo livros técnicos"
+      },
+      {
+        "icon": "swords",
+        "label": "Xadrez no Chess.com"
+      },
+      {
+        "icon": "dumbbell",
+        "label": "Academia durante a semana"
+      },
+      {
+        "icon": "footprints",
+        "label": "Corrida na Beira-Mar"
+      },
+      {
+        "icon": "trending-up",
+        "label": "Mercado financeiro e investimentos"
+      }
+    ],
+    "facts": [
+      {
+        "icon": "cake",
+        "label": "Idade",
+        "value": "{idade} anos"
+      },
+      {
+        "icon": "map-pin",
+        "label": "Mora em",
+        "value": "Florianópolis, SC",
+        "href": "https://www.google.com/maps/search/?api=1&query=Florian%C3%B3polis%2C%20SC"
+      },
+      {
+        "icon": "languages",
+        "label": "Estudando agora",
+        "value": "Inglês, B1",
+        "detail": "nov/2025"
+      },
+      {
+        "icon": "graduation-cap",
+        "label": "Formação",
+        "value": "Análise e Desenvolvimento de Sistemas, UNIASSELVI",
+        "detail": "2022–2024"
+      }
+    ]
+  },
+  "philosophy": {
+    "coreValues": [
+      {
+        "title": "Fundamentos Primeiro",
+        "description": "Frameworks e ferramentas mudam rápido. Arquitetura, boas práticas e princípios como SOLID, REST e MVC continuam valendo em qualquer stack.",
+        "quote": "\"Frameworks mudam, fundamentos permanecem.\""
+      },
+      {
+        "title": "Tecnologia com Propósito",
+        "description": "Software no setor público existe para servir pessoas. Cada decisão técnica precisa tornar o serviço mais simples, acessível e confiável.",
+        "quote": "\"Bom software é o que resolve o problema de quem usa.\""
+      },
+      {
+        "title": "Aprendizado Contínuo",
+        "description": "Estudo todo dia: cursos, certificações e projetos práticos. Crescer na carreira é uma consequência de aprender com constância.",
+        "quote": "\"Pratique com propósito, não por obrigação.\""
+      },
+      {
+        "title": "Liderar pelo Exemplo",
+        "description": "Um bom Tech Lead eleva o time inteiro: compartilha contexto, documenta decisões e deixa o código mais fácil para quem vem depois.",
+        "quote": "\"Liderança técnica é fazer o time ir mais longe.\""
+      }
+    ],
+    "personalInsights": [
+      {
+        "title": "IA no Desenvolvimento",
+        "content": "Uso o Claude como agente e o Cursor como editor no dia a dia. A IA acelera a entrega, mas quem entende o problema e revisa o resultado continua sendo a pessoa.",
+        "category": "Técnico"
+      },
+      {
+        "title": "Tecnologia no Setor Público",
+        "content": "Trabalhar na Defensoria Pública mostra o impacto direto do software na vida das pessoas. Estabilidade e qualidade importam tanto quanto velocidade.",
+        "category": "Carreira"
+      },
+      {
+        "title": "Do Desenvolvimento à Liderança",
+        "content": "Virar Tech Lead exige ir além do código: comunicar bem, priorizar, mentorar e tomar decisões de arquitetura com o time.",
+        "category": "Carreira"
+      }
+    ]
+  },
+  "studying": {
+    "topics": [
+      "Golang",
+      "Microsserviços",
+      "Arquitetura distribuída",
+      "Escalabilidade",
+      "Observabilidade"
+    ],
+    "book": {
+      "id": "monolito-para-microsservicos",
+      "note": "Estudando como um sistema grande vira vários serviços pequenos, aos poucos e sem precisar reescrever tudo."
+    },
+    "project": {
+      "name": "payments",
+      "status": "em desenvolvimento",
+      "description": "Sistema de pagamentos em Go com seis microsserviços, livro-razão de dupla entrada, eventos e observabilidade.",
+      "noAi": "Não uso IA para escrever o código deste projeto: como é um projeto pessoal, é a minha prática para não perder o hábito de programar no dia a dia.",
+      "url": "https://github.com/C0nanT/payments"
+    },
+    "news": "Acompanho as novidades do mundo da programação no YouTube e em conversas com amigos."
+  }
+}

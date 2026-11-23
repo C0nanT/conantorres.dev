@@ -17,7 +17,7 @@ export interface RecommendationGroup {
   entries: Recommendation[]
 }
 
-/** One group per recommendation, in the order of `site.json`. */
+/** One group per recommendation, in the order of `data/site/`. */
 export function groupRecommendations(
   items: Recommendation[]
 ): RecommendationGroup[] {

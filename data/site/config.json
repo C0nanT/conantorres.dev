@@ -1,0 +1,30 @@
+{
+  "site": {
+    "name": "Torres",
+    "url": "https://conantorres.dev",
+    "analytics": {
+      "clarityId": ""
+    }
+  },
+  "seo": {
+    "keywords": [
+      "desenvolvedor sênior full stack",
+      "desenvolvedor full stack",
+      "tech lead",
+      "desenvolvimento de software",
+      "programação",
+      "laravel",
+      "php",
+      "python",
+      "react",
+      "typescript",
+      "docker",
+      "arquitetura de software",
+      "defensoria pública",
+      "tecnologia no setor público",
+      "carreira tech",
+      "claude code",
+      "programador brasileiro"
+    ]
+  }
+}

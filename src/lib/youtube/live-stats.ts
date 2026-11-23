@@ -180,7 +180,7 @@ export async function getLiveStatsByChannelId() {
   return new Map(entries)
 }
 
-// Fallback values are site.json strings, already formatted for display.
+// Fallback values are data/site strings, already formatted for display.
 function formatCount(value: number | string) {
   return typeof value === 'string' ? value : compactFormatter.format(value)
 }

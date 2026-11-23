@@ -1,0 +1,41 @@
+{
+  "projects": {
+    "featured": [
+      {
+        "repo": "payments",
+        "description": "",
+        "stack": []
+      },
+      {
+        "repo": "translate-selected",
+        "description": "Selecione texto em qualquer app e veja a tradução para pt-BR num popup (Linux/X11, GTK). Também existe versão Android.",
+        "stack": ["Python", "GTK"]
+      },
+      {
+        "repo": "c-skills",
+        "description": "Coleção de skills para agentes de IA (Claude Code): revisão, implementação, TDD e specs.",
+        "stack": ["Shell", "Claude Code"]
+      },
+      {
+        "repo": "db-verify",
+        "description": "Recebe um backup, detecta o banco, sobe a versão certa em Docker, restaura e mostra o resultado numa interface no terminal.",
+        "stack": ["Go", "Docker"]
+      },
+      {
+        "repo": "c-mods",
+        "description": "Plugin do Claude Code: proteções para git, .env, secrets e rm, modo caveman, sons e status line.",
+        "stack": ["TypeScript", "Claude Code"]
+      },
+      {
+        "repo": "limithit",
+        "description": "CLI em Go para simular ataques HTTP e testar resiliência: DDoS, esgotamento de conexão, bypass de rate limit e enumeração de endpoints no seu próprio ambiente.",
+        "stack": ["Go"]
+      },
+      {
+        "repo": "corslab",
+        "description": "",
+        "stack": []
+      }
+    ]
+  }
+}

@@ -7,11 +7,11 @@ import { listReadingPositions } from './reading-position'
 // The one place where the public reading progress is decided. A readable
 // book with a saved page takes `current_page / total_pages` and the save date
 // from the database; every other book keeps `progress` / `progressUpdatedAt`
-// from site.json. Components read the books from here and never merge.
+// from data/site. Components read the books from here and never merge.
 
 interface SavedProgress {
   progress: number
-  /** Day of the save in São Paulo, YYYY-MM-DD like site.json's dates */
+  /** Day of the save in São Paulo, YYYY-MM-DD like data/site's dates */
   updatedAt: string
 }
 
@@ -23,7 +23,7 @@ const SAVE_DAY_FORMAT = new Intl.DateTimeFormat('en-CA', {
 })
 
 // The database stores the save as a UTC instant; the public page shows a
-// plain day (site.json's `2026-10-12`, rendered as UTC). Turning the instant
+// plain day (data/site's `2026-10-12`, rendered as UTC). Turning the instant
 // into São Paulo's calendar day here keeps a 22:30 save on the same day.
 function toSaoPauloDay(instant: string): string | null {
   const date = new Date(instant)
@@ -37,7 +37,7 @@ function toSaoPauloDay(instant: string): string | null {
 }
 
 function readSavedProgress(): Record<string, SavedProgress> {
-  // The build has no data volume: skip the database and use site.json.
+  // The build has no data volume: skip the database and use data/site.
   if (process.env.NEXT_PHASE === 'phase-production-build') {
     return {}
   }

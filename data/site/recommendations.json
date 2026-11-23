@@ -1,0 +1,129 @@
+{
+  "recommendations": [
+    {
+      "id": "kaio-cabral-dpesc",
+      "photo": "/recommendations/kaio.png",
+      "name": "Kaio Cabral",
+      "headline": "Desenvolvedor Sênior Full Stack",
+      "company": "DPESC",
+      "relationship": "Era liderado por Conan",
+      "date": "outubro de 2026",
+      "text": "Tive o prazer de trabalhar com o Conan na Fivelabs e na DPESC. Na Fivelabs, atuando como desenvolvedor Full Stack, já deu para ver de perto seu excelente nível técnico, a atenção aos detalhes e a capacidade de entregar muito valor. Depois, na DPESC, ele chegou como desenvolvedor em um nível mais sênior e, sempre buscando inovação, estruturou toda a esteira de desenvolvimento com auxílio de IA que usamos até hoje.\nQuando assumiu o cargo de supervisor na DPESC, mesmo em um cenário difícil de transição, mostrou mais uma vez seu comprometimento e não deixou o ritmo da equipe cair. Trouxe um processo sólido, boa comunicação e muita maturidade na condução do time. Entregamos do zero o PROEX, um sistema crucial para a instituição, em tempo recorde. Ele ainda entendeu e manteve toda a estrutura na AWS, mesmo não sendo sua especialidade no momento."
+    },
+    {
+      "id": "leandro-holanda",
+      "name": "Leandro Holanda",
+      "photo": "/recommendations/leandro.jpeg",
+      "headline": "Estagiário em Desenvolvimento de Software",
+      "company": "DPESC",
+      "relationship": "Era liderado por Conan",
+      "date": "outubro de 2026",
+      "text": "Conan foi um pilar fundamental durante o meu estágio na DPESC. Com muita paciência e domínio técnico, ele me orientou no desenvolvimento de aplicações em PHP e Python. É um profissional dedicado, colaborativo e com uma didática excelente para compartilhar conhecimento. Um excelente desenvolvedor e um grande parceiro de equipe. Recomendo fortemente!"
+    },
+    {
+      "id": "vinicius-hames",
+      "photo": "/recommendations/hames.png",
+      "name": "Vinicius Hames",
+      "headline": "DevOps Sênior",
+      "company": "DPESC",
+      "relationship": "Trabalhamos na mesma equipe",
+      "date": "novembro de 2026",
+      "text": "Tive o prazer de trabalhar com o Conan na Defensoria Pública de Santa Catarina e pude acompanhar de perto sua competência técnica.\nUm dos grandes destaques de sua atuação foi a participação no desenvolvimento e implantação do sistema PROEX, projeto estratégico que sustentou a maior expansão da Defensoria Pública de Santa Catarina, ampliando o acesso da população aos serviços de assistência jurídica gratuita.\nAtuando no desenvolvimento back-end, o Conan demonstrou conhecimento técnico, capacidade de resolução de problemas e uma excelente visão das soluções como um todo. Destaco também sua facilidade de comunicação e colaboração com outras áreas, especialmente na integração entre desenvolvimento e infraestrutura.\nÉ um profissional comprometido, que assume responsabilidades e se preocupa genuinamente com a qualidade das entregas."
+    },
+    {
+      "id": "julia-santos",
+      "photo": "/recommendations/julia.jpeg",
+      "name": "Julia Santos",
+      "headline": "Analista de Qualidade de Software (QA)",
+      "company": "FiveLabs",
+      "relationship": "Trabalhamos juntos, em equipes diferentes",
+      "date": "março de 2026",
+      "text": "Conan é um profissional extremamente solícito e sempre disposto a ajudar quem está ao seu redor. Mesmo atuando em equipes diferentes, sempre foi muito acessível e aberto a compartilhar conhecimento quando alguém precisava.\nAlém do conhecimento técnico, algo que se destaca nele é a forma leve e colaborativa com que se relaciona com o time. É o tipo de pessoa que contribui para um ambiente de trabalho mais positivo e produtivo.\nSem dúvida, alguém com quem é muito bom trabalhar e que agrega bastante ao time."
+    },
+    {
+      "id": "leonan-martins",
+      "photo": "/recommendations/leonan.jpeg",
+      "name": "Leonan Martins",
+      "headline": "Desenvolvedor Pleno Back-end",
+      "company": "FiveLabs",
+      "relationship": "Supervisionou Conan diretamente",
+      "date": "março de 2026",
+      "text": "Tive o prazer de trabalhar com o Conan durante o último ano e, desde o início, sua eficácia chamou minha atenção. Ele demonstra um compromisso excepcional com a qualidade, indo além da execução ao analisar criteriosamente cada projeto. O Conan não se limita a entregar tarefas; ele identifica falhas de forma proativa e sugere melhorias que elevam o nível do resultado final."
+    },
+    {
+      "id": "dayana-gromann",
+      "photo": "/recommendations/dayana.jpeg",
+      "name": "Dayana Gromann",
+      "headline": "Desenvolvedora Plena Front-end",
+      "company": "FiveLabs",
+      "relationship": "Supervisionou Conan diretamente",
+      "date": "fevereiro de 2026",
+      "text": "Tive a oportunidade de trabalhar com o Conan na Fivelabs, onde atuamos juntos em dois projetos. Ele contribuiu tanto no backend quanto no frontend, demonstrando versatilidade e rápida adaptação à arquitetura e aos processos da equipe.\nNo projeto em que trabalhamos mais próximos, acompanhei suas entregas no frontend e pude perceber sua forte curva de aprendizado, abertura para feedback e compromisso com boas práticas de desenvolvimento.\nÉ um profissional dedicado, proativo e sempre atualizado, que sugere melhorias, identifica problemas com facilidade e aprende novas tecnologias com rapidez. Foi ótimo tê-lo na equipe, recomendo seu trabalho com muita confiança."
+    },
+    {
+      "id": "kaio-cabral",
+      "photo": "/recommendations/kaio.png",
+      "name": "Kaio Cabral",
+      "headline": "Desenvolvedor Júnior Full Stack",
+      "company": "FiveLabs",
+      "relationship": "Trabalhamos na mesma equipe",
+      "date": "fevereiro de 2026",
+      "text": "Conan me ajudou a aperfeiçoar minha habilidade no backend, além de compreender a estrutura rapidamente e desenvolver soluções elegantes no frontend. Trata-se de um profissional dedicado, proativo e que não se limita à mediocridade; sempre busca atuar com qualidade, mas sem perder a eficiência. Comprometido com as datas de entrega, além de sempre ser bem-humorado, qualidade que, em cenários de pressão e estresse, é o diferencial de uma equipe."
+    },
+    {
+      "id": "victor-prim-buchele",
+      "photo": "/recommendations/victor.jpeg",
+      "name": "Victor Buchele",
+      "headline": "Desenvolvedor Pleno Full Stack",
+      "company": "FiveLabs",
+      "relationship": "Trabalhamos na mesma equipe",
+      "date": "janeiro de 2026",
+      "text": "Tive a oportunidade de trabalhar com o Conan em um projeto no qual atuei como líder técnico, e posso afirmar que se trata de um desenvolvedor de alto nível. Ele demonstra grande capacidade de aprendizado, rapidamente dominando novos temas e, muitas vezes, trazendo contribuições que extrapolam o escopo inicialmente proposto.\n\nDestaco também seu forte senso de produto e pensamento crítico. Conan questiona decisões técnicas, propõe alternativas e busca compreender profundamente as implicações das implementações, o que contribuiu significativamente para a qualidade das soluções e para meu próprio desenvolvimento como líder técnico.\n\nRecomendo o Conan sem ressalvas e acredito que ele agregará valor a qualquer equipe ou projeto do qual faça parte."
+    },
+    {
+      "id": "jeniffer-hinckel",
+      "photo": "/recommendations/jenifer.jpeg",
+      "name": "Jeniffer Hinckel",
+      "headline": "Desenvolvedora Júnior Full Stack",
+      "company": "FiveLabs",
+      "relationship": "Trabalhamos na mesma equipe",
+      "date": "novembro de 2025",
+      "text": "O Conan é um profissional excelente, extremamente dedicado, alinhado com a qualidade do projeto e muito prestativo.\nAdmiro muito a dedicação dele em aprender mais e da melhor maneira.\nÉ um profissional que deixa o serviço mais leve mesmo sendo um dia difícil, sempre tem algo positivo a dizer, tem uma ótima comunicação e sempre está disposto a ajudar.\nAgradeço por todo o conhecimento que compartilhamos, te desejo muito sucesso!"
+    },
+    {
+      "id": "emilly-lima",
+      "photo": "/recommendations/emilly.jpeg",
+      "name": "Emilly Lima",
+      "headline": "Vendedora",
+      "company": "SistemaPET",
+      "relationship": "Trabalhamos juntos, em equipes diferentes",
+      "date": "julho de 2025",
+      "text": "Eu trabalhei com Conan em áreas diferentes, mas ele sempre teve muito comprometimento, profissionalismo, disposição ao ajudar, fácil de lidar e com aquele jeitão que realmente soma no dia a dia da empresa. Sem dúvida, é o tipo de pessoa que faz diferença em qualquer equipe!"
+    },
+    {
+      "id": "thiago-bruno-vieira",
+      "photo": "/recommendations/thiago.jpeg",
+      "name": "Thiago Vieira",
+      "headline": "Desenvolvedor Sênior Full Stack",
+      "company": "SistemaPET",
+      "relationship": "Supervisionou Conan diretamente",
+      "date": "abril de 2025",
+      "text": "Trabalhar com o Conan Torres foi uma experiência muito gratificante. Desde o começo, ele mostrou uma vontade enorme de aprender e evoluir, sempre buscando entender não só o \"como\", mas também o \"porquê\" das coisas.\nAo longo do tempo, vi o Conan se tornar um desenvolvedor full stack completo, dominando PHP, Laravel, MySQL, API REST e também se destacando no front-end com React.\nAlém da parte técnica, o que mais admiro nele é a atitude: sempre colaborativo, comprometido e pronto para ajudar quem está ao lado.\nTenho muito orgulho de ter feito parte da trajetória dele e recomendo o Conan sem pensar duas vezes para qualquer time que valorize qualidade, dedicação e crescimento constante."
+    },
+    {
+      "id": "mateus-ceci",
+      "photo": "/recommendations/matheus.jpeg",
+      "name": "Mateus Ceci",
+      "headline": "Estagiário em Desenvolvimento de Software",
+      "company": "SistemaPET",
+      "relationship": "Era liderado por Conan",
+      "date": "abril de 2025",
+      "text": "Trabalhei com o Conan no SistemaPET e foi muito importante para o meu crescimento, me ensinou muito sobre PHP, backend e banco de dados. O Conan já passou por diversos desafios com diversas tecnologias diferentes, portanto é um programador completo e o melhor de tudo, sabe se comunicar e passar essa experiência pra frente!"
+    }
+  ],
+  "recommendationCompanyColors": {
+    "FiveLabs": "#DB1195",
+    "DPESC": "#1A5044",
+    "SistemaPET": "#31CFB0"
+  }
+}

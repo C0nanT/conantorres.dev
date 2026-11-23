@@ -13,7 +13,7 @@ import {
   User,
 } from 'lucide-react'
 
-// Icon names used by `site.json` → `about` (day, hobbies and facts).
+// Icon names used by `data/site/` → `about` (day, hobbies and facts).
 const ICONS: Record<string, LucideIcon> = {
   'book-open': BookOpen,
   cake: Cake,

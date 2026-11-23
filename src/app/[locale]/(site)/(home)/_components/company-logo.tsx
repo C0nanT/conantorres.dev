@@ -1,7 +1,7 @@
 import { LogoIcon } from '@/components/common/logo-icon'
 import Image from 'next/image'
 
-// Logos that are components instead of files: `logo` in site.json names one
+// Logos that are components instead of files: `logo` in data/site names one
 // of these keys. Any value starting with "/" is a file in public/.
 const LOGO_COMPONENTS: Record<
   string,

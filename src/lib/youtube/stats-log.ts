@@ -49,7 +49,7 @@ function describeFailure(error: unknown) {
 
 function writeFailureLine(record: FailureRecord, isFallbackUsed: boolean) {
   const fallback = isFallbackUsed
-    ? 'sim (valor do site.json)'
+    ? 'sim (valor do data/site)'
     : 'não (valor anterior do cache)'
   console.warn(
     `${LOG_PREFIX} ${record.failedAt} falha ${describeTarget(record.target)} motivo="${record.reason}" fallback=${fallback}`
@@ -58,7 +58,7 @@ function writeFailureLine(record: FailureRecord, isFallbackUsed: boolean) {
 
 /**
  * Call from inside the cached scrape when it throws. The error is then either
- * rethrown to `logFallbackUsed` (no cache entry, site.json value shown) or
+ * rethrown to `logFallbackUsed` (no cache entry, data/site value shown) or
  * swallowed by Next (stale cache entry kept). Which one happens is only known
  * after the rejection settles, so the line is written either by
  * `logFallbackUsed` or, if nobody claims it, on the next macrotask.
@@ -92,7 +92,7 @@ export function recordScrapeSuccess(target: StatsTarget) {
   )
 }
 
-/** Call where the site.json fallback replaces a failed scrape. */
+/** Call where the data/site fallback replaces a failed scrape. */
 export function logFallbackUsed(target: StatsTarget, error: unknown) {
   const record = error instanceof Error ? failureRecords.get(error) : undefined
   if (record) {

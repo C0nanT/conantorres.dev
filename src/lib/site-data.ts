@@ -1,5 +1,13 @@
 import certificationsData from '../../data/certifications.json'
-import siteData from '../../data/site.json'
+import aboutData from '../../data/site/about.json'
+import booksData from '../../data/site/books.json'
+import configData from '../../data/site/config.json'
+import experienceData from '../../data/site/experience.json'
+import homeData from '../../data/site/home.json'
+import identityData from '../../data/site/identity.json'
+import projectsData from '../../data/site/projects.json'
+import recommendationsData from '../../data/site/recommendations.json'
+import youtubeData from '../../data/site/youtube.json'
 
 export interface SocialLink {
   url: string
@@ -271,7 +279,22 @@ export interface Certification {
   url?: string
 }
 
-export const site = siteData as SiteData
+// Each JSON in `data/site/` owns some top-level keys of `SiteData`; the cast
+// per file catches a key moved to the wrong file or a wrong shape.
+export const site: SiteData = {
+  ...(identityData as Pick<SiteData, 'profile' | 'contact' | 'social'>),
+  ...(configData as Pick<SiteData, 'site' | 'seo'>),
+  ...(homeData as Pick<SiteData, 'content'>),
+  ...(aboutData as Pick<SiteData, 'about' | 'philosophy' | 'studying'>),
+  ...(experienceData as Pick<SiteData, 'experience'>),
+  ...(recommendationsData as Pick<
+    SiteData,
+    'recommendations' | 'recommendationCompanyColors'
+  >),
+  ...(booksData as Pick<SiteData, 'books'>),
+  ...(youtubeData as Pick<SiteData, 'youtube'>),
+  ...(projectsData as Pick<SiteData, 'projects'>),
+}
 
 export const certifications =
   certificationsData.certifications as Certification[]

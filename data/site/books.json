@@ -1,0 +1,177 @@
+{
+  "books": {
+    "recommended": [
+      {
+        "id": "monolito-para-microsservicos",
+        "title": "Monolith to Microservices",
+        "subtitle": "Evolutionary Patterns to Transform Your Monolith",
+        "authors": ["Sam Newman"],
+        "language": "en",
+        "category": "Arquitetura de Software",
+        "topics": [
+          "Microsserviços",
+          "Monolitos",
+          "Migração",
+          "Arquitetura Evolutiva"
+        ],
+        "description": "Padrões práticos para migrar um sistema monolítico para microsserviços de forma incremental, sem reescrever tudo de uma vez.",
+        "url": "https://www.amazon.com.br/dp/1492047848",
+        "cover": "/books/monolith-to-microservices.jpg",
+        "status": "reading",
+        "progress": 35,
+        "progressUpdatedAt": "2026-10-12",
+        "readable": true
+      },
+      {
+        "id": "14-habitos-desenvolvedores",
+        "title": "14 Hábitos de Desenvolvedores Altamente Produtivos",
+        "authors": ["Zeno Rocha"],
+        "language": "pt",
+        "category": "Carreira",
+        "topics": ["Produtividade", "Carreira", "Hábitos"],
+        "description": "Hábitos práticos de devs de alta performance: foco, aprendizado contínuo, saúde e crescimento na carreira.",
+        "url": "https://www.amazon.com.br/dp/B08BF7PZZX",
+        "cover": "/books/14-habitos-desenvolvedores.jpg",
+        "status": "to-read"
+      },
+      {
+        "id": "fundamentos-arquitetura-software",
+        "title": "Fundamentos da Arquitetura de Software",
+        "subtitle": "Uma Abordagem de Engenharia",
+        "originalTitle": "Fundamentals of Software Architecture",
+        "authors": ["Mark Richards", "Neal Ford"],
+        "language": "pt",
+        "category": "Arquitetura de Software",
+        "topics": [
+          "Arquitetura",
+          "Estilos Arquiteturais",
+          "Características Arquiteturais",
+          "Trade-offs"
+        ],
+        "description": "Visão abrangente do papel do arquiteto: características arquiteturais, estilos (camadas, microkernel, microsserviços, eventos) e soft skills.",
+        "url": "https://www.amazon.com.br/dp/8550819859",
+        "cover": "/books/fundamentos-arquitetura-software.jpg",
+        "status": "to-read"
+      },
+      {
+        "id": "aprenda-domain-driven-design",
+        "title": "Aprenda Domain-Driven Design",
+        "subtitle": "Alinhando Arquitetura de Software e Estratégia de Negócios",
+        "originalTitle": "Learning Domain-Driven Design",
+        "authors": ["Vlad Khononov"],
+        "language": "pt",
+        "category": "Arquitetura de Software",
+        "topics": [
+          "DDD",
+          "Modelagem de Domínio",
+          "Bounded Contexts",
+          "Event Sourcing"
+        ],
+        "description": "Introdução prática ao DDD: design estratégico (subdomínios, bounded contexts) e tático (agregados, event sourcing, CQRS).",
+        "url": "https://www.amazon.com.br/dp/B0CTHS2P13",
+        "cover": "/books/aprenda-domain-driven-design.jpg",
+        "status": "to-read"
+      },
+      {
+        "id": "arquitetura-software-partes-dificeis",
+        "title": "Arquitetura de Software: As Partes Difíceis",
+        "subtitle": "Análises Modernas de Trade-off para Arquiteturas Distribuídas",
+        "originalTitle": "Software Architecture: The Hard Parts",
+        "authors": [
+          "Neal Ford",
+          "Mark Richards",
+          "Pramod Sadalage",
+          "Zhamak Dehghani"
+        ],
+        "language": "pt",
+        "category": "Arquitetura de Software",
+        "topics": [
+          "Sistemas Distribuídos",
+          "Trade-offs",
+          "Decomposição",
+          "Dados Distribuídos"
+        ],
+        "description": "Como decidir em arquiteturas distribuídas: granularidade de serviços, decomposição de monólitos, dados distribuídos, transações e sagas.",
+        "url": "https://www.amazon.com.br/dp/8550819840",
+        "cover": "/books/arquitetura-software-partes-dificeis.jpg",
+        "status": "to-read"
+      },
+      {
+        "id": "criando-microsservicos",
+        "title": "Criando Microsserviços",
+        "subtitle": "Projetando Sistemas com Componentes Menores e Mais Especializados",
+        "originalTitle": "Building Microservices",
+        "authors": ["Sam Newman"],
+        "language": "pt",
+        "category": "Arquitetura de Software",
+        "topics": [
+          "Microsserviços",
+          "Sistemas Distribuídos",
+          "Deploy",
+          "Observabilidade"
+        ],
+        "description": "Referência sobre microsserviços: modelagem, comunicação, deploy, testes, observabilidade, segurança e organização de times.",
+        "url": "https://www.amazon.com.br/dp/6586057884",
+        "cover": "/books/criando-microsservicos.jpg",
+        "status": "to-read"
+      },
+      {
+        "id": "system-design-interview-vol-1",
+        "title": "System Design Interview – An Insider's Guide",
+        "subtitle": "Volume 1 (Second Edition)",
+        "authors": ["Alex Xu"],
+        "language": "en",
+        "category": "System Design",
+        "topics": ["System Design", "Entrevista Técnica", "Escalabilidade"],
+        "description": "Framework para entrevistas de system design com casos clássicos: rate limiter, consistent hashing, URL shortener, chat, news feed.",
+        "url": "https://www.amazon.com.br/dp/B08CMF2CQF",
+        "cover": "/books/system-design-interview-vol-1.jpg",
+        "status": "to-read"
+      },
+      {
+        "id": "system-design-interview-vol-2",
+        "title": "System Design Interview – An Insider's Guide: Volume 2",
+        "subtitle": "Volume 2",
+        "authors": ["Alex Xu", "Sahn Lam"],
+        "language": "en",
+        "category": "System Design",
+        "topics": ["System Design", "Entrevista Técnica", "Escalabilidade"],
+        "description": "Continuação com casos avançados: proximity service, Google Maps, message queue distribuída, sistema de pagamentos, bolsa de valores.",
+        "url": "https://www.amazon.com.br/dp/1736049119",
+        "cover": "/books/system-design-interview-vol-2.jpg",
+        "status": "to-read"
+      },
+      {
+        "id": "chaos-engineering",
+        "title": "Chaos Engineering",
+        "subtitle": "System Resiliency in Practice",
+        "authors": ["Casey Rosenthal", "Nora Jones"],
+        "language": "en",
+        "category": "Confiabilidade",
+        "topics": [
+          "Chaos Engineering",
+          "Resiliência",
+          "SRE",
+          "Sistemas Distribuídos"
+        ],
+        "description": "Princípios e prática de engenharia do caos, criada na Netflix, para descobrir fraquezas antes que virem incidentes em produção.",
+        "url": "https://www.amazon.com.br/dp/1492043869",
+        "cover": "/books/chaos-engineering.jpg",
+        "status": "to-read"
+      },
+      {
+        "id": "como-fazer-amigos",
+        "title": "Como Fazer Amigos e Influenciar Pessoas",
+        "originalTitle": "How to Win Friends and Influence People",
+        "authors": ["Dale Carnegie"],
+        "language": "pt",
+        "category": "Soft Skills",
+        "topics": ["Comunicação", "Relacionamentos", "Liderança"],
+        "description": "Clássico sobre relações humanas: como lidar com pessoas, ser bem aceito e persuadir sem gerar ressentimento.",
+        "url": "https://www.amazon.com.br/dp/8543108683",
+        "cover": "/books/como-fazer-amigos.jpg",
+        "status": "to-read"
+      }
+    ]
+  }
+}

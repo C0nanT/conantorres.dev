@@ -1,0 +1,65 @@
+{
+  "youtube": {
+    "recommendedChannels": [
+      {
+        "id": "matt-pocock",
+        "name": "Matt Pocock",
+        "handle": "@mattpocockuk",
+        "url": "https://www.youtube.com/@mattpocockuk",
+        "description": "Engenharia de software com IA — workflows, TypeScript e Claude Code para devs.",
+        "subscribers": "250K+",
+        "videoCount": "270+",
+        "category": "AI Coding",
+        "highlights": ["AI Coding", "Claude Code", "TypeScript", "Workflows"]
+      },
+      {
+        "id": "renato-augusto",
+        "name": "Renato Augusto",
+        "handle": "@RenatoAugustoTech",
+        "url": "https://www.youtube.com/@RenatoAugustoTech",
+        "description": "Tecnologia para engenheiros de software que querem se destacar — carreira, arquitetura e boas práticas.",
+        "subscribers": "150K+",
+        "videoCount": "60+",
+        "category": "Software Engineering",
+        "highlights": [
+          "Carreira",
+          "Arquitetura de Software",
+          "Programação",
+          "Livros"
+        ]
+      },
+      {
+        "id": "pasquadev",
+        "name": "Vinicius Pasquantonio",
+        "handle": "@pasquadev",
+        "url": "https://www.youtube.com/@pasquadev",
+        "description": "Staff Engineer mostrando como devs de verdade usam IA no dia a dia, sem vibe coding.",
+        "subscribers": "29K+",
+        "videoCount": "900+",
+        "category": "IA & Engenharia",
+        "highlights": ["IA", "Engenharia de Software", "Carreira"]
+      }
+    ],
+    "recommendedVideos": [
+      {
+        "videoId": "-QFHIoCo-Ko",
+        "startSeconds": 2,
+        "title": "Full Walkthrough: Workflow for AI Coding",
+        "views": "2 mi",
+        "channelId": "matt-pocock"
+      },
+      {
+        "videoId": "TREjh6d5fLg",
+        "title": "10 ANOS DE PROGRAMAÇÃO EM 10 LIÇÕES QUE VÃO MUDAR SUA CARREIRA!",
+        "views": "83 mil",
+        "channelId": "renato-augusto"
+      },
+      {
+        "videoId": "t0gn4CaOKDw",
+        "title": "Os 5 hábitos dos devs que entregam 10x mais com IA",
+        "views": "16 mil",
+        "channelId": "pasquadev"
+      }
+    ]
+  }
+}

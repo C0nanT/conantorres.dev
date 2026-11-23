@@ -1,0 +1,71 @@
+{
+  "profile": {
+    "fullName": "Conan Torres",
+    "displayName": "Conan Torres",
+    "firstName": "Conan",
+    "lastName": "Torres",
+    "aliases": ["Conan"],
+    "initials": "CT",
+    "role": "Full Stack Sênior",
+    "subtitle": "Desenvolvedor Sênior Full Stack & Tech Lead",
+    "jobTitle": "Assessor de Tecnologia (Tech Lead)",
+    "nationality": "Brasileiro",
+    "location": {
+      "city": "Florianópolis",
+      "country": "Brasil",
+      "countryCode": "BR",
+      "display": "Florianópolis, SC 🇧🇷",
+      "mapUrl": "https://www.google.com/maps/search/?api=1&query=Florian%C3%B3polis%2C%20SC"
+    },
+    "structuredDataLocation": {
+      "city": "Florianópolis",
+      "countryCode": "BR"
+    },
+    "education": {
+      "degree": "Análise e Desenvolvimento de Sistemas - UNIASSELVI",
+      "institution": "Centro Universitário Leonardo da Vinci",
+      "institutionShort": "UNIASSELVI",
+      "year": 2024
+    },
+    "stats": {
+      "certifications": "25",
+      "yearsExperience": "6+",
+      "freelances": "7"
+    },
+    "images": {
+      "avatar": "/profile-id-sem-fundo-2.webp",
+      "hero": "/profile-hero.webp",
+      "profile": "/profile-id-sem-fundo-2.webp",
+      "about": "/profile-id-sem-fundo-2.webp",
+      "og": "/og-image.png",
+      "logo": "/profile-id-sem-fundo-2.webp"
+    },
+    "knowsAbout": [
+      "Web Development",
+      "Laravel (PHP)",
+      "Django (Python)",
+      "React (TypeScript)",
+      "Docker",
+      "Linux",
+      "DevOps"
+    ],
+    "tagline": "Dev Sênior Full Stack & Tech Lead",
+    "birthDate": "2001-07-30"
+  },
+  "contact": {
+    "email": "conantorreswf@gmail.com",
+    "whatsapp": "5548999904772"
+  },
+  "social": {
+    "linkedin": {
+      "url": "https://www.linkedin.com/in/conan-torres/",
+      "handle": "conan-torres",
+      "label": "Linkedin"
+    },
+    "github": {
+      "url": "https://github.com/C0nanT",
+      "handle": "C0nanT",
+      "label": "GitHub"
+    }
+  }
+}

@@ -28,7 +28,7 @@ function buildProjects(): Project[] {
     ({ repo: name, description, stack, image }) => {
       if (seen.has(name)) {
         throw new Error(
-          `[projects] "${name}" is listed more than once in data/site.json (projects.featured).`
+          `[projects] "${name}" is listed more than once in data/site/projects.json (projects.featured).`
         )
       }
       seen.add(name)
@@ -37,7 +37,7 @@ function buildProjects(): Project[] {
 
       if (!repo) {
         throw new Error(
-          `[projects] "${name}" is listed in data/site.json (projects.featured) but not found in data/github-repos.json. Fix the repo name or update github-repos.json.`
+          `[projects] "${name}" is listed in data/site/projects.json (projects.featured) but not found in data/github-repos.json. Fix the repo name or update github-repos.json.`
         )
       }
 
