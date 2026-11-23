@@ -4,54 +4,33 @@ import { getBooks } from '@/lib/reader/book-progress'
 import { site } from '@/lib/site-data'
 import { ArrowUpRight, BookOpen, Github, Hammer } from 'lucide-react'
 import { getTranslations } from 'next-intl/server'
-import Image from 'next/image'
 
 export async function StudyingSection() {
   const t = await getTranslations('studying')
-  const { topics, book: bookNote, project, news } = site.studying
+  const { book: bookNote, project, news } = site.studying
   const book = getBooks().find((item) => item.id === bookNote.id)
   const progress = book?.progress ?? 0
 
   return (
-    <section id="como-estou-estudando" className="scroll-mt-20 py-16 lg:py-24">
+    <section
+      id="como-estou-estudando"
+      data-toc="Como estou estudando"
+      className="scroll-mt-20 py-16 lg:py-24"
+    >
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-4 lg:grid-cols-[1fr_2fr] lg:gap-20">
-        <div className="space-y-6 lg:sticky lg:top-24 lg:self-start">
+        <div className="space-y-6 max-sm:text-center lg:sticky lg:top-24 lg:self-start">
           <h2 className="text-4xl font-bold tracking-tight lg:text-5xl">
             {t('titleLead')}{' '}
             <span className="gradient-text">{t('titleHighlight')}</span>
           </h2>
           <p className="text-lg text-muted-foreground">{t('subtitle')}</p>
-          <ol className="space-y-2 border-l-2 border-border pl-4">
-            {topics.map((topic, index) => (
-              <li key={topic} className="flex items-baseline gap-3">
-                <span className="font-mono text-xs text-primary">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
-                <span className="font-medium">{topic}</span>
-              </li>
-            ))}
-          </ol>
         </div>
 
         <div className="space-y-14">
           {book && (
-            <article className="grid grid-cols-[auto_1fr] gap-6">
-              {book.cover && (
-                <Link
-                  href="/books"
-                  className="relative block aspect-[3/4] w-28 overflow-hidden rounded-md border border-border/40 shadow-md sm:w-36"
-                >
-                  <Image
-                    src={book.cover}
-                    alt={book.title}
-                    fill={true}
-                    sizes="144px"
-                    className="object-cover"
-                  />
-                </Link>
-              )}
+            <article className="grid gap-6 max-sm:justify-items-center max-sm:text-center">
               <div className="space-y-3">
-                <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary">
+                <p className="flex items-center gap-2 max-sm:justify-center text-xs font-semibold uppercase tracking-widest text-primary">
                   <BookOpen aria-hidden="true" className="h-4 w-4" />
                   {t('reading')}
                 </p>
@@ -61,7 +40,7 @@ export async function StudyingSection() {
                 <p className="text-muted-foreground">{bookNote.note}</p>
                 <div
                   aria-hidden="true"
-                  className="h-2 w-full max-w-xs overflow-hidden rounded-full bg-muted"
+                  className="h-2 w-full max-w-xs overflow-hidden rounded-full bg-muted max-sm:mx-auto"
                 >
                   <div
                     className="h-full rounded-full bg-primary"
@@ -84,16 +63,16 @@ export async function StudyingSection() {
 
           <hr className="border-border" />
 
-          <article className="space-y-3">
-            <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary">
+          <article className="space-y-3 max-sm:text-center">
+            <p className="flex items-center gap-2 max-sm:justify-center text-xs font-semibold uppercase tracking-widest text-primary">
               <Hammer aria-hidden="true" className="h-4 w-4" />
               {t('building')} · {project.status}
             </p>
             <h3 className="font-mono text-3xl font-bold">{project.name}</h3>
-            <p className="max-w-xl text-lg text-muted-foreground">
+            <p className="max-w-xl text-lg text-muted-foreground max-sm:mx-auto">
               {project.description}
             </p>
-            <p className="max-w-xl border-l-4 border-primary/30 pl-4 italic text-muted-foreground">
+            <p className="max-w-xl border-l-4 border-primary/30 pl-4 italic text-muted-foreground max-sm:mx-auto max-sm:border-l-0 max-sm:pl-0">
               {project.noAi}
             </p>
             <Button asChild={true} size="sm">
@@ -106,15 +85,17 @@ export async function StudyingSection() {
 
           <hr className="border-border" />
 
-          <article className="space-y-3">
-            <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-primary">
+          <article className="space-y-3 max-sm:text-center">
+            <p className="flex items-center gap-2 max-sm:justify-center text-xs font-semibold uppercase tracking-widest text-primary">
               <svg aria-hidden="true" viewBox="0 0 28 20" className="h-3 w-4">
                 <rect width="28" height="20" rx="5" fill="#FF0000" />
                 <path d="M11 6l7 4-7 4z" fill="#fff" />
               </svg>
               {t('following')}
             </p>
-            <p className="max-w-xl text-lg text-muted-foreground">{news}</p>
+            <p className="max-w-xl text-lg text-muted-foreground max-sm:mx-auto">
+              {news}
+            </p>
           </article>
         </div>
       </div>

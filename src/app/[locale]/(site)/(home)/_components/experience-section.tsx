@@ -7,7 +7,11 @@ export function ExperienceSection() {
   const t = useTranslations('experience')
 
   return (
-    <section className="bg-gradient-to-b from-background to-muted/30 pt-16 pb-8 lg:pt-20 lg:pb-10">
+    <section
+      id="experiencias"
+      data-toc="Experiências"
+      className="scroll-mt-16 bg-gradient-to-b from-background to-muted/30 pt-16 pb-8 lg:pt-20 lg:pb-10"
+    >
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="group relative mb-6 w-fit text-3xl font-bold underline decoration-transparent decoration-2 underline-offset-8 transition-colors duration-300 ease-out hover:text-primary hover:decoration-primary motion-reduce:transition-none lg:text-4xl">
           {t('titlePrefix')}{' '}

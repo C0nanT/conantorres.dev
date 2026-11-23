@@ -12,14 +12,16 @@ export async function StudyingTeaser() {
   )
 
   return (
-    <section className="py-14">
+    <section id="estudando" data-toc="Estudando" className="scroll-mt-16 py-14">
       <div className="mx-auto grid max-w-5xl items-center gap-8 px-4 md:grid-cols-[1fr_auto]">
-        <div className="space-y-4">
+        <div className="space-y-4 max-sm:text-center">
           <p className="text-xs font-semibold uppercase tracking-widest text-primary">
             {t('eyebrow')}
           </p>
           <h2 className="text-3xl font-bold tracking-tight">{t('title')}</h2>
-          <p className="max-w-xl text-lg text-muted-foreground">{t('text')}</p>
+          <p className="max-w-xl text-lg text-muted-foreground max-sm:mx-auto">
+            {t('text')}
+          </p>
           <Button asChild={true} variant="outline">
             <Link href="/about#como-estou-estudando">
               {t('button')}

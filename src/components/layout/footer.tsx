@@ -71,7 +71,7 @@ export function Footer() {
         {/* Main Footer Content */}
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-5">
           {/* Brand Section - Takes more space on larger screens */}
-          <div className="col-span-2 lg:col-span-1 space-y-6">
+          <div className="col-span-2 space-y-6 max-sm:flex max-sm:flex-col max-sm:items-center max-sm:text-center lg:col-span-1">
             <button
               type="button"
               tabIndex={-1}
@@ -80,7 +80,7 @@ export function Footer() {
               <LogoHorizontal isPressable={true} />
             </button>
 
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs max-sm:mx-auto">
               {profile.tagline}
             </p>
 
@@ -126,7 +126,10 @@ export function Footer() {
 
           {/* Footer Sections */}
           {footerSections.map((section) => (
-            <div key={section.title} className="space-y-4">
+            <div
+              key={section.title}
+              className="space-y-4 max-sm:justify-self-center max-sm:last:col-span-2 max-sm:last:text-center"
+            >
               <h3 className="text-sm font-semibold text-foreground tracking-wide">
                 {section.title}
               </h3>
@@ -159,7 +162,7 @@ export function Footer() {
         <Separator className="my-12 [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]" />
 
         {/* Bottom Section */}
-        <div className="flex flex-col items-start justify-between space-y-6 lg:flex-row lg:items-center lg:space-y-0">
+        <div className="flex flex-col items-start justify-between space-y-6 max-sm:items-center max-sm:text-center lg:flex-row lg:items-center lg:space-y-0">
           <div className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} {profile.displayName}. Todos os
             direitos reservados.

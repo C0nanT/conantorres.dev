@@ -1,5 +1,6 @@
 import { WhatsappFloatingButton } from '@/components/common'
 import { Footer, Navigation } from '@/components/layout'
+import { PageIndex } from '@/components/layout/page-index'
 import { RouteTransition } from '@/components/layout/route-transition'
 import { Suspense } from 'react'
 
@@ -19,6 +20,9 @@ export default function SiteLayout({
         </main>
         <Footer />
       </div>
+      <Suspense fallback={null}>
+        <PageIndex />
+      </Suspense>
       <WhatsappFloatingButton />
     </>
   )

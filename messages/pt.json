@@ -5,7 +5,10 @@
     "projects": "Projetos",
     "certificates": "Certificados",
     "books": "Livros",
-    "socialMedia": "Redes Sociais"
+    "socialMedia": "Redes Sociais",
+    "closeMenu": "Fechar menu",
+    "email": "E-mail",
+    "chat": "Conversar"
   },
   "experience": {
     "titlePrefix": "Minhas",

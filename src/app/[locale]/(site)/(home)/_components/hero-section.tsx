@@ -108,7 +108,7 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
   ]
 
   return (
-    <section className="hero-section">
+    <section id="inicio" data-toc="Início" className="hero-section">
       <div
         className={cn(
           // px-4 below sm lines the hero up with the sections under it
@@ -121,9 +121,9 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
           'after:[mask-image:linear-gradient(to_bottom,black_80%,transparent)]'
         )}
       >
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 gap-12 max-sm:gap-6 lg:grid-cols-2 lg:gap-16 items-center">
           {/* Left Column - Content */}
-          <div className="space-y-8">
+          <div className="space-y-8 max-sm:space-y-6">
             {/* Badge */}
             {/* on narrow phones the second badge wraps to its own line
                 instead of squeezing both badges' text */}
@@ -165,44 +165,58 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
               </p>
             </div>
 
-            {/* Highlights */}
-            <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-              {highlights.map((highlight) => {
-                const Icon = highlight.icon
+            {/* Photo + highlights: side by side below lg (the big photo
+                lives in the right column from lg up) */}
+            <div className="grid grid-cols-[1fr_8.5rem] items-center gap-4 sm:grid-cols-[1fr_11rem] sm:gap-6 lg:block">
+              <div className="relative order-2 aspect-square overflow-hidden rounded-2xl border border-border/20 bg-muted/30 lg:hidden">
+                <Image
+                  src={profile.images.hero}
+                  alt={`${profile.displayName} - ${profile.jobTitle}`}
+                  fill={true}
+                  className="select-none object-cover object-[95%_center]"
+                  quality={90}
+                  sizes="(max-width: 640px) 136px, 176px"
+                />
+              </div>
+              {/* Highlights */}
+              <div className="grid grid-cols-1 gap-2 lg:grid-cols-2">
+                {highlights.map((highlight) => {
+                  const Icon = highlight.icon
 
-                if (highlight.image && highlight.swapsWithCursor) {
-                  return (
-                    <CursorSwapHighlight
-                      key={highlight.label}
-                      label={highlight.label}
-                      image={highlight.image}
-                    />
-                  )
-                }
-
-                return (
-                  <div
-                    key={highlight.label}
-                    className="group flex items-center gap-2 transition-transform duration-200 ease-out motion-safe:hover:translate-x-1"
-                  >
-                    {Icon && (
-                      <Icon className="h-4 w-4 shrink-0 transition-transform duration-200 motion-safe:group-hover:scale-125 motion-safe:group-hover:-rotate-6" />
-                    )}
-                    {highlight.image && (
-                      <Image
-                        src={highlight.image}
-                        alt=""
-                        width={16}
-                        height={16}
-                        className="shrink-0 transition-transform duration-200 motion-safe:group-hover:scale-125"
+                  if (highlight.image && highlight.swapsWithCursor) {
+                    return (
+                      <CursorSwapHighlight
+                        key={highlight.label}
+                        label={highlight.label}
+                        image={highlight.image}
                       />
-                    )}
-                    <span className="text-sm font-medium">
-                      {highlight.label}
-                    </span>
-                  </div>
-                )
-              })}
+                    )
+                  }
+
+                  return (
+                    <div
+                      key={highlight.label}
+                      className="group flex items-center gap-2 transition-transform duration-200 ease-out motion-safe:hover:translate-x-1"
+                    >
+                      {Icon && (
+                        <Icon className="h-4 w-4 shrink-0 transition-transform duration-200 motion-safe:group-hover:scale-125 motion-safe:group-hover:-rotate-6" />
+                      )}
+                      {highlight.image && (
+                        <Image
+                          src={highlight.image}
+                          alt=""
+                          width={16}
+                          height={16}
+                          className="shrink-0 transition-transform duration-200 motion-safe:group-hover:scale-125"
+                        />
+                      )}
+                      <span className="text-sm font-medium">
+                        {highlight.label}
+                      </span>
+                    </div>
+                  )
+                })}
+              </div>
             </div>
 
             {/* CTA Buttons */}
@@ -222,9 +236,9 @@ export function HeroSection({ projectsCount }: HeroSectionProps) {
           </div>
 
           {/* Right Column - Image & Stats */}
-          <div className="space-y-8">
+          <div className="space-y-8 max-sm:space-y-6">
             {/* Profile Image */}
-            <div className="relative">
+            <div className="relative max-lg:hidden">
               {/* The photo fades out from its middle to the left edge, border
                   included, so the empty wall melts into the page. */}
               <div className="relative aspect-[3/2] w-full overflow-hidden rounded-2xl border border-border/20 bg-muted/30 [mask-image:linear-gradient(to_right,transparent,black_60%)]">

@@ -132,6 +132,7 @@ export function RecommendationsSection() {
   return (
     <section
       id="recomendacoes"
+      data-toc="Recomendações"
       className="scroll-mt-16 bg-muted/30 py-16 lg:py-20"
     >
       <div className="max-w-6xl mx-auto px-4">

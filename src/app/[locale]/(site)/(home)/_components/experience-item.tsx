@@ -44,10 +44,7 @@ export function ExperienceItem({ job }: { job: Experience }) {
       {/* the rail is its own 2px line: it starts at the first dot's centre (no
           stub above it) and the last one fades out; the dot is centred on it
           and on the company row (min-h-7, centre at 14px) */}
-      {/* below sm the column is too narrow for the switch to float beside the
-          role, so the block becomes a flex column and the switch drops under
-          the period (order), leaving the role the full width */}
-      <div className="relative ml-2 pb-12 pl-6 group-last:pb-0 max-sm:flex max-sm:flex-col md:ml-0 md:pl-10">
+      <div className="relative ml-2 pb-12 pl-6 group-last:pb-0 md:ml-0 md:pl-10">
         <span
           aria-hidden="true"
           className="absolute top-0 bottom-0 left-0 w-0.5 bg-border group-first:top-3.5 group-last:bg-transparent group-last:bg-gradient-to-b group-last:from-border group-last:from-60% group-last:to-transparent"
@@ -82,32 +79,40 @@ export function ExperienceItem({ job }: { job: Experience }) {
           </h3>
           <CompanyAbout job={job} />
         </div>
-        <div className="relative z-10 float-right mb-2 ml-4 flex items-center gap-2 max-sm:order-1 max-sm:mb-4 max-sm:ml-0 max-sm:self-start">
-          <Switch
-            id={switchId}
-            checked={isDetailed}
-            onCheckedChange={setIsDetailed}
-          />
-          <label
-            htmlFor={switchId}
-            className="cursor-pointer font-serif text-xs italic text-muted-foreground"
-          >
-            {t('moreDetails')}
-          </label>
+        {/* from sm the switch floats right beside the role; below sm the
+            column is too narrow, so role / period / switch become a grid:
+            the role takes the full width and the switch sits at the right
+            end of the period's line */}
+        <div className="mb-3 max-sm:grid max-sm:grid-cols-[1fr_auto] max-sm:items-center max-sm:gap-x-3 max-sm:gap-y-0.5">
+          <div className="relative z-10 float-right mb-2 ml-4 flex items-center gap-2 max-sm:col-start-2 max-sm:row-start-2 max-sm:float-none max-sm:mb-0 max-sm:ml-0">
+            <Switch
+              id={switchId}
+              checked={isDetailed}
+              onCheckedChange={setIsDetailed}
+            />
+            <label
+              htmlFor={switchId}
+              className="cursor-pointer font-serif text-xs italic text-muted-foreground"
+            >
+              {t('moreDetails')}
+            </label>
+          </div>
+          {/* role, level and period sit right of the dot, above the list */}
+          <div className="space-y-0.5 max-sm:contents">
+            <p className="font-semibold max-sm:col-span-2 max-sm:row-start-1">
+              {job.role}
+              {job.level && (
+                <span className="ml-2 whitespace-nowrap text-sm font-medium text-primary">
+                  [{job.level}]
+                </span>
+              )}
+            </p>
+            <p className="text-sm text-muted-foreground max-sm:col-start-1 max-sm:row-start-2">
+              {job.period}
+            </p>
+          </div>
         </div>
-        {/* role, level and period sit right of the dot, above the list */}
-        <div className="mb-3 space-y-0.5">
-          <p className="font-semibold">
-            {job.role}
-            {job.level && (
-              <span className="ml-2 whitespace-nowrap text-sm font-medium text-primary">
-                [{job.level}]
-              </span>
-            )}
-          </p>
-          <p className="text-sm text-muted-foreground">{job.period}</p>
-        </div>
-        <div className="relative clear-right max-sm:order-2">
+        <div className="relative clear-right">
           {/* overflow-clip, not hidden: hidden would start a new block
               formatting context and stop the list wrapping around the switch */}
           <motion.div

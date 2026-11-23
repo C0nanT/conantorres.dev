@@ -1,7 +1,6 @@
 'use client'
 
-import { SocialButton } from '@/components/common/social-button'
-import { NavigationCard } from '@/components/layout/navigation-card'
+import { MobileMenu } from '@/components/layout/mobile-menu'
 import { NavigationDock } from '@/components/layout/navigation-dock'
 import { Button } from '@/components/ui/button'
 import { Link, usePathname } from '@/lib/navigation'
@@ -98,58 +97,12 @@ export function Navigation() {
         </Button>
       </div>
 
-      {/* Mobile Navigation - Full Screen */}
       {isOpen && (
-        <div className="md:hidden fixed inset-0 z-50 bg-background/95 backdrop-blur-sm">
-          <div className="flex flex-col h-full">
-            {/* Header with close button */}
-            <div className="flex items-center justify-between p-4 border-b border-border/40">
-              <LogoHorizontal />
-              <Button
-                variant="ghost"
-                size="sm"
-                className="h-9 w-9 p-0 hover:bg-muted/50"
-                onClick={() => setIsOpen(false)}
-              >
-                <RiCloseLine className="h-5 w-5" />
-                <span className="sr-only">Close menu</span>
-              </Button>
-            </div>
-
-            {/* Main content */}
-            <div className="flex-1 flex flex-col justify-center px-6 py-8">
-              <nav className="grid grid-cols-2 gap-4 max-w-lg mx-auto w-full">
-                {navigationItems.map((item) => (
-                  <NavigationCard
-                    key={item.href}
-                    href={item.href}
-                    icon={item.icon}
-                    label={item.name}
-                    isActive={isActive(item.href)}
-                    onClick={() => setIsOpen(false)}
-                  />
-                ))}
-              </nav>
-
-              {/* Mobile Social Links */}
-              <div className="mt-8 pt-8 border-t border-border/30 max-w-sm mx-auto w-full">
-                <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-6 text-center">
-                  {t('navigation.socialMedia')}
-                </p>
-                <div className="flex items-center justify-center gap-6">
-                  {socialLinks.map((link) => (
-                    <SocialButton
-                      key={link.href}
-                      href={link.href}
-                      icon={link.icon}
-                      label={link.name}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <MobileMenu
+          items={navigationData}
+          socials={socialLinks}
+          onClose={() => setIsOpen(false)}
+        />
       )}
     </header>
   )

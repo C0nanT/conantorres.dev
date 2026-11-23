@@ -99,7 +99,7 @@ export async function AboutHero() {
   const headlineParts = about.headline.split(about.headlineHighlight)
 
   return (
-    <section className="hero-section">
+    <section id="sobre-mim" data-toc="Sobre mim" className="hero-section">
       <div className="max-w-6xl mx-auto px-4 py-16 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column - Content */}
@@ -139,7 +139,9 @@ export async function AboutHero() {
 
             {/* Hobbies */}
             <div className="space-y-4">
-              <h2 className="font-semibold text-lg">{t('hobbiesTitle')}</h2>
+              <h2 id="fora-do-trabalho" className="font-semibold text-lg">
+                {t('hobbiesTitle')}
+              </h2>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {about.hobbies.map((hobby) => {
                   const Icon = getAboutIcon(hobby.icon)
@@ -181,7 +183,13 @@ export async function AboutHero() {
 
             {/* Um dia comum */}
             <div className="space-y-5">
-              <h2 className="font-semibold text-lg">{t('dayTitle')}</h2>
+              <h2
+                id="meu-dia"
+                data-toc="Meu dia"
+                className="font-semibold text-lg"
+              >
+                {t('dayTitle')}
+              </h2>
               {/* the icons hang 3rem left of each step; below lg nothing sits
                   to the left, so the extra padding keeps them on screen */}
               <ol className="relative space-y-6 pl-8 max-lg:pl-12">
