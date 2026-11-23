@@ -4,7 +4,6 @@ import { type PanInfo, motion } from 'framer-motion'
 import { useLayoutEffect, useRef, useState } from 'react'
 import { CompanyLabel } from './company-accent'
 import { RecommendationAvatar } from './recommendation-avatar'
-import { RecommendationCountdown } from './recommendation-countdown'
 
 const SWIPE_THRESHOLD = 50
 const SLIDE_GAP_PX = 12
@@ -12,10 +11,7 @@ const SLIDE_GAP_PX = 12
 interface RecommendationCarouselProps {
   items: RecommendationGroup[]
   selectedIndex: number
-  countdownDelayMs: number
-  countdownDurationMs: number
   onSelect: (index: number, direction: 1 | -1) => void
-  onCountdownEnd: () => void
 }
 
 // Só mobile: o autor ativo no centro e os vizinhos (quem já passou à esquerda,
@@ -24,10 +20,7 @@ interface RecommendationCarouselProps {
 export function RecommendationCarousel({
   items,
   selectedIndex,
-  countdownDelayMs,
-  countdownDurationMs,
   onSelect,
-  onCountdownEnd,
 }: RecommendationCarouselProps) {
   const viewportRef = useRef<HTMLDivElement>(null)
   const slideRefs = useRef<(HTMLButtonElement | null)[]>([])
@@ -127,13 +120,6 @@ export function RecommendationCarousel({
                     />
                   </span>
                 </span>
-                {isSelected && items.length > 1 && (
-                  <RecommendationCountdown
-                    delayMs={countdownDelayMs}
-                    durationMs={countdownDurationMs}
-                    onEnd={onCountdownEnd}
-                  />
-                )}
               </button>
             )
           })}

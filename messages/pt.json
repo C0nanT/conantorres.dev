@@ -20,7 +20,8 @@
     "badge": "Recomendações",
     "titlePrefix": "O que dizem sobre",
     "titleHighlight": "meu trabalho",
-    "viewAll": "Ver todas no Linkedin"
+    "viewAll": "Ver todas no Linkedin",
+    "peopleCount": "{count, plural, one {# pessoa recomenda} other {# pessoas recomendam}}"
   },
   "common": {
     "loading": "Carregando...",

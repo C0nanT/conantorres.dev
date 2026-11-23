@@ -4,9 +4,9 @@ interface RecommendationCountdownProps {
   onEnd: () => void
 }
 
-// A barra fica colada na borda de baixo do card; o recorte arredondado
-// acompanha os cantos do destaque. Quem a usa monta só para o autor ativo (a
-// montagem reinicia a animação) e pausa com hover/foco no `group` do pai.
+// Barra fina logo abaixo do texto, acima da linha que separa o autor. Quem a
+// usa monta só para a recomendação ativa (a montagem reinicia a animação) e
+// pausa com hover/foco no `group` do pai.
 export function RecommendationCountdown({
   delayMs,
   durationMs,
@@ -16,9 +16,9 @@ export function RecommendationCountdown({
     <span
       aria-hidden={true}
       style={{ animationDelay: `${delayMs}ms` }}
-      className="pointer-events-none absolute inset-0 animate-recommendation-bar-in overflow-hidden rounded-xl motion-reduce:hidden"
+      className="pointer-events-none relative mx-auto mt-6 block h-[3px] w-1/2 animate-recommendation-bar-in overflow-hidden rounded-full bg-primary/15 motion-reduce:hidden"
     >
-      <span className="absolute inset-x-0 bottom-0 h-[3px] bg-primary/15">
+      <span className="absolute inset-0">
         <span
           onAnimationEnd={onEnd}
           style={{

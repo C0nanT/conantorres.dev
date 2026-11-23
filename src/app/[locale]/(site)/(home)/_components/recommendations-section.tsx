@@ -20,6 +20,7 @@ import { CompanyLabel, CompanyPill } from './company-accent'
 import { RecommendationAvatar } from './recommendation-avatar'
 import { RecommendationCarousel } from './recommendation-carousel'
 import { RecommendationCountdown } from './recommendation-countdown'
+import { RecommendationWall } from './recommendation-wall'
 
 // ~200 palavras/min: confortável para ler sem pressa
 const READING_MS_PER_WORD = 300
@@ -28,8 +29,21 @@ const MIN_READING_MS = 6000
 // tempo de leitura total continua o mesmo, a contagem é que começa depois
 const BAR_DELAY_MS = 500
 
-function companiesOf(group: RecommendationGroup) {
-  return group.entries.map((entry) => entry.company)
+// Agrupa por empresa (a da primeira recomendação), na ordem em que aparecem
+// no site.json; mural, carrossel e troca automática seguem essa mesma ordem.
+function sortByCompany(groups: RecommendationGroup[]) {
+  const rank = new Map<string, number>()
+  for (const group of groups) {
+    const company = group.entries[0]?.company ?? ''
+    if (!rank.has(company)) {
+      rank.set(company, rank.size)
+    }
+  }
+  return [...groups].sort(
+    (a, b) =>
+      (rank.get(a.entries[0]?.company ?? '') ?? 0) -
+      (rank.get(b.entries[0]?.company ?? '') ?? 0)
+  )
 }
 
 function allText(group: RecommendationGroup) {
@@ -75,7 +89,7 @@ function Meta({ group }: { group: RecommendationGroup }) {
 
 export function RecommendationsSection() {
   const t = useTranslations('recommendations')
-  const items = groupRecommendations(site.recommendations)
+  const items = sortByCompany(groupRecommendations(site.recommendations))
   const baseId = useId()
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([])
   const isStill = useReducedMotion() ?? false
@@ -162,94 +176,19 @@ export function RecommendationsSection() {
           <RecommendationCarousel
             items={items}
             selectedIndex={selectedIndex}
-            countdownDelayMs={BAR_DELAY_MS}
-            countdownDurationMs={getReadingTimeMs(selectedText) - BAR_DELAY_MS}
             onSelect={selectPerson}
-            onCountdownEnd={handleCountdownEnd}
           />
-          <div
-            role="tablist"
-            aria-orientation="vertical"
+          <RecommendationWall
+            items={items}
+            selectedId={selected.id}
+            baseId={baseId}
+            isStill={isStill}
+            tabRefs={tabRefs}
+            onSelect={(index) =>
+              selectPerson(index, index > selectedIndex ? 1 : -1)
+            }
             onKeyDown={handleKeyDown}
-            className="relative hidden gap-2 md:flex md:flex-col"
-          >
-            {items.map((item, index) => {
-              const isSelected = item.id === selected.id
-              return (
-                <button
-                  key={item.id}
-                  ref={(node) => {
-                    tabRefs.current[index] = node
-                  }}
-                  id={`${baseId}-tab-${item.id}`}
-                  type="button"
-                  role="tab"
-                  aria-selected={isSelected}
-                  aria-controls={`${baseId}-panel`}
-                  tabIndex={isSelected ? 0 : -1}
-                  onClick={() =>
-                    selectPerson(index, index > selectedIndex ? 1 : -1)
-                  }
-                  className={cn(
-                    'relative flex shrink-0 items-center rounded-xl border border-transparent px-3 py-2 text-left transition-[opacity,background-color] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-                    !isSelected &&
-                      'opacity-50 hover:bg-background/60 hover:opacity-100'
-                  )}
-                >
-                  {/* Um único destaque compartilhado: ao trocar de autor ele
-                      desliza (desce) até o novo item em vez de reaparecer. */}
-                  {isSelected && (
-                    <motion.span
-                      layoutId={`${baseId}-active`}
-                      aria-hidden={true}
-                      transition={
-                        isStill
-                          ? { duration: 0 }
-                          : { type: 'spring', stiffness: 380, damping: 34 }
-                      }
-                      className="absolute inset-0 rounded-xl bg-background shadow-lg ring-1 ring-foreground/5"
-                    />
-                  )}
-                  <span className="relative flex items-center gap-3">
-                    <span
-                      className={cn(
-                        'inline-flex transition-[filter] duration-300',
-                        !isSelected && 'grayscale'
-                      )}
-                    >
-                      <RecommendationAvatar person={item} size="sm" />
-                    </span>
-                    <span className="flex flex-col">
-                      <span
-                        className={cn(
-                          'text-sm font-medium',
-                          isSelected && 'font-semibold'
-                        )}
-                      >
-                        {item.name}
-                      </span>
-                      <span className="text-xs text-muted-foreground">
-                        <CompanyLabel companies={companiesOf(item)} />
-                      </span>
-                    </span>
-                  </span>
-                  {/* Cada autor tem a própria barra, montada só na vez dele
-                      (a montagem reinicia a animação). Sem animação
-                      (prefers-reduced-motion) não há contagem nem troca
-                      automática; com um só autor não há para onde ir. */}
-                  {isSelected && items.length > 1 && (
-                    <RecommendationCountdown
-                      delayMs={BAR_DELAY_MS}
-                      durationMs={
-                        getReadingTimeMs(allText(item)) - BAR_DELAY_MS
-                      }
-                      onEnd={handleCountdownEnd}
-                    />
-                  )}
-                </button>
-              )
-            })}
-          </div>
+          />
           <figure
             id={`${baseId}-panel`}
             role="tabpanel"
@@ -306,7 +245,14 @@ export function RecommendationsSection() {
                     </blockquote>
                   </div>
                 ))}
-                <figcaption className="mt-6 flex items-center gap-3 border-t border-border pt-4">
+                {items.length > 1 && (
+                  <RecommendationCountdown
+                    delayMs={BAR_DELAY_MS}
+                    durationMs={getReadingTimeMs(selectedText) - BAR_DELAY_MS}
+                    onEnd={handleCountdownEnd}
+                  />
+                )}
+                <figcaption className="mt-4 flex items-center gap-3 border-t border-border pt-4">
                   <RecommendationAvatar person={selected} />
                   <div>
                     <Meta group={selected} />
