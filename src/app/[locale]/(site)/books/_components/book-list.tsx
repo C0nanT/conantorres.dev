@@ -7,7 +7,7 @@ export async function BookList() {
   const books = getBooks()
 
   return (
-    <section className="py-16 lg:py-20">
+    <section className="section-tone py-16 lg:py-20">
       <div className="max-w-5xl mx-auto px-4">
         <header className="mb-10 max-w-3xl space-y-3">
           <h1 className="text-3xl font-bold lg:text-4xl">{t('title')}</h1>

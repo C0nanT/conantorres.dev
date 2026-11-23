@@ -15,7 +15,7 @@ export async function StudyingSection() {
     <section
       id="como-estou-estudando"
       data-toc="Como estou estudando"
-      className="scroll-mt-20 py-16 lg:py-24"
+      className="section-tone scroll-mt-20 py-16 lg:py-24"
     >
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 px-4 lg:grid-cols-[1fr_2fr] lg:gap-20">
         <div className="space-y-6 max-sm:text-center lg:sticky lg:top-24 lg:self-start">

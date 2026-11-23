@@ -205,6 +205,19 @@
     @apply rounded-2xl border bg-card transition-all duration-300 ease-out p-8;
   }
 
+  /* Alternate section tone: a darker shade of the background that fades in
+     and out at the edges, so neighbouring sections blend with no divider. */
+  .section-tone {
+    --tone: hsl(var(--muted) / 0.4);
+    background-image: linear-gradient(
+      to bottom,
+      transparent,
+      var(--tone) 14rem,
+      var(--tone) calc(100% - 14rem),
+      transparent
+    );
+  }
+
   .hero-section {
     @apply relative overflow-hidden bg-background;
   }
