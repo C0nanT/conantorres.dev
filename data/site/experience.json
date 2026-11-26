@@ -19,7 +19,7 @@
         "Estruturei a base de engenharia da instituição: entrega contínua, segurança de aplicações, observabilidade e Design System oficial."
       ],
       "details": [
-        "Entrei em março de 2026 como Desenvolvedor Sênior e em setembro assumi a liderança técnica: hoje lidero 6 pessoas, já orientei 3 estagiários e acompanho a contratação de mais 5 profissionais (devs, DevOps e PO).",
+        "Entrei em março de 2026 como Desenvolvedor Sênior e em setembro assumi a liderança técnica: hoje lidero 6 pessoas, com definição de arquitetura e padrões, code reviews e mentoria de profissionais de diferentes níveis de senioridade, e participo da formação e expansão da equipe, com a contratação de mais 5 profissionais (devs, DevOps e PO).",
         "Desenvolvi e liderei tecnicamente o PROEX, entregue do zero em cerca de 3 meses por um time de 4 pessoas; o sistema é usado por mais de 150 defensores públicos em todo o estado e sustentou a maior expansão da Defensoria.",
         "Modernizei sistemas legados como ATOS, SIES, AUTOMATO e Diário Oficial Eletrônico. Por meio de refatorações, otimização de consultas e reorganização da infraestrutura, alcancei melhorias de performance superiores a 6x, permitindo reduzir máquinas de 16 GB para 2 GB de RAM e diminuir em mais de 85% os custos com EC2.",
         "Criei um fluxo de desenvolvimento guiado por IA, com Claude Code, Cursor e Skills próprias: um CRUD que levava dias passou a sair em poucas horas, com ganhos acima de 10x e de até 50x em algumas tarefas. Apresentei o fluxo no 1° Encontro de Tecnologia das Defensorias Públicas da Região Sul e treinei a equipe para usá-lo.",
